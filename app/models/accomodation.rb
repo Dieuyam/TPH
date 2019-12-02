@@ -5,4 +5,5 @@ class Accomodation < ApplicationRecord
   belongs_to :road_type
   belongs_to :city
   belongs_to :operation_type
+  belongs_to :country
 end
