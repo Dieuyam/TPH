@@ -9,4 +9,6 @@ class Accomodation < ApplicationRecord
   has_many :join_table_secondaries, dependent: :destroy
   has_many :secondary_criteria, through: :join_table_secondaries
   belongs_to :heating
+  has_many :join_table_tertiaries, dependent: :destroy
+  has_many :tertiary_criteria, through: :join_table_tertiaries
 end

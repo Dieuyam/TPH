@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_184718) do
+ActiveRecord::Schema.define(version: 2019_12_02_185220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 2019_12_02_184718) do
     t.index ["secondary_criteria_id"], name: "index_join_table_secondaries_on_secondary_criteria_id"
   end
 
+  create_table "join_table_tertiaries", force: :cascade do |t|
+    t.bigint "accomodation_id"
+    t.bigint "tertiary_criteria_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accomodation_id"], name: "index_join_table_tertiaries_on_accomodation_id"
+    t.index ["tertiary_criteria_id"], name: "index_join_table_tertiaries_on_tertiary_criteria_id"
+  end
+
   create_table "offers", force: :cascade do |t|
     t.text "description"
     t.string "name"
@@ -109,6 +118,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_184718) do
   end
 
   create_table "secondary_criteria", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tertiary_criteria", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -148,6 +163,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_184718) do
   add_foreign_key "favorites", "users"
   add_foreign_key "join_table_secondaries", "accomodations"
   add_foreign_key "join_table_secondaries", "secondary_criteria", column: "secondary_criteria_id"
+  add_foreign_key "join_table_tertiaries", "accomodations"
+  add_foreign_key "join_table_tertiaries", "tertiary_criteria", column: "tertiary_criteria_id"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "offers"
 end
