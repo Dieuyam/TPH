@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_171934) do
+ActiveRecord::Schema.define(version: 2019_12_02_173602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accomodations", force: :cascade do |t|
+    t.string "road_number"
+    t.string "road_name"
+    t.string "zipcode"
+    t.float "living_space"
+    t.float "price"
+    t.integer "floor"
+    t.integer "floors_inside"
+    t.integer "rooms"
+    t.string "orientation"
+    t.string "ges"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.integer "siret"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.text "description"
+    t.string "name"
+    t.datetime "end_date"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -27,6 +59,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_171934) do
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.bigint "offer_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["offer_id"], name: "index_users_on_offer_id"
   end
 
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "offers"
 end
