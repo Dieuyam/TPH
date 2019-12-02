@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_183449) do
+ActiveRecord::Schema.define(version: 2019_12_02_184718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_183449) do
     t.bigint "cities_id"
     t.bigint "operation_types_id"
     t.bigint "countries_id"
+    t.bigint "heating_id"
     t.index ["cities_id"], name: "index_accomodations_on_cities_id"
     t.index ["countries_id"], name: "index_accomodations_on_countries_id"
+    t.index ["heating_id"], name: "index_accomodations_on_heating_id"
     t.index ["operation_types_id"], name: "index_accomodations_on_operation_types_id"
     t.index ["road_types_id"], name: "index_accomodations_on_road_types_id"
     t.index ["type_of_property_id"], name: "index_accomodations_on_type_of_property_id"
@@ -67,6 +69,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_183449) do
     t.datetime "updated_at", null: false
     t.index ["accomodation_id"], name: "index_favorites_on_accomodation_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "heatings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "join_table_secondaries", force: :cascade do |t|
@@ -132,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_183449) do
 
   add_foreign_key "accomodations", "cities", column: "cities_id"
   add_foreign_key "accomodations", "countries", column: "countries_id"
+  add_foreign_key "accomodations", "heatings"
   add_foreign_key "accomodations", "operation_types", column: "operation_types_id"
   add_foreign_key "accomodations", "road_types", column: "road_types_id"
   add_foreign_key "accomodations", "type_of_properties"
