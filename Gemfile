@@ -76,6 +76,5 @@ gem 'faker'
 gem "aws-sdk", "~> 3.0"
 # Addons for Scrapp
 gem 'nokogiri'
-gem 'open-uri'
 # Maps
 gem 'gmaps4rails'
