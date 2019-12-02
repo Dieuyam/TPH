@@ -60,3 +60,22 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Pay method
+gem 'stripe'
+gem 'stripe_event'
+# Security
+gem 'dotenv-rails'
+gem 'devise'
+# Debug
+gem "letter_opener", "~> 1.7"
+gem "colorize", "~> 0.8.1"
+gem "table_print"
+gem 'bcrypt'
+gem 'faker'
+# Addons for Active Storage
+gem "aws-sdk", "~> 3.0"
+# Addons for Scrapp
+gem 'nokogiri'
+gem 'open-uri'
+# Maps
+gem 'gmaps4rails'
