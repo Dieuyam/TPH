@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_180531) do
+ActiveRecord::Schema.define(version: 2019_12_02_180911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_180531) do
     t.datetime "updated_at", null: false
     t.bigint "type_of_property_id"
     t.bigint "road_types_id"
+    t.bigint "cities_id"
+    t.bigint "operation_types_id"
+    t.index ["cities_id"], name: "index_accomodations_on_cities_id"
+    t.index ["operation_types_id"], name: "index_accomodations_on_operation_types_id"
     t.index ["road_types_id"], name: "index_accomodations_on_road_types_id"
     t.index ["type_of_property_id"], name: "index_accomodations_on_type_of_property_id"
   end
@@ -66,6 +70,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_180531) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "operation_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "road_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_180531) do
     t.index ["offer_id"], name: "index_users_on_offer_id"
   end
 
+  add_foreign_key "accomodations", "cities", column: "cities_id"
+  add_foreign_key "accomodations", "operation_types", column: "operation_types_id"
   add_foreign_key "accomodations", "road_types", column: "road_types_id"
   add_foreign_key "accomodations", "type_of_properties"
   add_foreign_key "favorites", "accomodations"
