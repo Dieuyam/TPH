@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_142322) do
+ActiveRecord::Schema.define(version: 2019_12_03_144659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_142322) do
     t.integer "rooms"
     t.string "orientation"
     t.string "ges"
+    t.string "name"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "type_of_property_id"
@@ -58,6 +61,17 @@ ActiveRecord::Schema.define(version: 2019_12_03_142322) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "extern_criteria", force: :cascade do |t|
+    t.float "enligthment"
+    t.float "quietness"
+    t.float "pollution"
+    t.float "connectivity"
+    t.float "safety"
+    t.float "economy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
