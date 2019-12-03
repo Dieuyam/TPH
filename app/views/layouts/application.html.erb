@@ -45,7 +45,7 @@
                     <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
                 </a>
                 <div class="dropdown-menu pr-3 dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
+                  <a class="dropdown-item" href="<%= edit_user_registration_path %>">Mon compte</a>
                   <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
                 </div>
               </li>
