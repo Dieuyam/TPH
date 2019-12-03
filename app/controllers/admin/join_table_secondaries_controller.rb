@@ -1,4 +1,4 @@
-class Admin::JoinTableSecondaryController < ApplicationController
+class Admin::JoinTableSecondariesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

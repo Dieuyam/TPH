@@ -1,4 +1,4 @@
-class Admin::HeatingController < ApplicationController
+class Admin::HeatingsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
