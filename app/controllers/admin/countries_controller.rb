@@ -1,4 +1,4 @@
-class Admin::CitiesController < ApplicationController
+class Admin::CountriesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
