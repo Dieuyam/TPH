@@ -12,7 +12,9 @@
 }
 
 .bannerHomepage {
-  width: 60em;
-  margin:auto;
   margin-top: -60vh;
+}
+
+.bannerHomepage input{
+  display: inline-block;
 }
