@@ -1,44 +1,70 @@
+<br><br>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <p>
+        <strong>First name:</strong>
+        <%= @user.first_name %>
+      </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+      <p>
+        <strong>Last name:</strong>
+        <%= @user.last_name %>
+      </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @user.phone %>
+      </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+      <p>
+        <strong>Address:</strong>
+        <%= @user.address %>
+      </p>
 
-<p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
-</p>
+      <p>
+        <strong>Is admin:</strong>
+        <%= @user.is_admin %>
+      </p>
 
-<p>
-  <strong>Is pro:</strong>
-  <%= @user.is_pro %>
-</p>
+      <p>
+        <strong>Is pro:</strong>
+        <%= @user.is_pro %>
+      </p>
 
-<p>
-  <strong>Stripe customer:</strong>
-  <%= @user.stripe_customer_id %>
-</p>
+      <p>
+        <strong>Stripe customer:</strong>
+        <%= @user.stripe_customer_id %>
+      </p>
 
-<p>
-  <strong>Stripe session:</strong>
-  <%= @user.stripe_session_id %>
-</p>
+      <p>
+        <strong>Stripe session:</strong>
+        <%= @user.stripe_session_id %>
+      </p>
 
-<%= link_to 'Edit', edit_user_registration_path %> |
-<%= link_to 'Back', root_path %>
+      <%= link_to 'Edit', edit_user_registration_path %> |
+      <%= link_to 'Back', root_path %>
+
+    </div>
+
+    <div class="col-6">
+
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
+      <%else%>
+        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
+      <%end%>
+
+      <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
+        <%= file_field_tag :profile_picture %>
+        <%= submit_tag "mettre à jour" %>
+      <% end %>
+
+
+    </div>
+
+  </div>
+
+</div>
