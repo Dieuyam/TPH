@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_140739) do
+ActiveRecord::Schema.define(version: 2019_12_04_181338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 2019_12_04_140739) do
     t.float "longitude"
     t.float "latitude"
     t.text "title"
+    t.bigint "owner_id"
     t.index ["city_id"], name: "index_accomodations_on_city_id"
     t.index ["country_id"], name: "index_accomodations_on_country_id"
     t.index ["heating_id"], name: "index_accomodations_on_heating_id"
     t.index ["operation_type_id"], name: "index_accomodations_on_operation_type_id"
+    t.index ["owner_id"], name: "index_accomodations_on_owner_id"
     t.index ["road_type_id"], name: "index_accomodations_on_road_type_id"
     t.index ["type_of_property_id"], name: "index_accomodations_on_type_of_property_id"
   end
@@ -190,6 +192,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_140739) do
   add_foreign_key "accomodations", "operation_types"
   add_foreign_key "accomodations", "road_types"
   add_foreign_key "accomodations", "type_of_properties"
+  add_foreign_key "accomodations", "users", column: "owner_id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "accomodations"
   add_foreign_key "favorites", "users"

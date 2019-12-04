@@ -15,4 +15,5 @@ class Accomodation < ApplicationRecord
   validates :rooms, presence: true
   validates :price, presence: true
   has_many_attached :photo
+  belongs_to :owner, class_name: "User" 
 end
