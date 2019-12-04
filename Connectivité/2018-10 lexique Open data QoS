@@ -1,0 +1,66 @@
+date_time : date et heure du test
+mcc_mcn : code operateur. 
+			20801 : Orange 
+			20810 : SFR
+			20815 : Free Mobile
+			20820 : Bouygues
+techno : techno accrochée par le mobile pendant le test.
+	HR - le téléphone est hors-réseau
+	UNKNOWN - la techno n'a pas été remontée par l'outil
+usage : indoor : test réalisé à l'intérieur d'un bâtiment
+	outdoor : test réalisé en extérieur
+	incar : test réalisé à l'intérieur d'un véhicule routier en mobilité
+	intrain : test réalisé à l'intérieur d'un véhicule ferroviaire en mobilite
+latitude : latitude en WGS84
+longitude : longitude en WGS84
+protocole : type du test
+	DL10 : transfert dans le sens descendant d'un fichier de 10Mo
+	DL50 : test de débit via le transfert dans le sens descendant d'un fichier de 50Mo pendant 10 secondes
+	UL2 : transfert dans le sens montant d'un fichier de 2Mo
+	UL50 : test de débit via le transfert dans le sens montant d'un fichier de 50Mo pendant 10 secondes
+	STREAM : visionnage une séquence vidéo de 2 minutes (au travers d’une application et en plein écran) mise à disposition par un service de diffusion en flux grand public
+	WEB : chargement d'une page web parmi un panel de pages très fréquentées
+	VOIX : appel de 2 minutes entrant ou sortant entre une ligne fixe en RTC Orange et une ligne mobile de l'opérateur correspondant au mcc_mnc
+	SMS : envoi ou reception d'un sms de 26 caractères alphanumériques entre deux lignes mobiles de l'opérateur correspondant au mcc_mnc
+complements : informations complementaires sur le test
+	dans le cas du protocole WEB : page web testée
+	dans le cas des protocoles DL10, UL2, DL50 et UL50 : extension du fichier testé
+mobile : mobile de test
+strate : strate de publication de l'Arcep
+	dense :les 15 plus grosses agglomérations (aires urbaines)
+	intermediaire : agglomérations de 10k à 400khab en dehors des 15 plus grosses agglomérations
+	rurale : communes hors agglomérations de moins de 10khab
+	routes : autouroutes et autres grands axes non autouroutiers
+	tgv : toutes les voies par lesquelles circulent un TGV
+	intercites_ter : intercités et TER qui circulent de jour
+	rer_transiliens : RER et transiliens
+	metros : lignes de métros. Pour Paris, sont également compris Orlyval et CDGVal
+sous_strate :
+	dans le cas des strates dense et intermediaire : nom de l'aire urbaine
+	dans le cas de la strate rurale : nom de la commune
+	dans le cas de la strate routes : nom de l'axe
+	dans le cas des strates tgv, intercites_ter, rer_transiliens, metros : nom de la ligne
+bilanx : 
+	0 : la condition de succès x pour le test "protocole" n'est pas remplie
+	1 : la condition de succès x pour le test "protocole" est remplie
+Détail des conditions de succès
+bilan1 : 
+	WEB : la page est chargée en moins de 5 secondes
+	STREAM : la vidéo est visionnée entièrement avec une qualité parfaite
+	DL10 : le fichier est téléchargé en moins de 60 secondes
+	UL2 : le fichier est uploadé en moins de 60 secondes
+	VOIX : l'appel est réussi et maintenu pendant deux minutes avec une qualité parfaite
+	SMS : le sms est reçu en moins de 10 secondes
+bilan2 :
+	WEB : la page est chargée en moins de 10 secondes
+	STREAM : la vidéo est visionnée entièrement avec une qualité parfaite ou correcte
+	VOIX : l'appel est réussi et maintenu pendant 2 minutes avec une qualité parfaite ou correcte
+	SMS : le sms est reçu en moins de 30 secondes
+bilan3 : 
+	VOIX : l'appel est réussi et maintenu pendant 2 minutes (peu importe sa qualité)
+performance : indication complémentaire sur la performance durant le test 
+	WEB : temps effectif de chargement de la page (en secondes) si la page est chargée avant le timeout de 30 secondes
+	DL50 : débit moyen constaté en Mbit/s pendant le transfert ou pendant 10 secondes si le transfert n'est pas terminé au bout de 10 secondes
+	UL50 : débit moyen constaté en Mbit/s pendant le transfert ou pendant 10 secondes si le transfert n'est pas terminé au bout de 10 secondes
+	VOIX : durée de l'appel (en secondes). La durée nominale est de 120 secondes. On peut observer des variations de l'ordre de 5% pour les appels sur les strates dense, intermédiaire et rurale compte tenu du fait que le raccroché est manuel 
+	SMS : temps effectif (en secondes) de réception du sms lorsque le sms est reçu avant le timeout de 30 secondes
