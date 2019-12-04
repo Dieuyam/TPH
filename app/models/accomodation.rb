@@ -14,4 +14,5 @@ class Accomodation < ApplicationRecord
   validates :living_space, presence: true
   validates :rooms, presence: true
   validates :price, presence: true
+  has_many_attached :photo
 end
