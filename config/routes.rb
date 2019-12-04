@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'accomodations#index'
+  root to: 'homepage#index'
   devise_for :users
   resources :accomodations
   resources :offers
