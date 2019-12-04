@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand&display=swap" rel="stylesheet">
 
@@ -29,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto mr-2">
                 <li class="nav-item active">
-                  <%= link_to "Search", accomodations_path, class: "nav-link" %>
+                  <%= link_to "Recherche avancée", accomodations_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
-                  <%= link_to "New post", new_accomodation_path, class: "nav-link" %>
+                  <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
                 </li>
               </ul>
             </div>
@@ -46,8 +47,8 @@
                         <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
                     </a>
                     <div class="dropdown-menu pr-3 dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="<%= user_path(current_user.id) %>">My account</a>
-                      <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Log out</a>
+                      <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
+                      <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
                     </div>
                   </li>
                 </ul>
@@ -59,8 +60,8 @@
                   Menu
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="<%= new_user_session_path %>">Log in</a>
-                  <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign up</a>
+                  <a class="dropdown-item" href="<%= new_user_session_path %>">Connexion</a>
+                  <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
                 </div>
               </div>
             <% end  %>
