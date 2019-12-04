@@ -28,7 +28,7 @@ nav .navbar-brand {
 }
 
 .affix {
-  background-color: #eee;
+  background-color: #fff;
   -webkit-transition:padding 0.2s ease-out;
   -moz-transition:padding 0.2s ease-out;
   -o-transition:padding 0.2s ease-out;
