@@ -12,6 +12,9 @@ type_of_property_array = ["Bureaux", "Entrepôts / Locaux d'activités / Logisti
 offer_array = ["Basique", "Medium", "Premium"]
 road_type_array = ["Rue piétonne", "Allée", "Avenue", "Boulevard", "Carrefour", "Chemin", "Chaussée", "Cité", "Corniche", "Cours", "Domaine", "Descente", "Ecart", "Esplanade", "Faubourg", "Grande Rue", "Hameau", "Halle", "Impasse", "Lieu-dit", "Lotissement", "Marché", "Montée", "Passage", "Place", "Plaine", "Plateau", "Promenade", "Parvis", "Quartier", "Quai", "Résidence", "Ruelle", "Rocade", "Rond-point", "Route", "Rue", "Sente-Sentier", "Square", "Terre-plein", "Traverse"]
 operation_type_array = ["Vente", "Location"]
+heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher chauffant"]
+secondary_criteria_array = ["Ensoleillement", "Pollution", "Calme", "Connectivité", "Sécurité", "Fiscalité", "Commerces", "Services"]
+tertiary_criteria_array = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concierge", "Parking", "Dernier étage", "Acces handicapé", "Jardin", "Meublé"]
 
 cities_array.each do |city|
 	City.create(:name => city)
@@ -42,6 +45,24 @@ operation_type_array.each do |operation_type|
 	#puts "#{operation_type} add to operation type table"
 end
 puts "The operation type table has been initialized"
+
+heatings_array.each do |heating|
+	Heating.create(:name => heating)
+	#puts "#{heating} add to operation type table"
+end
+puts "The heating type table has been initialized"
+
+secondary_criteria_array.each do |secondary_criteria|
+	SecondaryCriteria.create(:name => secondary_criteria)
+	#puts "#{secondary_criterias} add to operation type table"
+end
+puts "The secondary criteria type table has been initialized"
+
+tertiary_criteria_array.each do |tertiary_criteria|
+	TertiaryCriteria.create(:name => tertiary_criteria)
+	#puts "#{tertiary_criterias} add to operation type table"
+end
+puts "The tertiary criteria type table has been initialized"
 
 1.times do
 	Country.create(:name => "France")
