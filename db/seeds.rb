@@ -58,7 +58,7 @@ secondary_criteria_array.each do |secondary_criteria|
 	SecondaryCriteria.create(:name => secondary_criteria)
 	#puts "#{secondary_criterias} add to operation type table"
 end
-puts "The heating type table has been initialized"
+puts "The secondary criteria type table has been initialized"
 
 tertiary_criteria_array.each do |tertiary_criteria|
 	TertiaryCriteria.create(:name => tertiary_criteria)

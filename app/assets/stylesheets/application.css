@@ -12,6 +12,7 @@
  *
  *= require navbar
  *= require homepage
+ *= require footer
  */
 
 html,body {
