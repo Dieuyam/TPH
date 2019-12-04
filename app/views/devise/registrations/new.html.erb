@@ -25,17 +25,19 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirmation mot de passe" %>
         </div><br>
 
-        <input type="checkbox">
-        <small>Par la présente, je confirme que j’accepte le politique d'adhésion et que j’ai lu et compris le politique de confidentialité.</small><br>
-        <input type="checkbox">
-        <small>S'inscrire à la newsletter</small><br>
+        <div class="">
+          <input type="checkbox">
+          <small>Par la présente, je confirme que j’accepte le politique d'adhésion et que j’ai lu et compris le politique de confidentialité.</small><br>
+          <input type="checkbox">
+          <small>S'inscrire à la newsletter.</small>
+        </div><br>
 
-        <div class="container-login100-form-btn">
+        <div class="container-login100-form-btn text-center">
           <button class="animatedButton" type="submit" style="vertical-align:middle"><span>S'inscrire</span></button>
         </div>
         <% end %>
         <div class="container-login100">
-          <span style="color: black;">
+          <span style="color: white;">
             Ou s'inscrire avec
           </span>
         </div>

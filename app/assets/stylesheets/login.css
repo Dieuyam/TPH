@@ -88,7 +88,7 @@ a .fab:hover {
  text-decoration: none !important;
 }
 
-.btnSocialRegistration {
+.btnSocialLog {
  justify-content: center;
  display: flex;
  flex-direction: row;
@@ -112,4 +112,58 @@ a .fab:hover {
  background: #979797;
  border-radius: 10px;
  overflow: hidden;
+}
+
+
+.animatedButton {
+ display: inline-block;
+ border-radius: 40px;
+ background-color: #EBB;
+ border: none;
+ color: #000000;
+ text-align: center;
+ font-family: 'Quicksand', sans-serif;
+ font-size: 1.2em;
+ padding: 20px;
+ width: 30vh;
+ transition: all 0.5s;
+ cursor: crosshair;
+ margin: 5px;
+}
+
+.animatedButton span {
+ display: inline-block;
+ position: relative;
+ transition: 0.5s;
+}
+
+.animatedButton span:after {
+ content: '\00bb';
+ position: absolute;
+ opacity: 0;
+ top: 0;
+ right: -20px;
+ transition: 0.5s;
+}
+
+.animatedButton:hover span {
+ padding-right: 25px;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover span:after {
+ opacity: 1;
+ right: 0;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover {
+ padding-right: 25px;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover:after {
+ opacity: 1;
+ right: 0;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
 }
