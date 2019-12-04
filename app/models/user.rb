@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :accomodations, through: :favorites
   has_one_attached :profile_picture
+  has_many :accomodations, foreign_key: 'owner_id', class_name: "Accomodation", dependent: :destroy
 
   #validates :phone, presence: true, format: { with: /\A^((\+)33|0)[1-9](\d{2}){4}$*\z/i, message:  "Le format du numéro de téléphone est incorrect. Veuillez le vérifier." }
 end

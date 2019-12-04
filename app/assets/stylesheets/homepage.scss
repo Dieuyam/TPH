@@ -12,9 +12,22 @@
 }
 
 .bannerHomepage {
-  margin-top: -60vh;
+  margin-top: -70vh;
+  margin-left: auto;
+  margin-bottom: 35vh;
 }
 
 .bannerHomepage input{
   display: inline-block;
+}
+
+.bannerHomepage h1 {
+  width: 35%;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.bannerHomepage h4 {
+  width: 55%;
+  font-style: italic;
 }
