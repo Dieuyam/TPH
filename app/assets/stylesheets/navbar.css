@@ -1,11 +1,3 @@
-.affix {
-  background-color: #eee;
-  -webkit-transition:padding 0.2s ease-out;
-  -moz-transition:padding 0.2s ease-out;
-  -o-transition:padding 0.2s ease-out;
-  transition:padding 0.2s ease-out;
-}
-
 @media (min-width:768px) {
     .affix-top {
       /* navbar style at top */
@@ -33,4 +25,12 @@ nav .navbar-brand {
   font-family: 'Fredoka One', cursive;
   color: #000000;
   margin: 0;
+}
+
+.affix {
+  background-color: #eee;
+  -webkit-transition:padding 0.2s ease-out;
+  -moz-transition:padding 0.2s ease-out;
+  -o-transition:padding 0.2s ease-out;
+  transition:padding 0.2s ease-out;
 }
