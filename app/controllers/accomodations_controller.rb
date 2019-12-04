@@ -25,7 +25,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
     @accomodation = Accomodation.new(accomodation_params)
-
+    puts params[:terrace]
     respond_to do |format|
       if @accomodation.save
         format.html { redirect_to @accomodation, notice: 'Accomodation was successfully created.' }

@@ -1,5 +1,5 @@
 <h1>New Accomodation</h1>
 
-<%= render 'form', accomodation: @accomodation %>
+<%= render 'form', accomodation: @accomodation, :url => { :action => "create" } %>
 
 <%= link_to 'Back', accomodations_path %>
