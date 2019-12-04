@@ -13,6 +13,7 @@
  *= require navbar
  *= require homepage
  *= require footer
+ *= require signup
  */
 
 html,body {
