@@ -1,5 +1,4 @@
-class Admin::DashboardController < ApplicationController
-  layout 'application_for_admin'
+class Admin::DashboardController < AdminController
   before_action :is_admin?
 
   def index
