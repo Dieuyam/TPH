@@ -11,4 +11,14 @@ class User < ApplicationRecord
   has_many :accomodations, foreign_key: 'owner_id', class_name: "Accomodation", dependent: :destroy
 
   #validates :phone, presence: true, format: { with: /\A^((\+)33|0)[1-9](\d{2}){4}$*\z/i, message:  "Le format du numéro de téléphone est incorrect. Veuillez le vérifier." }
+
+
+  after_create :welcome_send
+
+   def welcome_send
+     UserMailer.welcome_email(self).deliver_now
+   end
+
+
 end
+
