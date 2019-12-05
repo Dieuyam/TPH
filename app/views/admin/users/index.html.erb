@@ -173,26 +173,39 @@
 							<table class="table align-items-center table-flush">
 								<thead class="thead-light">
 									<tr>
+										<th scope="col">Nom, Prénom</th>
 										<th scope="col">Email</th>
-										<th scope="col">Phone</th>
-										<th scope="col">Unique users</th>
-										<th scope="col">Bounce rate</th>
+										<th scope="col">Téléphone</th>
+										<th scope="col">Adresse</th>
+										<th scope="col">Admin</th>
+										<th scope="col">Pro</th>
+										<th scope="col" class="text-right text-dark">Editer</th>
 									</tr>
 								</thead>
 								<tbody>
-									<% User.all.each do |user| %>
+									<% @users.each do |user| %>
 									<tr>
 										<th scope="row">
-											<%=user.email %>
+											<%=if_nil_sort_icon(user.first_name)%>
 										</th>
 										<td>
-											2,050
+											<%=if_nil_sort_icon(user.email)%>
 										</td>
 										<td>
-											147
+											<%=if_nil_sort_icon(user.phone)%>
 										</td>
 										<td>
-											<i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+											<%=if_nil_sort_icon(user.address)%>
+										</td>
+										<td>
+											<%=admin_to_check_icon(if_nil_sort_icon(user.is_admin))%>
+										</td>
+										<td>
+											<%=admin_to_check_icon(if_nil_sort_icon(user.is_pro))%>
+										</td>
+										<td class="text text-right">
+											<i class="far fa-trash-alt mr-2"></i>
+											<i class="fas fa-pen"></i>
 										</td>
 									</tr>
 									<%end%>

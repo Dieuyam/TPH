@@ -71,4 +71,6 @@ class Admin::UsersController < AdminController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :phone, :address, :is_admin, :is_pro, :stripe_customer_id, :stripe_session_id, :email, :password)
     end
-end
+
+
+  end

@@ -94,12 +94,12 @@
     if (document.querySelector('.text-center').getBoundingClientRect().top < 35) {
       if (IsJumbotronPass == false) {
       IsJumbotronPass = true
-      //mettre le code ici
+        $('nav').addClass('affix')      
       }
     } else {
       if (IsJumbotronPass == true) {
       IsJumbotronPass = false
-      //mettre le code ici
+      $('nav').removeClass('affix')
       }
     }
 
