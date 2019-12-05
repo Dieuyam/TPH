@@ -13,6 +13,9 @@ offer_array = ["Basique", "Medium", "Premium"]
 offer_description_array = ["1 annonce gratuite ", "5 annonces maximum", "100 annonces maximum"]
 offer_price_array = ["Gratuit", "5€/mois", "50€/mois"]
 offer_end_date_array = ["", "#{Time.now + 1.month}", "#{Time.now + 1.month}"]
+
+offer_hash = [{:name => "Basique", :description => "1 annonce gratuite", :end_date => "", :price => "0"},{:name => "Medium", :description => "5 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "5"},{:name => "Premium", :description => "100 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "50"}]
+
 road_type_array = ["Rue piétonne", "Allée", "Avenue", "Boulevard", "Carrefour", "Chemin", "Chaussée", "Cité", "Corniche", "Cours", "Domaine", "Descente", "Ecart", "Esplanade", "Faubourg", "Grande Rue", "Hameau", "Halle", "Impasse", "Lieu-dit", "Lotissement", "Marché", "Montée", "Passage", "Place", "Plaine", "Plateau", "Promenade", "Parvis", "Quartier", "Quai", "Résidence", "Ruelle", "Rocade", "Rond-point", "Route", "Rue", "Sente-Sentier", "Square", "Terre-plein", "Traverse"]
 operation_type_array = ["Vente", "Location"]
 heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher chauffant"]
@@ -31,19 +34,11 @@ type_of_property_array.each do |type_of_property|
 end
 puts "The type of property table has been initialized"
 
-offer_array.each do |offer|
-	offer_price_array.each do |price|
-		offer_description_array.each do |description|
-			offer_end_date_array.each do |end_date|
-
-
-	Offer.create(:name => offer, :description => description, :price => price, :end_date => end_date)
-		#puts "#{offer} add to offer table"
-
-			end
-		end
-	end
+offer_hash.each do |offer|
+	Offer.create(offer)
+	#puts "#{offer} add to offer table"
 end
+
 puts "The offer table has been initialized"
 
 road_type_array.each do |road_type|
