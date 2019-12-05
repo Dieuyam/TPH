@@ -1,10 +1,22 @@
 class AccomodationsController < ApplicationController
+  layout 'application_for_accomodation'
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
 
   # GET /accomodations
   # GET /accomodations.json
   def index
-    @accomodations = Accomodation.all
+    city_id = params[:city][:id].to_i
+
+    if city_id == 0
+      @accomodations = Accomodation.all
+    else
+      @accomodations = []
+      Accomodation.where(city_id: city_id).find_each do |accomodation|
+        @accomodations << accomodation
+      end
+
+    end
+
   end
 
   # GET /accomodations/1
@@ -24,17 +36,8 @@ class AccomodationsController < ApplicationController
   # POST /accomodations
   # POST /accomodations.json
   def create
-    @accomodation = Accomodation.new(accomodation_params)
-
-    respond_to do |format|
-      if @accomodation.save
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully created.' }
-        format.json { render :show, status: :created, location: @accomodation }
-      else
-        format.html { render :new }
-        format.json { render json: @accomodation.errors, status: :unprocessable_entity }
-      end
-    end
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   end
 
   # PATCH/PUT /accomodations/1
