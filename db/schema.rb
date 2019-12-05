@@ -29,21 +29,21 @@ ActiveRecord::Schema.define(version: 2019_12_04_181338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "type_of_property_id"
-    t.bigint "road_types_id"
-    t.bigint "cities_id"
-    t.bigint "operation_types_id"
-    t.bigint "countries_id"
+    t.bigint "road_type_id"
+    t.bigint "city_id"
+    t.bigint "operation_type_id"
+    t.bigint "country_id"
     t.bigint "heating_id"
     t.float "longitude"
     t.float "latitude"
     t.text "title"
     t.bigint "owner_id"
-    t.index ["cities_id"], name: "index_accomodations_on_cities_id"
-    t.index ["countries_id"], name: "index_accomodations_on_countries_id"
+    t.index ["city_id"], name: "index_accomodations_on_city_id"
+    t.index ["country_id"], name: "index_accomodations_on_country_id"
     t.index ["heating_id"], name: "index_accomodations_on_heating_id"
-    t.index ["operation_types_id"], name: "index_accomodations_on_operation_types_id"
+    t.index ["operation_type_id"], name: "index_accomodations_on_operation_type_id"
     t.index ["owner_id"], name: "index_accomodations_on_owner_id"
-    t.index ["road_types_id"], name: "index_accomodations_on_road_types_id"
+    t.index ["road_type_id"], name: "index_accomodations_on_road_type_id"
     t.index ["type_of_property_id"], name: "index_accomodations_on_type_of_property_id"
   end
 
@@ -186,11 +186,11 @@ ActiveRecord::Schema.define(version: 2019_12_04_181338) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "accomodations", "cities", column: "cities_id"
-  add_foreign_key "accomodations", "countries", column: "countries_id"
+  add_foreign_key "accomodations", "cities"
+  add_foreign_key "accomodations", "countries"
   add_foreign_key "accomodations", "heatings"
-  add_foreign_key "accomodations", "operation_types", column: "operation_types_id"
-  add_foreign_key "accomodations", "road_types", column: "road_types_id"
+  add_foreign_key "accomodations", "operation_types"
+  add_foreign_key "accomodations", "road_types"
   add_foreign_key "accomodations", "type_of_properties"
   add_foreign_key "accomodations", "users", column: "owner_id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
