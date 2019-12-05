@@ -1,4 +1,5 @@
 class AccomodationsController < ApplicationController
+  layout 'application_for_accomodation'
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
 
   # GET /accomodations
@@ -35,17 +36,8 @@ class AccomodationsController < ApplicationController
   # POST /accomodations
   # POST /accomodations.json
   def create
-    @accomodation = Accomodation.new(accomodation_params)
-    puts params[:terrace]
-    respond_to do |format|
-      if @accomodation.save
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully created.' }
-        format.json { render :show, status: :created, location: @accomodation }
-      else
-        format.html { render :new }
-        format.json { render json: @accomodation.errors, status: :unprocessable_entity }
-      end
-    end
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   end
 
   # PATCH/PUT /accomodations/1
