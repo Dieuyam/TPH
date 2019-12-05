@@ -16,7 +16,7 @@ heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher 
 secondary_criteria_array = ["Ensoleillement", "Pollution", "Calme", "Connectivité", "Sécurité", "Fiscalité", "Commerces", "Services"]
 tertiary_criteria_array = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concierge", "Parking", "Dernier étage", "Acces handicapé", "Jardin", "Meublé"]
 
-#require 'Faker'
+require 'Faker'
 Faker::Config.locale = 'fr'
 cities_array.each do |city|
 	City.create(:name => city)
