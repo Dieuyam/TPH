@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  root to: 'accomodations#index'
+  root to: 'homepage#index'
   devise_for :users
-  resources :accomodations
+  resources :accomodations do
+    resources :photo, only: [:create]
+  end
   resources :offers
   resources :companies
-  resources :users
+  resources :users, only: [:show] do
+    resources :profile_picture, only: [:create]
+  end
 
   namespace :admin do
     root to: 'dashboard#index'

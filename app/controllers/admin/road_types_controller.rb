@@ -1,4 +1,4 @@
-class Admin::RoadTypesController < ApplicationController
+class Admin::RoadTypesController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

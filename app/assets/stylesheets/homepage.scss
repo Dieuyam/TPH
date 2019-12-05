@@ -1,0 +1,33 @@
+// Place all the styles related to the Homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.first {
+  height:100vh;
+  min-height:400px;
+  background-size:cover;
+  background-image:url('/assets/joss-woodhead-tfEoT92EYlo-unsplash.jpg');
+  background-position: top center;
+}
+
+.bannerHomepage {
+  margin-top: -70vh;
+  margin-left: auto;
+  margin-bottom: 35vh;
+}
+
+.bannerHomepage input{
+  display: inline-block;
+}
+
+.bannerHomepage h1 {
+  width: 35%;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.bannerHomepage h4 {
+  width: 55%;
+  font-style: italic;
+}
