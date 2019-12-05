@@ -4,7 +4,18 @@ class AccomodationsController < ApplicationController
   # GET /accomodations
   # GET /accomodations.json
   def index
-    @accomodations = Accomodation.all
+    city_id = params[:city][:id].to_i
+
+    if city_id == 0
+      @accomodations = Accomodation.all
+    else
+      @accomodations = []
+      Accomodation.where(city_id: city_id).find_each do |accomodation|
+        @accomodations << accomodation
+      end
+
+    end
+
   end
 
   # GET /accomodations/1
