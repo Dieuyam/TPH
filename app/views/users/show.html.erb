@@ -11,7 +11,7 @@
         <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
       <%end%>
         <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
-        <div class="col-xs-2">
+        <div class="col-lg-2">
           <%= file_field_tag :profile_picture %>
           <%= submit_tag "mettre à jour" %>
         </div>

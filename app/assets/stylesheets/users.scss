@@ -35,23 +35,22 @@
 }
 
 .editBtn {
- position: absolute;
- bottom: 33vh; /* Place the button at the bottom of the page */
- right: 41vh; /* Place the button 30px from the right */
- z-index: 3; /* Make sure it does not overlap */
- border: none; /* Remove borders */
- outline: none;
- width: 10px;
- height: 10px; /* Remove outline */
- background-color: #fff; /* Set a background color */
- color: black ; /* Text color */
- padding: 20px; /* Some padding */
- border-radius: 50px; /* Rounded corners */
- transition: 0.5s;
- box-shadow: 0 10px 20px 0px rgba(151,151,151, 0.5);
+   position: absolute;
+   bottom: 29vh; /* Place the button at the bottom of the page */
+   right: 41vh; /* Place the button 30px from the right */
+   z-index: 3; /* Make sure it does not overlap */
+   border: none; /* Remove borders */
+   outline: none;
+   width: 10px;
+   height: 10px; /* Remove outline */
+   background-color: #fff; /* Set a background color */
+   color: black ; /* Text color */
+   padding: 20px; /* Some padding */
+   border-radius: 50px; /* Rounded corners */
+   transition: 0.5s;
+   box-shadow: 0 10px 20px 0px rgba(151,151,151, 0.5);
 }
 
 .editBtn:hover {
- background-color: #EBB; /* Add a dark-grey background on hover */
-
+  background-color: #EBB; /* Add a dark-grey background on hover */
 }
