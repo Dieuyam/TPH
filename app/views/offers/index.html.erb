@@ -20,10 +20,7 @@
         <td><%= offer.name %></td>
         <td><%= offer.end_date %></td>
         <td><%= offer.price %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= link_to 'Pay', new_offer_path(@offers, :offer_id => offer.id ) %></td>
     <% end %>
   </tbody>
 
@@ -33,4 +30,3 @@
 
 <br>
 
-<%= link_to'New Offer', new_offer_path %>

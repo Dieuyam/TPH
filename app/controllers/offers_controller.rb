@@ -74,16 +74,15 @@ class OffersController < ApplicationController
     end
 
     def stripe
-
+      @offer_selected = Offer.find(params[:offer_id])
       Stripe.api_key = 'sk_test_54BIYzJqmauUcCqsvpZunVyp'
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
-          name: 'T-shirt',
-          description: 'Comfortable cotton t-shirt',
-          images: ['https://example.com/t-shirt.png'],
-          amount: 500,
+          name: @offer_selected.name,
+          description: @offer_selected.description,
+          amount: @offer_selected.price.to_i*100,
           currency: 'eur',
           quantity: 1,
         }],
@@ -93,9 +92,6 @@ class OffersController < ApplicationController
         success_url: 'https://example.com/success',
         cancel_url: 'https://example.com/cancel',
       )
-
-
-
       return session
     end
 end
