@@ -40,6 +40,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    stripe
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -59,6 +61,7 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+
   end
 
   private
@@ -70,5 +73,31 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :phone, :address, :is_admin, :is_pro, :stripe_customer_id, :stripe_session_id)
+    end
+
+    def stripe
+
+      Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
+
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: 'T-shirt',
+          description: 'Comfortable cotton t-shirt',
+          images: ['https://example.com/t-shirt.png'],
+          amount: 500,
+          currency: 'eur',
+          quantity: 1,
+        }],
+        payment_intent_data: {
+          capture_method: 'manual',
+        },
+        success_url: 'https://example.com/success',
+        cancel_url: 'https://example.com/cancel',
+      )
+
+
+
+      return session
     end
 end

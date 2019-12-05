@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :offers
   resources :companies
-  resources :users, only: [:show] do
+  resources :users do
     resources :profile_picture, only: [:create]
   end
 
