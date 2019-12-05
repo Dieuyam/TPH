@@ -16,8 +16,7 @@
  *= require signup
  *= require login
  *= require users
- *= require style
- *= require plugin
+ *= require accomodations
  */
 
 html,body {

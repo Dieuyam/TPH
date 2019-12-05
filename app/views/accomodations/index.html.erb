@@ -1,23 +1,24 @@
 <div class="container">
-  <h1>Accomodations</h1>
+  <div class="container-accomodations">
+    <h1>Immobiliers</h1>
+    <div class="">
+      <%= link_to 'Publier un bien', new_accomodation_path, class:'btn btn-primary' %>
+    </div><br>
 
-
-  <%= link_to 'New Accomodation', new_accomodation_path %>
-
-  <div class="card-columns">
-    <% @accomodations.each do |accomodation| %>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= accomodation.road_number %></h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        <td><%= link_to 'Consulter', accomodation %></td>
-        <td><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></td>
-        <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="card-columns">
+      <% @accomodations.each do |accomodation| %>
+      <div class="card">
+        <img class="card-img-top" src="/assets/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= accomodation.road_number %></h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <td><%= link_to 'Consulter', accomodation %></td>
+          <td><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></td>
+          <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
-
 </div>
