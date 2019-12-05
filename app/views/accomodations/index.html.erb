@@ -1,27 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Accomodations</h1>
 
-<h1>Accomodations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Road number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= link_to 'New Accomodation', new_accomodation_path %>
 
-  <tbody>
+  <div class="card-columns">
     <% @accomodations.each do |accomodation| %>
-      <tr>
-        <td><%= accomodation.road_number %></td>
-        <td><%= link_to 'Show', accomodation %></td>
-        <td><%= link_to 'Edit', edit_accomodation_path(accomodation) %></td>
-        <td><%= link_to 'Destroy', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= accomodation.road_number %></h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <td><%= link_to 'Consulter', accomodation %></td>
+        <td><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></td>
+        <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Accomodation', new_accomodation_path %>
+</div>
