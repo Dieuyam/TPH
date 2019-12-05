@@ -1,9 +1,29 @@
-<p id="notice"><%= notice %></p>
+<br><br>
+
 
 <p>
   <strong>Road number:</strong>
   <%= @accomodation.road_number %>
 </p>
+
+<div class="">
+  <%= form_tag accomodation_photo_index_path(@accomodation), multipart: true do %>
+  <div class="col-lg-2">
+    <%= file_field_tag :photo %>
+    <%= submit_tag "ajouter" %>
+  </div>
+  <% end %>
+</div>
+
+<hr>
+
+<%if @accomodation.photo.attached?%>
+  <% @accomodation.photo.each_with_index do |photo,index| %>
+    <%= image_tag @accomodation.photo[index], alt: 'photo', width:"150", height:"150" %>
+  <% end %>
+<%else%>
+  <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
+<%end%>
 
 <%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
 <%= link_to 'Back', accomodations_path %>

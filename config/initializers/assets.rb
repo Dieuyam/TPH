@@ -13,3 +13,11 @@ Rails.application.config.assets.precompile += %w( multiple_steps_form.js  )
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
+Rails.application.config.assets.paths << Rails.root.join("lib", "assets", "stylesheets")
+Rails.application.config.assets.paths << Rails.root.join("lib", "assets", "javascripts")
+Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
+Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
+Rails.application.config.assets.precompile += %w( application_for_admin.css)
+Rails.application.config.assets.precompile += %w( application_for_admin.js )
+Rails.application.config.assets.precompile += %w( signup.css )

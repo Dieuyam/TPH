@@ -1,25 +1,33 @@
+<br><br>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<div class="jumbotron jumbotron-fluid-hero">
+  <img src="" alt="">
+</div>
+    <div class="profilePic">
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
+      <%else%>
+        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
+      <%end%>
+        <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
+        <div class="col-lg-2">
+          <%= file_field_tag :profile_picture %>
+          <%= submit_tag "mettre à jour" %>
+        </div>
+        <% end %>
+    </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
+<div class="profileWrap">
+  <h6><%= @user.first_name %> <%= @user.last_name %><br></h6>
+  <div class="editBtn d-flex justify-content-center align-items-center" title="Edit">
+    <a href="#" data-method="get">  <span><i class="fas fa-pen"></i></span></a>
+  </div><br>
+<i class="fas fa-at"></i> <%= current_user.email %><hr>
+<i class="fas fa-mobile-alt"></i><%= @user.phone %><hr>
+<%= @user.address %>
+<i class="fas fa-shopping-cart"></i> <a href="">My Orders</a><hr/>
+<i class="fas fa-info-circle"></i> <a href="">My Personal Informations</a><hr>
 <p>
   <strong>Is admin:</strong>
   <%= @user.is_admin %>
@@ -40,5 +48,6 @@
   <%= @user.stripe_session_id %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_registration_path %> |
+<%= link_to 'Back', root_path %>
+</div>

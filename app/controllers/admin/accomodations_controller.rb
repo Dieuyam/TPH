@@ -1,4 +1,4 @@
-class Admin::AccomodationsController < ApplicationController
+class Admin::AccomodationsController  < AdminController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
 
   # GET /accomodations
