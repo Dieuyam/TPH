@@ -12,7 +12,12 @@ type_of_property_array = ["Bureaux", "Entrepôts / Locaux d'activités / Logisti
 offer_array = ["Basique", "Medium", "Premium"]
 road_type_array = ["Rue piétonne", "Allée", "Avenue", "Boulevard", "Carrefour", "Chemin", "Chaussée", "Cité", "Corniche", "Cours", "Domaine", "Descente", "Ecart", "Esplanade", "Faubourg", "Grande Rue", "Hameau", "Halle", "Impasse", "Lieu-dit", "Lotissement", "Marché", "Montée", "Passage", "Place", "Plaine", "Plateau", "Promenade", "Parvis", "Quartier", "Quai", "Résidence", "Ruelle", "Rocade", "Rond-point", "Route", "Rue", "Sente-Sentier", "Square", "Terre-plein", "Traverse"]
 operation_type_array = ["Vente", "Location"]
+heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher chauffant"]
+secondary_criteria_array = ["Ensoleillement", "Pollution", "Calme", "Connectivité", "Sécurité", "Fiscalité", "Commerces", "Services"]
+tertiary_criteria_array = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concierge", "Parking", "Dernier étage", "Acces handicapé", "Jardin", "Meublé"]
 
+#require 'Faker'
+Faker::Config.locale = 'fr'
 cities_array.each do |city|
 	City.create(:name => city)
 	#print "#{city} add to city table"
@@ -43,10 +48,33 @@ operation_type_array.each do |operation_type|
 end
 puts "The operation type table has been initialized"
 
+heatings_array.each do |heating|
+	Heating.create(:name => heating)
+	#puts "#{heating} add to operation type table"
+end
+puts "The heating type table has been initialized"
+
+secondary_criteria_array.each do |secondary_criteria|
+	SecondaryCriteria.create(:name => secondary_criteria)
+	#puts "#{secondary_criterias} add to operation type table"
+end
+puts "The secondary criteria type table has been initialized"
+
+tertiary_criteria_array.each do |tertiary_criteria|
+	TertiaryCriteria.create(:name => tertiary_criteria)
+	#puts "#{tertiary_criterias} add to operation type table"
+end
+puts "The tertiary criteria type table has been initialized"
+
 1.times do
 	Country.create(:name => "France")
 end
 puts "The operation type table has been initialized"
 
-#Some Faker seed :
+5.times do |k|
 
+	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name, zipcode: Faker::Address.postcode, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample)
+end
+puts "accomodations created"
+
+#Some Faker seed :
