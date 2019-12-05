@@ -20,5 +20,17 @@
   <%= @offer.price %>
 </p>
 
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<div align="right">
+<div class="actions">
+  <%= button_to offers_path,
+  method: :post,
+  id: "pay_sca",
+  data: { disable_with: '<i class="fa fa-spinner fa-spin"></i>'.html_safe },
+  class: "btn1",
+  remote: true do  %>
+  <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
+  <% end %>
+</div>
+</div>
+
 <%= link_to 'Back', offers_path %>
