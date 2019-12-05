@@ -1,4 +1,5 @@
 class AccomodationsController < ApplicationController
+  layout 'application_for_accomodation'
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
 
   # GET /accomodations

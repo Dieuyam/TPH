@@ -21,3 +21,4 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "ja
 Rails.application.config.assets.precompile += %w( application_for_admin.css)
 Rails.application.config.assets.precompile += %w( application_for_admin.js )
 Rails.application.config.assets.precompile += %w( signup.css )
+Rails.application.config.assets.precompile += %w( application_for_accomodation.css )
