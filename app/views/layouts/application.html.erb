@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto mr-2">
                 <li class="nav-item active">
-                  <%= link_to "Recherche avancée", accomodations_path, class: "nav-link" %>
+                  <%= link_to "Recherche avancée", search_index_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
                   <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
@@ -106,4 +106,7 @@
     });
 
   </script>
+  <%= javascript_include_tag 'plugin', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+
 </html>
