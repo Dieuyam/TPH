@@ -14,6 +14,8 @@
  *= require homepage
  *= require footer
  *= require signup
+ *= require login
+ *= require users
  */
 
 html,body {

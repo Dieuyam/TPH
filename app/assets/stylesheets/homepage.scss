@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+section {
+  height:calc(90% - 50px);
+  height: 90vh;
+}
 
 .first {
   height:100vh;

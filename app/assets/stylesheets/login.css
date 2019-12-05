@@ -68,7 +68,6 @@
 }
 
 .login100-social-item:hover {
-
  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2);
  -moz-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2);
  -webkit-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2);
@@ -88,7 +87,7 @@ a .fab:hover {
  text-decoration: none !important;
 }
 
-.btnSocialRegistration {
+.btnSocialLog {
  justify-content: center;
  display: flex;
  flex-direction: row;
@@ -112,4 +111,63 @@ a .fab:hover {
  background: #979797;
  border-radius: 10px;
  overflow: hidden;
+}
+
+
+.animatedButton {
+ display: inline-block;
+ border-radius: 40px;
+ background-color: #EBB;
+ border: none;
+ color: #000000;
+ text-align: center;
+ font-family: 'Quicksand', sans-serif;
+ font-size: 1.2em;
+ padding: 20px;
+ width: 30vh;
+ transition: all 0.5s;
+
+ margin: 5px;
+}
+
+.animatedButton span {
+ display: inline-block;
+ position: relative;
+ transition: 0.5s;
+}
+
+.animatedButton span:after {
+ content: '\00bb';
+ position: absolute;
+ opacity: 0;
+ top: 0;
+ right: -20px;
+ transition: 0.5s;
+ text-decoration: none !important;
+}
+
+.animatedButton:hover span {
+ padding-right: 25px;
+ text-decoration: none !important;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover span:after {
+ opacity: 1;
+ right: 0;
+ text-decoration: none !important;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover {
+ padding-right: 25px;
+ text-decoration: none !important;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+}
+
+.animatedButton:hover:after {
+ opacity: 1;
+ right: 0;
+ text-decoration: none !important;
+ box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
 }

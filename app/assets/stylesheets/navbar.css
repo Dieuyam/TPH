@@ -28,9 +28,31 @@ nav .navbar-brand {
 }
 
 .affix {
-  background-color: #eee;
+  background-color: #fff;
   -webkit-transition:padding 0.2s ease-out;
   -moz-transition:padding 0.2s ease-out;
   -o-transition:padding 0.2s ease-out;
   transition:padding 0.2s ease-out;
+}
+
+.topBtn {
+
+ position: fixed; /* Fixed/sticky position */
+ bottom: 5%; /* Place the button at the bottom of the page */
+ right: 2.5%; /* Place the button 30px from the right */
+ z-index: 3; /* Make sure it does not overlap */
+ border: none; /* Remove borders */
+ outline: none;
+ width: 10px;
+ height: 10px; /* Remove outline */
+ background-color: #5AF; /* Set a background color */
+ color: black ; /* Text color */
+ padding: 20px; /* Some padding */
+ border-radius: 50px; /* Rounded corners */
+ transition: 0.5s;
+ box-shadow: 0 10px 20px 0px rgba(85,170,255, 0.8);
+}
+
+.topBtn:hover {
+  background-color: #EBB;
 }
