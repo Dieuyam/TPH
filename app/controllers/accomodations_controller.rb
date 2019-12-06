@@ -16,7 +16,7 @@ class AccomodationsController < ApplicationController
     #
     # end
     @accomodations = Accomodation.all #get_search_result(search_params)
-    puts search_params
+    #puts search_params
 
   end
 
