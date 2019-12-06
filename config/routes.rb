@@ -5,11 +5,8 @@ Rails.application.routes.draw do
   resources :accomodations do
     resources :photo, only: [:create]
   end
-<<<<<<< HEAD
   resources :charges
-=======
   resources :search, only: [:index]
->>>>>>> dev
   resources :offers
   resources :companies
   resources :users do
