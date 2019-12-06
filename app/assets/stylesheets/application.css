@@ -13,10 +13,9 @@
  *= require navbar
  *= require homepage
  *= require footer
- *= require multiple_steps_form   
+ *= require multiple_steps_form
  *= require signup
  *= require login
  *= require users
+ *= require accomodations
  */
-
-
