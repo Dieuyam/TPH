@@ -11,12 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require multiple_steps_form 
+//= require multiple_steps_form
 //= require script_btn_top
 //= require activestorage
 //= require turbolinks
-<<<<<<< HEAD
-//= require script_btn_top
-=======
-
->>>>>>> dev
