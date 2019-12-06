@@ -15,4 +15,6 @@
 //= require script_btn_top
 //= require activestorage
 //= require turbolinks
+//= require main.js
+
 
