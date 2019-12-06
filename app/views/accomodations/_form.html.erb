@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>Bootstrap MultiStep Form</title>
-      <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'><link rel="stylesheet" href="./app/assets/stylesheets/multiple_steps_form.css">
+  <link rel="stylesheet" href="./app/assets/stylesheets/multiple_steps_form.css">
 
 </head>
 <body>
@@ -18,14 +14,14 @@
             <% if accomodation.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
-          
+
                 <ul>
                 <% accomodation.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
                 </ul>
               </div>
-            <% end %> 
+            <% end %>
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active">Informations Primaires</li>
@@ -40,68 +36,68 @@
                 <%= form.label :type_de_opération %>
                 <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, include_blank: true %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :type_de_bien %>
                     <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name),:id,:name, include_blank: true %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :n° %>
-                    <%= form.text_field :road_number_id %>
+                    <%= form.text_field :road_number %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :type_de_voie %>
                     <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, include_blank: true %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :code_postal %>
                     <%= form.text_field :zipcode %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :ville %>
                     <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true %>
-                
+
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :surface %>
                     <%= form.text_field :living_space %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :étage %>
                     <%= form.text_field :floor %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :nombre_d_étages %>
                     <%= form.text_field :floors_inside %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :nombre_de_chambres %>
                     <%= form.text_field :rooms %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :orientation %>
                     <%= form.text_field :orientation %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :chauffage %>
                     <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, include_blank: true %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :ges %>
                     <%= form.text_field :ges %>
                 </div>
-                
+
                 <div class="field">
                     <%= form.label :prix %>
                     <%= form.text_field :price %>
@@ -112,7 +108,7 @@
                     <h2 class="fs-title">Informations Secondaires</h2>
                     <h3 class="fs-subtitle">En quoi votre bien est-il spécial</h3>
                     <div class="field">
-                        
+
                     <div class="field">
                     <%= form.label "balcon" %> <br />
                     <%= form.check_box :balcony %> <br />
@@ -194,7 +190,7 @@
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>		
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 
