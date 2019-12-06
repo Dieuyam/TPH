@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <link rel="stylesheet" href="./app/assets/stylesheets/multiple_steps_form.css">
-
-</head>
-<body>
 <!-- partial:index.partial.html -->
 <!-- MultiStep Form -->
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div id="msform">
+          <h1>Déposer une annonce</h1>
          <%= form_with(model: accomodation, local: true) do |form| %>
             <% if accomodation.errors.any? %>
               <div id="error_explanation">
@@ -178,11 +172,11 @@
             </div>
             <% end %>
             </fieldset>
-        </form>
         <!-- link to designify.me code snippets -->
         <div class="dme_link">
             <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a></p>
-        </div>
+        </div><%= link_to 'Retour', accomodations_path %>
+
         <!-- /.link to designify.me code snippets -->
     </div>
 </div>
@@ -192,7 +186,3 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-
-</body>
-</html>
