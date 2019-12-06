@@ -16,7 +16,6 @@ class AccomodationsController < ApplicationController
     #
     # end
     @accomodations = Accomodation.all #get_search_result(search_params)
-    #puts search_params
 
   end
 
@@ -84,24 +83,27 @@ class AccomodationsController < ApplicationController
 
       tab = Hash.new
 
-      tab[:search] = params[:search]
-      tab[:city_id] = params[:city][:id]
-      tab[:rooms] = params[:rooms]
+      params[:rooms]? tab[:rooms] = params[:rooms] : tab[:rooms] = 0
+      params[:search]? tab[:search] = params[:search] : tab[:search] = ""
+      params[:city]? tab[:city_id] = params[:city][:id] : tab[:city_id] = 0
+
       tab[:criteria] = Hash.new
+      user_criteria = [""]
+      user_criteria = params[:criteria_ids] unless params[:criteria_ids].nil?
 
 
       if params[:criteria_ids]
 
-        params[:criteria_ids].include?('1')? tab[:criteria][:pool] = 0 : tab[:criteria][:pool] = 1
-        params[:criteria_ids].include?('2')? tab[:criteria][:elevator] = 0 : tab[:criteria][:elevator] = 1
-        params[:criteria_ids].include?('3')? tab[:criteria][:basement] = 0 : tab[:criteria][:basement] = 1
-        params[:criteria_ids].include?('4')? tab[:criteria][:balcony] = 0 : tab[:criteria][:balcony] = 1
-        params[:criteria_ids].include?('5')? tab[:criteria][:concierge] = 0 : tab[:criteria][:concierge] = 1
-        params[:criteria_ids].include?('6')? tab[:criteria][:parking] = 0 : tab[:criteria][:parking] = 1
-        params[:criteria_ids].include?('7')? tab[:criteria][:last_floor] = 0 : tab[:criteria][:last_floor] = 1
-        params[:criteria_ids].include?('8')? tab[:criteria][:disabled_access] = 0 : tab[:criteria][:disabled_access] = 1
-        params[:criteria_ids].include?('9')? tab[:criteria][:garden] = 0 : tab[:criteria][:garden] = 1
-        params[:criteria_ids].include?('10')? tab[:criteria][:furnished] = 0 : tab[:criteria][:furnished] = 1
+        user_criteria.include?('1')? tab[:criteria][:pool] = 0 : tab[:criteria][:pool] = 1
+        user_criteria.include?('2')? tab[:criteria][:elevator] = 0 : tab[:criteria][:elevator] = 1
+        user_criteria.include?('3')? tab[:criteria][:basement] = 0 : tab[:criteria][:basement] = 1
+        user_criteria.include?('4')? tab[:criteria][:balcony] = 0 : tab[:criteria][:balcony] = 1
+        user_criteria.include?('5')? tab[:criteria][:concierge] = 0 : tab[:criteria][:concierge] = 1
+        user_criteria.include?('6')? tab[:criteria][:parking] = 0 : tab[:criteria][:parking] = 1
+        user_criteria.include?('7')? tab[:criteria][:last_floor] = 0 : tab[:criteria][:last_floor] = 1
+        user_criteria.include?('8')? tab[:criteria][:disabled_access] = 0 : tab[:criteria][:disabled_access] = 1
+        user_criteria.include?('9')? tab[:criteria][:garden] = 0 : tab[:criteria][:garden] = 1
+        user_criteria.include?('10')? tab[:criteria][:furnished] = 0 : tab[:criteria][:furnished] = 1
 
       end
 
