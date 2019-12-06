@@ -71,7 +71,7 @@
             $(".header-top-section").removeClass("header-top-none");
         }
     });
-    
+
     /*---------------------------------------------------
         AutoComplete Search suggestion
     ------------------------------------------------------*/
@@ -337,7 +337,7 @@
         siteMenuClone();
 
         /*-------------------------------------------------
-                    rating stars in reviews 
+                    rating stars in reviews
         /*-------------------------------------------------*/
 
         var rateLine = $('.contact-form__rate-bx'),
@@ -576,7 +576,7 @@
                 },
             }
         });
-        //Single Featured List 
+        //Single Featured List
         var featured_list_two = new Swiper('.single-featured-list', {
             slidesPerView: 1,
             spaceBetween: 0,
@@ -590,7 +590,7 @@
                 nextEl: '.single-featured-next',
                 prevEl: '.single-featured-prev',
             },
-           
+
         });
         //Popular place slider one
         var popular_place = new Swiper('.popular-place-wrap.v1', {
@@ -618,7 +618,7 @@
                 }
             }
         });
-        
+
         //Partner slider
         var partner_slider = new Swiper('.partner-wrap', {
             slidesPerView: 5,
@@ -819,3 +819,8 @@
 
 
 });
+
+
+/*-------------------------------------
+          Carousel show
+ -------------------------------------*/
