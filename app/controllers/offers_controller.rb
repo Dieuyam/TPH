@@ -89,7 +89,7 @@ class OffersController < ApplicationController
         payment_intent_data: {
           capture_method: 'manual',
         },
-        success_url: 'https://example.com/success',
+        success_url: 'https://the-perfect-house.herokuapp.com',
         cancel_url: 'https://example.com/cancel',
       )
       return session
