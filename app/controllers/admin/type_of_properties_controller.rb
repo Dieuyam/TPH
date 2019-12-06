@@ -1,4 +1,4 @@
-class Admin::TypeOfPropertiesController < ApplicationController
+class Admin::TypeOfPropertiesController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

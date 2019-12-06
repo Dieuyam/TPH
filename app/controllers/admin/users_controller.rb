@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -71,4 +71,6 @@ class Admin::UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :phone, :address, :is_admin, :is_pro, :stripe_customer_id, :stripe_session_id, :email, :password)
     end
-end
+
+
+  end

@@ -1,5 +1,9 @@
-<h1>New Accomodation</h1>
-
-<%= render 'form', accomodation: @accomodation %>
-
-<%= link_to 'Back', accomodations_path %>
+<div class="container-accomodations">
+  <div class="text-center">
+    <h1>Déposer une annonce</h1>
+  </div>
+</div>
+<%= render 'form', accomodation: @accomodation, :url => { :action => "create" } %>
+<div class="text-center">
+  <%= link_to 'Retour', accomodations_path %>
+</div>
