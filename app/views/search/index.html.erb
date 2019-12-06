@@ -1,48 +1,29 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/ee93f8f380.js" crossorigin="anonymous"></script>
-  <!-- Metas -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<div class="container">
 
-<body>
-
-  <br><br><br>
-  <div class="container">
-    <div class="col-lg-4">
-
-      <%= form_tag accomodations_path, method: 'get' do %>
-      <div class="">
+    <div class="container-accomodations">
+      <div class="text-center">
+        <h1>Que recherhcez-vous ?</h1><br>
+        <%= form_tag accomodations_path, method: 'get' do %>
         <div class="">
-          <%= text_field_tag :search, "", class:"form-control",placeholder:"votre recherche" %>
-        </div><br>
-        <div>
-          <%= select("city", "id", City.all.collect {|city| [ city.name, city.id ] },:prompt => 'Selectionner une ville') %>
-        </div><br><br>
-        <div>
-          <%= select_tag "rooms", options_for_select((1..6).step(1)), :prompt => 'Nombre de chambres' %>
-        </div><br><br>
-        <div>
-          <%  @tertiaries.each do |criteria| %>
-          <%= check_box_tag 'criteria_ids[]', criteria.id -%>
-            <%= h criteria.name -%>
-          <% end %>
-        </div><br><br>
-
-        <%= button_to "rechercher", accomodations_path, class:"btn btn-primary" %>
+          <div id="">
+            <%= text_field_tag :search, "", class:"form-control",placeholder:"Quels sont vos critères ?" %>
+          </div><br>
+          <div>
+            <%= select("city", "id", City.all.collect {|city| [ city.name, city.id ] },:prompt => 'Selectionner une ville') %>
+          </div><br><br>
+          <div>
+            <%= select_tag "rooms", options_for_select((1..6).step(1)), :prompt => 'Nombre de chambres' %>
+          </div><br><br>
+          <div>
+            <%  @tertiaries.each do |criteria| %>
+            <%= check_box_tag 'criteria_ids[]', criteria.id -%>
+              <%= h criteria.name -%>
+            <% end %>
+          </div><br><br>
+          <%= button_to "Rechercher", accomodations_path, class:"btn btn-primary" %>
+        </div>
+        <% end %>
       </div>
-
-      <% end %>
-
     </div>
 
-  </div>
-
-
-</body>
-
-
-</html>
+</div>
