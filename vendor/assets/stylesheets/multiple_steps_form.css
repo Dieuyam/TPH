@@ -13,7 +13,7 @@
 #msform fieldset {
     background: white;
     border: 0 none;
-    border-radius: 0px;
+    border-radius: 10px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
     box-sizing: border-box;
@@ -33,7 +33,7 @@
 #msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 0px;
+    border-radius: 10px;
     margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;

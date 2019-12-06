@@ -1,9 +1,9 @@
 <!-- partial:index.partial.html -->
 <!-- MultiStep Form -->
-<div class="row">
+<div class="">
     <div class="col-md-6 col-md-offset-3">
         <div id="msform">
-          <h1>Déposer une annonce</h1>
+          <h1>Déposer une annonce</h1><br><br>
          <%= form_with(model: accomodation, local: true) do |form| %>
             <% if accomodation.errors.any? %>
               <div id="error_explanation">
@@ -63,27 +63,27 @@
                 </div>
 
                 <div class="field">
-                    <%= form.label :étage %>
+                    <%= form.label :Étage %>
                     <%= form.text_field :floor %>
                 </div>
 
                 <div class="field">
-                    <%= form.label :nombre_d_étages %>
+                    <%= form.label :Nombre_étages %>
                     <%= form.text_field :floors_inside %>
                 </div>
 
                 <div class="field">
-                    <%= form.label :nombre_de_chambres %>
+                    <%= form.label :Nombre_de_chambres %>
                     <%= form.text_field :rooms %>
                 </div>
 
                 <div class="field">
-                    <%= form.label :orientation %>
+                    <%= form.label :Orientation %>
                     <%= form.text_field :orientation %>
                 </div>
 
                 <div class="field">
-                    <%= form.label :chauffage %>
+                    <%= form.label :Chauffage %>
                     <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, include_blank: true %>
                 </div>
 
@@ -96,7 +96,7 @@
                     <%= form.label :prix %>
                     <%= form.text_field :price %>
                 </div>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
+                    <input type="button" name="next" class="next action-button" value="Suivant"/>
                 </fieldset>
                 <fieldset>
                     <h2 class="fs-title">Informations Secondaires</h2>
@@ -104,7 +104,7 @@
                     <div class="field">
 
                     <div class="field">
-                    <%= form.label "balcon" %> <br />
+                    <%= form.label "Balcon" %> <br />
                     <%= form.check_box :balcony %> <br />
                     </div>
 
@@ -176,7 +176,6 @@
         <div class="dme_link">
             <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a></p>
         </div><%= link_to 'Retour', accomodations_path %>
-
         <!-- /.link to designify.me code snippets -->
     </div>
 </div>
