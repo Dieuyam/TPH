@@ -3,7 +3,6 @@
 <div class="">
     <div class="col-md-12">
         <div id="msform">
-          <h1>Déposer une annonce</h1><br><br>
          <%= form_with(model: accomodation, local: true) do |form| %>
             <% if accomodation.errors.any? %>
               <div id="error_explanation">
@@ -168,7 +167,7 @@
         <!-- link to designify.me code snippets -->
         <div class="dme_link">
             <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a></p>
-        </div><%= link_to 'Retour', accomodations_path %>
+        </div>
         <!-- /.link to designify.me code snippets -->
     </div>
 </div>

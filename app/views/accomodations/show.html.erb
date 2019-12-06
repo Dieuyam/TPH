@@ -1,10 +1,7 @@
 <div class="container">
   <div class="container-accomodations">
     <div class="container-carousel">
-      <p>
-        <strong>Annonces</strong>
-        <%= @accomodation.road_number %>
-      </p>
+
       <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -51,6 +48,6 @@
       </div>
     </div>
   </div>
-  <%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
-  <%= link_to 'Back', accomodations_path %>
+  <%= link_to 'Modifier', edit_accomodation_path(@accomodation) %> |
+  <%= link_to 'Retour', accomodations_path %>
 </div>
