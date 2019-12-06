@@ -4,17 +4,19 @@ class AccomodationsController < ApplicationController
   # GET /accomodations
   # GET /accomodations.json
   def index
-    city_id = params[:city][:id].to_i
-
-    if city_id == 0
-      @accomodations = Accomodation.all
-    else
-      @accomodations = []
-      Accomodation.where(city_id: city_id).find_each do |accomodation|
-        @accomodations << accomodation
-      end
-
-    end
+    # city_id = params[:city][:id].to_i
+    #
+    # if city_id == 0
+    #   @accomodations = Accomodation.all
+    # else
+    #   @accomodations = []
+    #   Accomodation.where(city_id: city_id).find_each do |accomodation|
+    #     @accomodations << accomodation
+    #   end
+    #
+    # end
+    @accomodations = Accomodation.all #get_search_result(search_params)
+    #puts search_params
 
   end
 
@@ -80,4 +82,12 @@ owner: current_user)
     def accomodation_params
       params.require(:accomodation).permit(:road_number, :operation_type_id, :type_of_property_id, :road_number, :road_type_id, :zipcode, :city_id, :living_space, :floor, :floors_inside, :rooms, :orientation, :heating_id, :ges, :price,:balcony, :terrace, :basement, :elevator, :pool, :concierge, :parking, :last_floor, :garden, :disabled_access, :furnished)
     end
+
+    def search_params
+
+      tab = Hash.new
+      
+
+    end
+
 end
