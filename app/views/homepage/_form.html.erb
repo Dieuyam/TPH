@@ -4,6 +4,6 @@
     <div class="col-6 m-0">
         <%= text_field_tag :search, "", class:"form-control",placeholder:"Que recherchez-vous ? Type de bien, surface, prix, ville..." %>
     </div>
-    <%= button_to "Rechercher", accomodations_path, class:"btnStandard" %>
+    <button class="animatedButton" href="<%= link_to "", accomodations_path %><span>Rechercher</span></button>
   </div>
 <% end %>
