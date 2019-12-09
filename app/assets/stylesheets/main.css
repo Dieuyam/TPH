@@ -1,0 +1,115 @@
+html,body {
+    font-family: 'Quicksand', sans-serif;
+    width: 100%;
+    height:100%;
+  }
+
+a {
+  text-decoration: none !important;
+  color: #000000;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: #000000;
+}
+
+#nav a:hover {
+  color: #EBB;
+}
+
+.btnDelete {
+	background-color:#fc8d83;
+	border-radius:25px;
+	display:inline-block;
+	color:#fff;
+	font-size:16px;
+	padding:6px 10px;
+	text-decoration:none;
+  border: none;
+}
+.btnDelete:hover {
+	background-color:#ef4339;
+  text-decoration: none
+  color: #000000;
+}
+
+.btnStandard {
+	background-color:#5AF;
+	border-radius:25px;
+	display:inline-block;
+	color:#fff;
+	font-size:16px;
+	padding:6px 12px;
+	text-decoration:none;
+  border: none;
+}
+.btnStandard:hover {
+	background-color:#2f89fc;
+  text-decoration: none
+  color: #000000;
+}
+
+.bouncy {
+   animation:bouncy 3s infinite linear;
+   position:relative;
+}
+@keyframes bouncy {
+   0%{top:0em}
+   40%{top:0em}
+   43%{top:-0.9em}
+   46%{top:0em}
+   48%{top:-0.4em}
+   50%{top:0em}
+   100%{top:0em;}
+}
+
+.animatedButton {
+   display: inline-block;
+   border-radius: 40px;
+   background-color: #ffe7d1;
+   border: none;
+   color: #000000;
+   text-align: center;
+   font-size: 12px;
+   width: 20px;
+   transition: all 0.5s;
+   margin: 5px;
+}
+
+.animatedButton span {
+   display: inline-block;
+   position: relative;
+   transition: 0.5s;
+}
+
+.animatedButton span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+}
+
+.animatedButton:hover span {
+   padding-right: 25px;
+   box-shadow: 0 10px 30px 0px rgba(255, 231, 209, 0.8);
+}
+
+.animatedButton:hover span:after {
+   opacity: 1;
+   right: 0;
+   box-shadow: 0 10px 30px 0px rgba(255, 231, 209, 0.8);
+}
+
+.animatedButton:hover {
+   padding-right: 25px;
+   box-shadow: 0 10px 30px 0px rgba(255, 231, 209, 0.8);
+}
+
+.animatedButton:hover:after {
+   opacity: 1;
+   right: 0;
+   box-shadow: 0 10px 30px 0px rgba(255, 231, 209, 0.8);
+}

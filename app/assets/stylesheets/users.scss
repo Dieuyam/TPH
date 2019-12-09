@@ -1,3 +1,56 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron {
+  width: 100%;
+  height: 45vh;
+  margin-top: -64px;
+}
+
+.profilePic img {
+  display: block;
+  margin-left: 15%;
+  margin-right: auto;
+  margin-top: -128px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.profileWrap {
+   width: 45%;
+   background: #f4f3f3;
+   border-radius: 10px;
+   margin-left: 35%;
+   margin-top: -45px;
+   padding: 25px;
+
+
+   box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+   -moz-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+   -webkit-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+   -o-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+   -ms-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+}
+
+.editBtn {
+   position: absolute;
+   bottom: 29vh; /* Place the button at the bottom of the page */
+   right: 41vh; /* Place the button 30px from the right */
+   z-index: 3; /* Make sure it does not overlap */
+   border: none; /* Remove borders */
+   outline: none;
+   width: 10px;
+   height: 10px; /* Remove outline */
+   background-color: #fff; /* Set a background color */
+   color: black ; /* Text color */
+   padding: 20px; /* Some padding */
+   border-radius: 50px; /* Rounded corners */
+   transition: 0.5s;
+   box-shadow: 0 10px 20px 0px rgba(151,151,151, 0.5);
+}
+
+.editBtn:hover {
+  background-color: #EBB; /* Add a dark-grey background on hover */
+}
