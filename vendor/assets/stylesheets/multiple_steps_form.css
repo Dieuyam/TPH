@@ -71,7 +71,7 @@
 
 #msform .action-button-previous {
     width: 100px;
-    background: #C5C5F1;
+    background: #EBB;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -82,7 +82,7 @@
 }
 
 #msform .action-button-previous:hover, #msform .action-button-previous:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #EBB;
 }
 
 /*headings*/
@@ -112,7 +112,6 @@
 
 #progressbar li {
     list-style-type: none;
-    color: white;
     text-transform: uppercase;
     font-size: 9px;
     width: 33.33%;
@@ -177,6 +176,6 @@
 }
 
 .dme_link a:hover, .dme_link a:focus {
-    background: #C5C5F1;
+    background: #EBB;
     text-decoration: none;
 }
