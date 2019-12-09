@@ -9,7 +9,7 @@
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://theperfecthouse.s3.eu-west-3.amazonaws.com/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto mr-2">
                 <li class="nav-item active">
-                  <%= link_to "Recherche avancée", accomodations_path, class: "nav-link" %>
+                  <%= link_to "Recherche avancée", search_index_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
                   <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
@@ -64,6 +64,7 @@
                 </ul>
             </div>
             <% end  %>
+
         </div>
     </nav>
     <!-- /.navbar -->
@@ -75,9 +76,16 @@
 
   </body>
 
+  <!-- Scripts Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
   <!-- Scripts JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+
   <!-- Scripts JS -->
   <script type="text/javascript">
     var isInViewport = function (elem) {
@@ -106,4 +114,7 @@
     });
 
   </script>
+  <%= javascript_include_tag 'plugin', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+
 </html>
