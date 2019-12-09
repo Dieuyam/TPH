@@ -1,21 +1,21 @@
 <div class="container">
   <div class="container-accomodations">
-    <h1>Immobiliers</h1>
+    <h1>Immobiliers</h1><br>
     <div class="">
-      <%= link_to 'Publier un bien', new_accomodation_path, class:'btn btn-primary' %>
+      <%= link_to 'Publier un bien', new_accomodation_path, class:'btnStandard bouncy' %>
     </div><br>
 
     <div class="card-columns">
       <% @accomodations.each do |accomodation| %>
       <div class="card">
-        <img class="card-img-top" src="/assets/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
+        <img class="card-img-top" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><%= accomodation.road_number %></h5>
           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           <td><%= link_to 'Consulter', accomodation %></td>
           <td><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></td>
-          <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
         </div>
       </div>
       <% end %>
