@@ -71,7 +71,7 @@ puts "The tertiary criteria type table has been initialized"
 end
 puts "The operation type table has been initialized"
 
-5.times do |k|
+12.times do |k|
 
 	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name, zipcode: Faker::Address.postcode, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample)
 end
