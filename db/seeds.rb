@@ -11,7 +11,7 @@ cities_array = ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Str
 type_of_property_array = ["Bureaux", "Entrepôts / Locaux d'activités / Logistique", "Commerces", "Maison", "Appartement", "Residence" "Villa", "Studio", "Loft", "Hôtels"]
 offer_array = ["Basique", "Medium", "Premium"]
 offer_description_array = ["1 annonce gratuite ", "5 annonces maximum", "100 annonces maximum"]
-offer_hash = [{:name => "Basique", :description => "1 annonce gratuite", :end_date => "", :price => "0"},{:name => "Medium", :description => "5 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "5"},{:name => "Premium", :description => "100 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "50"}]
+offer_hash = {:name => "Medium", :description => "5 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "5"},{:name => "Premium", :description => "100 annonces maximum", :end_date => "#{Time.now + 1.month}",:price => "50"}]
 road_type_array = ["Rue piétonne", "Allée", "Avenue", "Boulevard", "Carrefour", "Chemin", "Chaussée", "Cité", "Corniche", "Cours", "Domaine", "Descente", "Ecart", "Esplanade", "Faubourg", "Grande Rue", "Hameau", "Halle", "Impasse", "Lieu-dit", "Lotissement", "Marché", "Montée", "Passage", "Place", "Plaine", "Plateau", "Promenade", "Parvis", "Quartier", "Quai", "Résidence", "Ruelle", "Rocade", "Rond-point", "Route", "Rue", "Sente-Sentier", "Square", "Terre-plein", "Traverse"]
 operation_type_array = ["Vente", "Location"]
 heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher chauffant"]
@@ -74,7 +74,7 @@ puts "The tertiary criteria type table has been initialized"
 end
 puts "The operation type table has been initialized"
 
-5.times do |k|
+12.times do |k|
 
 	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name, zipcode: Faker::Address.postcode, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample)
 end

@@ -30,7 +30,7 @@ a:hover {
 }
 .btnDelete:hover {
 	background-color:#ef4339;
-  text-decoration: none
+  text-decoration: none;
   color: #000000;
 }
 
@@ -46,7 +46,7 @@ a:hover {
 }
 .btnStandard:hover {
 	background-color:#2f89fc;
-  text-decoration: none
+  text-decoration: none;
   color: #000000;
 }
 
@@ -61,7 +61,7 @@ a:hover {
    46%{top:0em}
    48%{top:-0.4em}
    50%{top:0em}
-   100%{top:0em;}
+   100%{top:0em}
 }
 
 .animatedButton {
