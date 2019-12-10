@@ -55,8 +55,10 @@ def scrapmax(page_url)
   city = page.xpath("//div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/p").text
   rooms = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[1]").text.strip
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value 
+  type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
-  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", '')}
+  type_of_operation = page.xpath("//body/div[3]/div[4]/div/h1").text.strip
+  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month}
   return accomodation
 rescue Exception => ex
   puts "An error of type #{ex.class} happened, message is #{ex.message}"
@@ -106,17 +108,24 @@ end
 
 
 array_of_good = []
-10.times do |i|
+100.times do |i|
   all_url = scrap_all_href("https://www.seloger.com/list.htm?projects=2%2C5&types=1%2C2&natures=1%2C2%2C4&places=%5B%7Bdiv%3A2238%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg=#{i+1}")
   all_url.each do |url|
     accomodation = scrapmax(url)
     unless all_desc.include? accomodation[:description]
     ws[init_first_case, 1] = accomodation[:price]
+    if accomodation[:living_space] > 500
+      accomodation[:living_space] = accomodation[:living_space]/10
+    end
     ws[init_first_case, 2] = accomodation[:living_space]
     ws[init_first_case, 3] = accomodation[:description]
     ws[init_first_case, 4] = accomodation[:city]
     ws[init_first_case, 5] = accomodation[:rooms]
     ws[init_first_case, 6] = accomodation[:phone]
+    ws[init_first_case, 7] = url.to_s
+    ws[init_first_case, 8] = accomodation[:living_space].to_i/ accomodation[:price].to_i
+    ws[init_first_case, 12] = accomodation[:type]
+    ws[init_first_case, 13] = accomodation[:type_of_operation]
     init_first_case += 1
     ws.save
     ws.reload
