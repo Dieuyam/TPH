@@ -1,28 +1,24 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
+  before_action :offer_user_restriction, only: [:create]
   before_action :authenticate_user!, only: [:new, :create]
 
   # GET /accomodations
   # GET /accomodations.json
   def index
-    # city_id = params[:city][:id].to_i
-    #
-    # if city_id == 0
-    #   @accomodations = Accomodation.all
-    # else
-    #   @accomodations = []
-    #   Accomodation.where(city_id: city_id).find_each do |accomodation|
-    #     @accomodations << accomodation
-    #   end
-    #
-    # end
+
     @accomodations = Accomodation.all #get_search_result(search_params)
+
+    puts search_params
 
   end
 
   # GET /accomodations/1
   # GET /accomodations/1.json
   def show
+    @road_type = RoadType.find(@accomodation.road_type_id).name
+    @city = City.find(@accomodation.city_id).name
+    @tertiaries = @accomodation.tertiary_criteria
   end
 
   # GET /accomodations/new
@@ -111,21 +107,37 @@ class AccomodationsController < ApplicationController
 
     if params[:criteria_ids]
 
-      user_criteria.include?('1')? tab[:criteria][:pool] = 0 : tab[:criteria][:pool] = 1
-      user_criteria.include?('2')? tab[:criteria][:elevator] = 0 : tab[:criteria][:elevator] = 1
-      user_criteria.include?('3')? tab[:criteria][:basement] = 0 : tab[:criteria][:basement] = 1
-      user_criteria.include?('4')? tab[:criteria][:balcony] = 0 : tab[:criteria][:balcony] = 1
-      user_criteria.include?('5')? tab[:criteria][:concierge] = 0 : tab[:criteria][:concierge] = 1
-      user_criteria.include?('6')? tab[:criteria][:parking] = 0 : tab[:criteria][:parking] = 1
-      user_criteria.include?('7')? tab[:criteria][:last_floor] = 0 : tab[:criteria][:last_floor] = 1
-      user_criteria.include?('8')? tab[:criteria][:disabled_access] = 0 : tab[:criteria][:disabled_access] = 1
-      user_criteria.include?('9')? tab[:criteria][:garden] = 0 : tab[:criteria][:garden] = 1
-      user_criteria.include?('10')? tab[:criteria][:furnished] = 0 : tab[:criteria][:furnished] = 1
+      user_criteria.include?('1')? tab[:criteria][:pool] = 1 : tab[:criteria][:pool] = 0
+      user_criteria.include?('2')? tab[:criteria][:elevator] = 1 : tab[:criteria][:elevator] = 0
+      user_criteria.include?('3')? tab[:criteria][:basement] = 1 : tab[:criteria][:basement] = 0
+      user_criteria.include?('4')? tab[:criteria][:balcony] = 1 : tab[:criteria][:balcony] = 0
+      user_criteria.include?('5')? tab[:criteria][:concierge] = 1 : tab[:criteria][:concierge] = 0
+      user_criteria.include?('6')? tab[:criteria][:parking] = 1 : tab[:criteria][:parking] = 0
+      user_criteria.include?('7')? tab[:criteria][:last_floor] = 1 : tab[:criteria][:last_floor] = 0
+      user_criteria.include?('8')? tab[:criteria][:disabled_access] = 1 : tab[:criteria][:disabled_access] = 0
+      user_criteria.include?('9')? tab[:criteria][:garden] = 1 : tab[:criteria][:garden] = 0
+      user_criteria.include?('10')? tab[:criteria][:furnished] = 1 : tab[:criteria][:furnished] = 0
 
     end
 
     return tab
 
   end
+
+    def offer_user_restriction
+      case
+
+      when current_user.accomodations.count == 1 && current_user.offer_id == 1
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 5 && current_user.offer_id == 2
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 100 && current_user.offer_id == 3
+        redirect_to offers_path
+
+      end
+
+    end
 
 end

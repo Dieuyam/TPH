@@ -14,6 +14,8 @@
         <p><%= offer.description %></p>
         <p><%= offer.end_date %></p>
         <p><%= offer.price %>€</p>
+        <td><%= link_to 'Pay', new_offer_path(@offers, :offer_id => offer.id ) %></td>
+
 
         <div class="container-login100-form-btn text-center">
           <button class="animatedButton" type="submit" style="vertical-align:middle"><span>S'abonner</span></button>
