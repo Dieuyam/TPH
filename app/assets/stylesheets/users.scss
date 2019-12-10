@@ -18,6 +18,15 @@
   border-radius: 50%;
 }
 
+@media (max-width: 480px) {
+ .profileWrap {
+   padding-left: 15px;
+   padding-right: 15px;
+   margin-top: 20px;
+   justify-content: center;
+ }
+}
+
 .profileWrap {
    width: 45%;
    background: #f4f3f3;
