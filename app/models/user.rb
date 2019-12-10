@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def welcome_offer
-    User.update(:offer_id => 1)
+    self.update(:offer_id => 1)
   end
 
 
