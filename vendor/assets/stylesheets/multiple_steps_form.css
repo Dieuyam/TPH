@@ -11,7 +11,7 @@
 }
 
 #msform fieldset {
-    background: #979797;
+    background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
     border: 0 none;
     border-radius: 10px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
