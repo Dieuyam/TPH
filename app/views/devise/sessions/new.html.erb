@@ -1,55 +1,57 @@
-<div class="container-login100">
-    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-      <br>
-      <div class="login100-form validate-form">
-        <span class="login100-form-title p-b-37">
-          Connexion
-        </span>
-        <br><br>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
-          </div>
+<div class="container-accomodations">
+  <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
         <br>
-
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe" %>
-        </div>
-        <br>
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <small>Se souvenir de moi</small>
-          </div><br>
-        <% end %>
-
-        <div class="container-login100-form-btn text-center">
-          <button class="animatedButton" type="submit" style="vertical-align:middle"><span>Se connecter</span></button>
-        </div>
-        <% end %>
-        <div class="container-login100">
-          <span style="color: white;">
-            Ou se connecter avec
+        <div class="login100-form validate-form">
+          <span class="login100-form-title p-b-37">
+            Connexion
           </span>
-        </div>
-        <br>
-        <div class="flex-c p-b-112">
-          <div class="btnSocialLog">
-            <a href="https://www.facebook.com/" class="login100-social-item">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.gmail.com" class="login100-social-item">
-              <i class="fab fa-google"></i>
-            </a>
+          <br><br>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+            </div>
+          <br>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe" %>
           </div>
+          <br>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <small>Se souvenir de moi</small>
+            </div><br>
+          <% end %>
+
+          <div class="container-login100-form-btn text-center">
+            <button class="animatedButton" type="submit" style="vertical-align:middle"><span>Se connecter</span></button>
+          </div>
+          <% end %>
+          <div class="container-login100">
+            <span style="color: white;">
+              Ou se connecter avec
+            </span>
+          </div>
+          <br>
+          <div class="flex-c p-b-112">
+            <div class="btnSocialLog">
+              <a href="https://www.facebook.com/" class="login100-social-item">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.gmail.com" class="login100-social-item">
+                <i class="fab fa-google"></i>
+              </a>
+            </div>
+          </div>
+          <div class="container-login100">
+            <span style="color: white;">
+              Pas encore inscrit ? &nbsp;&nbsp;
+            </span> <br>
+          </div>
+          <%= render "devise/shared/links" %>
+          <br>
         </div>
-        <div class="container-login100">
-          <span style="color: white;">
-            Pas encore inscrit ? &nbsp;&nbsp;
-          </span> <br>
-        </div>
-        <%= render "devise/shared/links" %>
-        <br>
       </div>
     </div>
-  </div>
+</div>
