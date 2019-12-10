@@ -38,7 +38,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
 
-    a = Accomodation.new(road_number: accomodation_params[:road_number].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], title: 'appartement à louer', type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
+    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], title: 'appartement à louer', type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
 
     if a.save
 
@@ -92,7 +92,7 @@ class AccomodationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def accomodation_params
-    params.require(:accomodation).permit(:road_number, :operation_type_id, :type_of_property_id, :road_number, :road_type_id, :zipcode, :city_id, :living_space, :floor, :floors_inside, :rooms, :orientation, :heating_id, :ges, :price,:balcony, :terrace, :basement, :elevator, :pool, :concierge, :parking, :last_floor, :garden, :disabled_access, :furnished)
+    params.require(:accomodation).permit(:title, :description, :road_number, :operation_type_id, :type_of_property_id, :road_name, :road_type_id, :zipcode, :city_id, :living_space, :floor, :floors_inside, :rooms, :orientation, :heating_id, :ges, :price,:balcony, :terrace, :basement, :elevator, :pool, :concierge, :parking, :last_floor, :garden, :disabled_access, :furnished)
   end
 
   def search_params
