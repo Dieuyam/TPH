@@ -78,3 +78,5 @@ gem "aws-sdk", "~> 3.0"
 gem 'nokogiri'
 # Maps
 gem 'gmaps4rails'
+
+gem "pg_search", "~> 2.3"
