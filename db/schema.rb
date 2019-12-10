@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_112054) do
     t.float "latitude"
     t.text "title"
     t.bigint "owner_id"
+    t.text "description"
     t.index ["city_id"], name: "index_accomodations_on_city_id"
     t.index ["country_id"], name: "index_accomodations_on_country_id"
     t.index ["heating_id"], name: "index_accomodations_on_heating_id"

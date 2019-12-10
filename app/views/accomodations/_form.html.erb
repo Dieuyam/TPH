@@ -27,6 +27,19 @@
                 <h3 class="fs-subtitle">Dîtes-nous en plus sur votre bien</h3><br>
                 <div class="row">
                   <div class="field">
+                      <%= form.text_field :title, placeholder:'titre de votre annonce' %>
+                  </div> <br>
+                </div>
+
+                <div class="row">
+                  <div class="field">
+                      <%= form.text_area :description, placeholder:'Décrivez en quelques mots votre bien' %>
+                  </div> <br>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="field">
                   <%= form.label :type_de_opération %>
                   <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, include_blank: true, placeholder:'Orientation' %>
                   </div>
@@ -35,7 +48,10 @@
                       <%= form.label :type_de_bien %>
                       <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name),:id,:name, include_blank: true %>
                   </div>
+                </div>
+                <hr>
 
+                <div class="row">
                   <div class="field">
                       <%= form.text_field :road_number, placeholder:'N°' %>
                   </div>
@@ -46,6 +62,10 @@
                   </div>
 
                   <div class="field">
+                      <%= form.text_field :road_name, placeholder:'nom de la voie' %>
+                  </div>
+
+                  <div class="field">
                       <%= form.text_field :zipcode, placeholder:'Code Postal' %>
                   </div>
 
@@ -53,7 +73,10 @@
                       <%= form.label :ville %>
                       <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true %>
                   </div>
+                </div>
+                <hr>
 
+                <div class="row">
                   <div class="field">
                       <%= form.text_field :living_space, placeholder:'Surface' %>
                   </div>
@@ -82,7 +105,10 @@
                   <div class="field">
                       <%= form.text_field :ges, placeholder:'GES' %>
                   </div>
+                </div>
+                <hr>
 
+                <div class="row">
                   <div class="field">
                       <%= form.text_field :price, placeholder:'Prix de votre bien' %>
                   </div>
@@ -172,4 +198,3 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
- 
