@@ -8,9 +8,23 @@
   margin-top: -64px;
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ Responsive ]*/
+
+@media (max-width: 480px) {
+ .profilePic {
+   padding-left: 15px;
+   padding-right: 15px;
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 20px;
+ }
+}
+/*/////////////////////////////*/
+
 .profilePic img {
   display: block;
-  margin-left: 15%;
+  margin-left: auto;
   margin-right: auto;
   margin-top: -128px;
   width: 200px;
@@ -18,21 +32,28 @@
   border-radius: 50%;
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ Responsive ]*/
+
 @media (max-width: 480px) {
  .profileWrap {
    padding-left: 15px;
    padding-right: 15px;
-   margin-top: 20px;
+   margin-top: 45px;
    justify-content: center;
+   margin-left: auto;
+   margin-right: auto;
+   min-width: 75%;
  }
 }
+/*/////////////////////////////*/
 
 .profileWrap {
    width: 45%;
    background: #f4f3f3;
    border-radius: 10px;
-   margin-left: 35%;
-   margin-top: -45px;
+   margin-left: auto;
+   margin-right: auto;
    padding: 25px;
 
 
@@ -43,10 +64,20 @@
    -ms-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ Responsive ]*/
+
+@media (max-width: 480px) {
+ .editBtn {
+   margin-left: auto;
+ }
+}
+/*/////////////////////////////*/
+
 .editBtn {
    position: absolute;
-   bottom: 29vh; /* Place the button at the bottom of the page */
-   right: 41vh; /* Place the button 30px from the right */
+   bottom: 23vh; /* Place the button at the bottom of the page */
+   right: 55vh; /* Place the button 30px from the right */
    z-index: 3; /* Make sure it does not overlap */
    border: none; /* Remove borders */
    outline: none;
