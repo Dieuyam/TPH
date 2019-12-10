@@ -1,4 +1,4 @@
-class Admin::JoinTableTertiariesController < ApplicationController
+class Admin::JoinTableTertiariesController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

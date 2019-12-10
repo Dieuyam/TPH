@@ -1,32 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Offers</h1>
+<div class="container-accomodations">
+  <% @offers.each do |offer| %>
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+      <br>
+      <div class="login100-form validate-form">
+        <span class="login100-form-title p-b-37">
+          <%= offer.name %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Name</th>
-      <th>End date</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        </span>
+        <br><br>
+        <p><%= offer.description %></p>
+        <p><%= offer.end_date %></p>
+        <p><%= offer.price %>€</p>
 
-  <tbody>
-    <% @offers.each do |offer| %>
-      <tr>
-        <td><%= offer.description %></td>
-        <td><%= offer.name %></td>
-        <td><%= offer.end_date %></td>
-        <td><%= offer.price %></td>
-        <td><%= link_to 'Pay', new_offer_path(@offers, :offer_id => offer.id ) %></td>
-    <% end %>
-  </tbody>
-
-  <%= link_to 'Back', offers_path, class:'btn1' %>
-
-</table>
-
-<br>
-
+        <div class="container-login100-form-btn text-center">
+          <button class="animatedButton" type="submit" style="vertical-align:middle"><span>S'abonner</span></button>
+        </div>
+        <br><br>
+      </div>
+    </div>
+  </div><br><br>
+  <% end %>
+  <div class="text-center">
+    <%= link_to 'Back', offers_path, class:'btn1' %>
+    <%= link_to'New Offer', new_offer_path %>
+  </div>
+</div>
