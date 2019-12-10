@@ -14,11 +14,11 @@ class User < ApplicationRecord
   #validates :phone, presence: true, format: { with: /\A^((\+)33|0)[1-9](\d{2}){4}$*\z/i, message:  "Le format du numéro de téléphone est incorrect. Veuillez le vérifier." }
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
-    end
+  end
 
-    def welcome_offer
-    User.update(:offer_id => 0)
-    end
+  def welcome_offer
+    User.update(:offer_id => 1)
+  end
 
 
 end
