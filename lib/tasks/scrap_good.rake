@@ -117,6 +117,7 @@ array_of_good = []
     ws[init_first_case, 4] = accomodation[:city]
     ws[init_first_case, 5] = accomodation[:rooms]
     ws[init_first_case, 6] = accomodation[:phone]
+    init_first_case += 1
     ws.save
     ws.reload
   end
