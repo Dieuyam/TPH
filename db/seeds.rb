@@ -74,13 +74,21 @@ puts "The tertiary criteria type table has been initialized"
 end
 puts "The operation type table has been initialized"
 
+1.times do
+	User.create(email: "theperfecthouseia@gmail.com", password:"12345678", is_admin: true)
+end
+puts "A user has been created"
+
 12.times do |k|
 
-	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name, zipcode: Faker::Address.postcode, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample)
+	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name,road_type: RoadType.all.sample, zipcode: Faker::Address.postcode, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample, description: Faker::Lorem.paragraph(sentence_count: 8))
 end
 puts "accomodations created"
+
 Accomodation.all.each do |a|
-	a.road_type = RoadType.all.sample
-	a.save
+	rand(0..5).times do
+		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
+	end
 end
+
 #Some Faker seed :
