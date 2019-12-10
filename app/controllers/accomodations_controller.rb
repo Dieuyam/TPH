@@ -1,5 +1,6 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
+  before_action :offer_user_restriction, only: [:create]
   before_action :authenticate_user!, only: [:new, :create]
 
   # GET /accomodations
@@ -38,7 +39,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
 
-    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], title: 'appartement à louer', type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
+    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
 
     if a.save
 
@@ -127,5 +128,21 @@ class AccomodationsController < ApplicationController
     return tab
 
   end
+
+    def offer_user_restriction
+      case
+
+      when current_user.accomodations.count == 1 && current_user.offer_id == 1
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 5 && current_user.offer_id == 2
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 100 && current_user.offer_id == 3
+        redirect_to offers_path
+
+      end
+      
+    end
 
 end
