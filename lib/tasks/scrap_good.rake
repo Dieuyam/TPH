@@ -8,7 +8,6 @@ def getting_some_proxies
  300.times do |i|
    proxies << "http://" + page.xpath("//tbody/tr[#{i}]/td[1]").text + ":" + page.xpath("//tbody/tr[#{i}]/td[2]").text
  end
- puts proxies
  return proxies
 end
 
@@ -57,8 +56,8 @@ def scrapmax(page_url)
   rooms = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[1]").text.strip
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href")
   ges = page.at_css('[class="info-detail"]')
-  accomodation = {:city => city, :living_space => living_space, :description => description, :rooms => rooms, :price => price}
-  puts accomodation
+  accomodation = {:city => city.tr(" ", '-').to_i, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone}
+  return accomodation
 rescue Exception => ex
   #puts "An error of type #{ex.class} happened, message is #{ex.message}"
   retry
@@ -77,11 +76,16 @@ namespace :scrap_good do
     myip
   end
   task :scrapmax => :environment do
+    array_of_good = []
     10.times do |i|
     all_url = scrap_all_href("https://www.seloger.com/list.htm?projects=2%2C5&types=1%2C2&natures=1%2C2%2C4&places=%5B%7Bdiv%3A2238%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg=#{i+1}")
     all_url.each do |url|
-      scrapmax(url) 
+    array_of_good << scrapmax(url)
+    puts array_of_good
+    puts "------------------------------------------------------------"
     end
+    puts "------------------------------ALL PAGE------------------------------"
+    puts array_of_good
   end
   end
   task :scrapmax2 => :environment do
