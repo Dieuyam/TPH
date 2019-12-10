@@ -98,10 +98,10 @@ namespace :scrap_good do
 
 session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
-    init_first_case = ws.rows.size
+    init_first_case = ws.rows.size + 1
 all_desc = []
 init_first_case.times do |i|
-all_desc << ws[i, 3]
+all_desc << ws[i+1, 3]
 end
 
 
