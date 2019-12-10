@@ -122,7 +122,7 @@ namespace :scrap_good do
           ws[init_first_case, 7] = url.to_s
           ws[init_first_case, 8] = accomodation[:price].to_f/accomodation[:living_space].to_f
           ws[init_first_case, 12] = accomodation[:type]
-          if accomodation[:type_of_operation].include "Vente"
+          if accomodation[:type_of_operation].include? "Vente"
             ws[init_first_case, 13] = "Vente"
           else
             ws[init_first_case, 13] = "Location"
@@ -131,6 +131,16 @@ namespace :scrap_good do
           init_first_case += 1 
           ws.save
           ws.reload
+
+#HERE CREATION OF NEW ACCOMODATION
+
+
+
+
+
+
+
+
         end
       end
     end
