@@ -119,10 +119,10 @@ namespace :scrap_good do
               hascity = true
             end
           end
-            if hascity == false
-              new_city = City.create(:name => accomodation[:city])
-              ws[init_first_case, 10] = new_city.id
-            end
+          if hascity == false
+            new_city = City.create(:name => accomodation[:city])
+            ws[init_first_case, 10] = new_city.id
+          end
           ws[init_first_case, 5] = accomodation[:rooms]
           ws[init_first_case, 6] = accomodation[:phone]
           ws[init_first_case, 7] = url.to_s
@@ -139,14 +139,34 @@ namespace :scrap_good do
           ws.save
           ws.reload
 
-#HERE CREATION OF NEW ACCOMODATION
-
-        master_hash_of_city = { }
-
-
         end
       end
     end
     ws.reload
   end
-end
+
+  task :create => :environment do
+    require "google_drive"
+    session = GoogleDrive::Session.from_service_account_key("config.json")
+    ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
+    init_first_case = ws.rows.size 
+
+    all_desc = []
+    init_first_case.times do |i|
+      all_desc << Accomodation.find(i+1).title
+    end
+
+
+    (init_first_case).times do |i|
+      unless all_desc.include? ws[i+1, 3]
+        hash_of_accomodation = {:price => ws[i+1, 1], :living_space => ws[i+1, 2], :rooms => ws[i+1, 5], :title => ws[i+1, 14] }
+        puts hash_of_accomodation
+        new_accomodation = Accomodation.new(hash_of_accomodation)
+        if new_accomodation.save
+          puts "Accomodation n°#{new_accomodation.id} add in database"
+        end
+      end
+    end
+    end
+
+  end
