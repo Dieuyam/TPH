@@ -56,7 +56,7 @@ def scrapmax(page_url)
   rooms = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[1]").text.strip
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value 
   ges = page.at_css('[class="info-detail"]')
-  accomodation = {:city => city.to_i, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", '')}
+  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", '')}
   return accomodation
 rescue Exception => ex
   puts "An error of type #{ex.class} happened, message is #{ex.message}"
