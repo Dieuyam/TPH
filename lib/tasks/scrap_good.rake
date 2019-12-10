@@ -54,6 +54,7 @@ def scrapmax(page_url)
   description = page.xpath("//div/form/input[23]/@value").first.value 
   city = page.xpath("//div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/p").text
   rooms = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[1]").text.strip
+  bedroom = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[2]").text.strip
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value 
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
@@ -111,10 +112,11 @@ namespace :scrap_good do
           ws[init_first_case, 4] = accomodation[:city]
           City.all.each do |city|
             if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e")
-              ws[init_first_case, 8] = city.id
+              ws[init_first_case, 10] = city.id
             else 
               new_city = City.create(:name => accomodation[:city])
-              ws[init_first_case, 8] = new_city.id
+              ws[init_first_case, 10] = new_city.id
+              break
             end
           end
           ws[init_first_case, 5] = accomodation[:rooms]
