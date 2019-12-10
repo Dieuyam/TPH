@@ -72,8 +72,9 @@ gem "colorize", "~> 0.8.1"
 gem "table_print"
 gem 'bcrypt'
 gem 'faker'
-# Addons for Active Storage
+# Addons for Storage
 gem "aws-sdk", "~> 3.0"
+gem 'google_drive'
 # Addons for Scrapp
 gem 'nokogiri'
 # Maps
