@@ -32,8 +32,18 @@
     <br>
 
     <div class="card-body">
-      <h5 class="card-title">Titre</h5>
-      <p class="card-text"><%= @accomodation.title %></p> <br>
+      <div class="row d-flex justify-content-between">
+        <div class="">
+          <h5 class="card-title">Titre</h5>
+          <p class="card-text"><%= @accomodation.title %></p> <br>
+        </div>
+        <div class="">
+          <h5 class="card-title">Propriétaire</h5>
+          <p class="card-text mb-0">nom : <%= @accomodation.owner.first_name %> <%= @accomodation.owner.last_name %></p>
+          <p class="card-text">email : <%= @accomodation.owner.phone %></p>
+        </div>
+      </div>
+
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @accomodation.description %></p><br>
       <h5 class="card-title">Adresse</h5>
