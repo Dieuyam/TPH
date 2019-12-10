@@ -10,7 +10,7 @@ class AccomodationsController < ApplicationController
     if search_params == ""
       @accomodations = Accomodation.all
     else
-      if params[:city][:id] != ""
+      if params[:city] && params[:city][:id] != ""
         @accomodations = Accomodation.where(city_id: params[:city][:id].to_i).left_joins(:secondary_criteria, :tertiary_criteria, :city).all.global_search(search_params)
       else
         @accomodations = Accomodation.left_joins(:secondary_criteria, :tertiary_criteria, :city).all.global_search(search_params)
