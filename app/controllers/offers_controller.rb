@@ -76,7 +76,7 @@ class OffersController < ApplicationController
     def stripe
       $stripe_customer = current_user
       @offer_selected = Offer.find(params[:offer_id])
-      Stripe.api_key = 'sk_test_54BIYzJqmauUcCqsvpZunVyp'
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
