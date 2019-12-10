@@ -103,6 +103,10 @@ a .fab:hover {
  .wrap-login100 {
    padding-left: 15px;
    padding-right: 15px;
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 20px;
+   min-width: 75%;
  }
 }
 /*/////////////////////////////*/
