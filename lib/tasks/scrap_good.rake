@@ -112,12 +112,15 @@ namespace :scrap_good do
           City.all.each do |city|
             if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e")
               ws[init_first_case, 8] = city.id
+            else 
+              new_city = City.create(:name => accomodation[:city])
+              ws[init_first_case, 8] = new_city.id
             end
           end
           ws[init_first_case, 5] = accomodation[:rooms]
           ws[init_first_case, 6] = accomodation[:phone]
           ws[init_first_case, 7] = url.to_s
-          ws[init_first_case, 8] = accomodation[:living_space].to_f/ accomodation[:price].to_f
+          ws[init_first_case, 8] = accomodation[:price].to_f/accomodation[:living_space].to_f
           ws[init_first_case, 12] = accomodation[:type]
           ws[init_first_case, 13] = accomodation[:type_of_operation]
           init_first_case += 1 
