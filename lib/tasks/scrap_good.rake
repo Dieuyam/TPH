@@ -110,13 +110,14 @@ namespace :scrap_good do
           ws[init_first_case, 2] = accomodation[:living_space]
           ws[init_first_case, 3] = accomodation[:description]
           ws[init_first_case, 4] = accomodation[:city]
+          nocity = false
           City.all.each do |city|
-            if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e")
+            if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e") && nocity == false
               ws[init_first_case, 10] = city.id
-            else 
+              nocity = true
+            elsif nocity
               new_city = City.create(:name => accomodation[:city])
               ws[init_first_case, 10] = new_city.id
-              break
             end
           end
           ws[init_first_case, 5] = accomodation[:rooms]
