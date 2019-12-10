@@ -98,7 +98,7 @@ a .fab:hover {
 .animatedButton {
  display: inline-block;
  border-radius: 40px;
- background-color: #EBB;
+ background-color: #5AF;
  border: none;
  color: #000000;
  text-align: center;
@@ -130,25 +130,25 @@ a .fab:hover {
 .animatedButton:hover span {
  padding-right: 25px;
  text-decoration: none !important;
- box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+ box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
 }
 
 .animatedButton:hover span:after {
  opacity: 1;
  right: 0;
  text-decoration: none !important;
- box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+ box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
 }
 
 .animatedButton:hover {
  padding-right: 25px;
  text-decoration: none !important;
- box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+ box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
 }
 
 .animatedButton:hover:after {
  opacity: 1;
  right: 0;
  text-decoration: none !important;
- box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+ box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
 }

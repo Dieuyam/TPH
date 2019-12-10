@@ -18,6 +18,7 @@ class AccomodationsController < ApplicationController
   def show
     @road_type = RoadType.find(@accomodation.road_type_id).name
     @city = City.find(@accomodation.city_id).name
+    @tertiaries = @accomodation.tertiary_criteria
   end
 
   # GET /accomodations/new
@@ -136,7 +137,7 @@ class AccomodationsController < ApplicationController
         redirect_to offers_path
 
       end
-      
+
     end
 
 end
