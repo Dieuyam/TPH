@@ -59,7 +59,7 @@ def scrapmax(page_url)
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
   type_of_operation = page.xpath("//body/div[3]/div[4]/div/h1").text.strip
-  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month :bedroom => bedroom}
+  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month, :bedroom => bedroom}
   p "---- ONE ACCOMODATION ADD TO GOOGLE DRIVE ----"
   return accomodation
 rescue Exception => ex
