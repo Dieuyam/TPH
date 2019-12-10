@@ -1,5 +1,6 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
+  before_action :offer_user_restriction, only: [:create]
   before_action :authenticate_user!, only: [:new, :create]
 
   # GET /accomodations
@@ -127,5 +128,21 @@ class AccomodationsController < ApplicationController
     return tab
 
   end
+
+    def offer_user_restriction
+      case
+
+      when current_user.accomodations.count == 1 && current_user.offer_id == 1
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 5 && current_user.offer_id == 2
+        redirect_to offers_path
+
+      when current_user.accomodations.count == 100 && current_user.offer_id == 3
+        redirect_to offers_path
+
+      end
+      
+    end
 
 end

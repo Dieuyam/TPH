@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root to: 'homepage#index'
+
   devise_for :users
   resources :accomodations do
     resources :photo, only: [:create]
   end
+  resources :charges
   resources :search, only: [:index]
   resources :offers
   resources :companies
-  resources :users, only: [:show] do
+  resources :users do
     resources :profile_picture, only: [:create]
   end
 
