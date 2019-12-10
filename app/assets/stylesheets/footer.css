@@ -1,0 +1,48 @@
+.social {
+
+ display: flex;
+ flex-direction: row;
+}
+
+.footer-back {
+ text-align:center;
+ position: relative;
+ bottom:10px;
+ width:100%;
+ display:block;
+ justify-content: center;
+ margin-top: 100px;
+}
+
+a .fab {
+
+ color: #fff;
+ text-decoration: none !important;
+}
+
+a .fab:hover {
+
+ color: #5AF;
+ text-decoration: none !important;
+}
+
+.form-social {
+
+ font-size: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background-color: #000000;
+ margin: 5px;
+ text-decoration: none !important;
+}
+
+footer .row {
+ justify-content: center;
+ display: flex;
+ flex-direction: row;
+ margin: auto;
+}

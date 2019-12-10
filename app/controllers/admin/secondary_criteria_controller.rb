@@ -1,4 +1,4 @@
-class Admin::SecondaryCriteriaController < ApplicationController
+class Admin::SecondaryCriteriaController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
