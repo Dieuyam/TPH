@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_12_10_112054) do
+=======
+ActiveRecord::Schema.define(version: 2019_12_10_101804) do
+>>>>>>> 14656d0ad183eac1736e4a3a872007049be73d86
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_112054) do
     t.float "latitude"
     t.text "title"
     t.bigint "owner_id"
+    t.text "description"
     t.index ["city_id"], name: "index_accomodations_on_city_id"
     t.index ["country_id"], name: "index_accomodations_on_country_id"
     t.index ["heating_id"], name: "index_accomodations_on_heating_id"
