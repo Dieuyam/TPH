@@ -59,7 +59,7 @@ def scrapmax(page_url)
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
   type_of_operation = page.xpath("//body/div[3]/div[4]/div/h1").text.strip
-  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month}
+  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month :bedroom => bedroom}
   p "---- ONE ACCOMODATION ADD TO GOOGLE DRIVE ----"
   return accomodation
 rescue Exception => ex
@@ -106,20 +106,23 @@ namespace :scrap_good do
           ws[init_first_case, 1] = accomodation[:price]
           if accomodation[:living_space] > 500
             accomodation[:living_space] = accomodation[:living_space]/10
+          elsif accomodation[:living_space] > 1000
+            accomodation[:living_space] = accomodation[:living_space]/100
           end
           ws[init_first_case, 2] = accomodation[:living_space]
           ws[init_first_case, 3] = accomodation[:description]
           ws[init_first_case, 4] = accomodation[:city]
-          nocity = false
+          hascity = false
           City.all.each do |city|
-            if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e") && nocity == false
+            if accomodation[:city].downcase.tr(" -", "").tr("é", "e") == city.name.downcase.tr(" -", "").tr("é", "e")
               ws[init_first_case, 10] = city.id
-              nocity = true
-            elsif nocity
+              hascity = true
+            end
+          end
+            if hascity == false
               new_city = City.create(:name => accomodation[:city])
               ws[init_first_case, 10] = new_city.id
             end
-          end
           ws[init_first_case, 5] = accomodation[:rooms]
           ws[init_first_case, 6] = accomodation[:phone]
           ws[init_first_case, 7] = url.to_s
@@ -131,17 +134,14 @@ namespace :scrap_good do
             ws[init_first_case, 13] = "Location"
           end
           ws[init_first_case, 14] = accomodation[:type_of_operation]
+          ws[init_first_case, 15] = accomodation[:bedroom]
           init_first_case += 1 
           ws.save
           ws.reload
 
 #HERE CREATION OF NEW ACCOMODATION
 
-
-
-
-
-
+        master_hash_of_city = { }
 
 
         end
