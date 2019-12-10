@@ -14,6 +14,7 @@ class OffersController < ApplicationController
 
   # GET /offers/new
   def new
+    @session_id = stripe.id
     @offer = Offer.new
   end
 
@@ -70,5 +71,31 @@ class OffersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
       params.require(:offer).permit(:description, :name, :end_date, :price)
+    end
+
+    def stripe
+      stripe_user = current_user
+      @offer_selected = Offer.find(params[:offer_id])
+      Stripe.api_key = 'sk_test_54BIYzJqmauUcCqsvpZunVyp'
+
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @offer_selected.name,
+          description: @offer_selected.description,
+          amount: @offer_selected.price.to_i*100,
+          currency: 'eur',
+          quantity: 1,
+        }],
+        payment_intent_data: {
+          capture_method: 'manual',
+        },
+        success_url: 'http://localhost:3000/charges',
+        cancel_url: 'https://example.com/cancel',
+      )
+      
+      stripe_user.stripe_session_id = @offer_selected.id
+      stripe_user.save
+      return session
     end
 end
