@@ -30,6 +30,39 @@
       </div>
     </div>
     <br>
+
+    <div class="card-body">
+      <div class="row d-flex justify-content-between">
+        <div class="">
+          <h5 class="card-title">Titre</h5>
+          <p class="card-text"><%= @accomodation.title %></p> <br>
+        </div>
+        <div class="">
+          <h5 class="card-title">Propriétaire</h5>
+          <p class="card-text mb-0">nom : <%= @accomodation.owner.first_name %> <%= @accomodation.owner.last_name %></p>
+          <p class="card-text">email : <%= @accomodation.owner.phone %></p>
+        </div>
+      </div>
+
+      <h5 class="card-title">Description</h5>
+      <p class="card-text"><%= @accomodation.description %></p><br>
+      <h5 class="card-title">Adresse</h5>
+      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @accomodation.zipcode %> <%= @city %> </p><br>
+      <h5 class="card-title">Infos supplémentaires</h5>
+      <% @tertiaries.each do |criteria| %>
+        <ul class="">
+          <li><%= criteria.name %></li>
+        </ul>
+      <% end %>
+      <br>
+      <p class="card-text"><small class="text-muted">Mis à jour le <%= @accomodation.updated_at.to_formatted_s(:short) %></small></p>
+      <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
+      <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
+    </div>
+
+    <br>
+    <hr>
+    <h5 class="card-title">Photos</h5>
     <div class="row">
       <%if @accomodation.photo.attached?%>
         <% @accomodation.photo.each_with_index do |photo,index| %>
