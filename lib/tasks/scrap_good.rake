@@ -98,7 +98,7 @@ namespace :scrap_good do
 
 session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
-
+    init_first_case = ws.rows.size
 all_desc = []
 init_first_case.times do |i|
 all_desc << ws[i, 3]
@@ -109,7 +109,6 @@ array_of_good = []
 10.times do |i|
   all_url = scrap_all_href("https://www.seloger.com/list.htm?projects=2%2C5&types=1%2C2&natures=1%2C2%2C4&places=%5B%7Bdiv%3A2238%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg=#{i+1}")
   all_url.each do |url|
-    init_first_case = ws.rows.size
     accomodation = scrapmax(url)
     unless all_desc.include? accomodation[:description]
     ws[init_first_case, 1] = accomodation[:price]
