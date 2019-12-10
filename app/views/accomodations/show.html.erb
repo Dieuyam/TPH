@@ -37,7 +37,14 @@
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @accomodation.description %></p><br>
       <h5 class="card-title">Adresse</h5>
-      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @accomodation.zipcode %>, <%= @city %> </p><br>
+      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @accomodation.zipcode %> <%= @city %> </p><br>
+      <h5 class="card-title">Infos supplémentaires</h5>
+      <% @tertiaries.each do |criteria| %>
+        <ul class="">
+          <li><%= criteria.name %></li>
+        </ul>
+      <% end %>
+      <br>
       <p class="card-text"><small class="text-muted">Mis à jour le <%= @accomodation.updated_at.to_formatted_s(:short) %></small></p>
       <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
       <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
