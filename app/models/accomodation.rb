@@ -16,4 +16,13 @@ class Accomodation < ApplicationRecord
   validates :price, presence: true
   has_many_attached :photo
   belongs_to :owner, class_name: "User", optional: true
+
+  include PgSearch::Model
+  
+  pg_search_scope :global_search,
+    against: [:title, :description],
+    associated_against: {secondary_criteria: :name, tertiary_criteria: :name, city: :name},
+    using: {
+      tsearch: {any_word: true}
+    }
 end

@@ -7,9 +7,15 @@ class AccomodationsController < ApplicationController
   # GET /accomodations.json
   def index
 
-    @accomodations = Accomodation.all #get_search_result(search_params)
-
-    puts search_params
+    if search_params[:query] == ""
+      @accomodations = Accomodation.all.where("rooms >= #{search_params[:rooms]}")
+    else
+      if params[:city] && params[:city][:id] != ""
+        @accomodations = Accomodation.where(city_id: params[:city][:id].to_i).left_joins(:secondary_criteria, :tertiary_criteria, :city).where("rooms >= #{search_params[:rooms]}").all.global_search(search_params[:query])
+      else
+        @accomodations = Accomodation.left_joins(:secondary_criteria, :tertiary_criteria, :city).where("rooms > #{search_params[:rooms]}").all.global_search(search_params[:query])
+      end
+    end
 
   end
 
@@ -17,7 +23,6 @@ class AccomodationsController < ApplicationController
   # GET /accomodations/1.json
   def show
     @road_type = RoadType.find(@accomodation.road_type_id).name
-    @city = City.find(@accomodation.city_id).name
     @tertiaries = @accomodation.tertiary_criteria
   end
 
@@ -84,6 +89,7 @@ class AccomodationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_accomodation
     @accomodation = Accomodation.find(params[:id])
+    @city = City.find(@accomodation.city_id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -97,8 +103,11 @@ class AccomodationsController < ApplicationController
     tab = Hash.new
 
     params[:rooms]? tab[:rooms] = params[:rooms] : tab[:rooms] = 0
-    params[:search]? tab[:search] = params[:search] : tab[:search] = ""
-    params[:city]? tab[:city_id] = params[:city][:id] : tab[:city_id] = 0
+    params[:search]? tab[:query] = params[:search] : tab[:query] = ""
+
+    if params[:city] && params[:city][:id] != ""
+      tab[:query] += " #{City.find(params[:city][:id]).name}"
+    end
 
     tab[:criteria] = Hash.new
     user_criteria = [""]
@@ -107,16 +116,20 @@ class AccomodationsController < ApplicationController
 
     if params[:criteria_ids]
 
-      user_criteria.include?('1')? tab[:criteria][:pool] = 1 : tab[:criteria][:pool] = 0
-      user_criteria.include?('2')? tab[:criteria][:elevator] = 1 : tab[:criteria][:elevator] = 0
-      user_criteria.include?('3')? tab[:criteria][:basement] = 1 : tab[:criteria][:basement] = 0
-      user_criteria.include?('4')? tab[:criteria][:balcony] = 1 : tab[:criteria][:balcony] = 0
-      user_criteria.include?('5')? tab[:criteria][:concierge] = 1 : tab[:criteria][:concierge] = 0
-      user_criteria.include?('6')? tab[:criteria][:parking] = 1 : tab[:criteria][:parking] = 0
-      user_criteria.include?('7')? tab[:criteria][:last_floor] = 1 : tab[:criteria][:last_floor] = 0
-      user_criteria.include?('8')? tab[:criteria][:disabled_access] = 1 : tab[:criteria][:disabled_access] = 0
-      user_criteria.include?('9')? tab[:criteria][:garden] = 1 : tab[:criteria][:garden] = 0
-      user_criteria.include?('10')? tab[:criteria][:furnished] = 1 : tab[:criteria][:furnished] = 0
+      tertiary = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concierge", "Parking", "Dernier étage", "Acces handicapé", "Jardin", "Meublé"]
+
+      user_criteria.include?('1')? tab[:criteria][:pool] = tertiary[0] : tab[:criteria][:pool] = "0"
+      user_criteria.include?('2')? tab[:criteria][:elevator] = tertiary[1] : tab[:criteria][:elevator] = "0"
+      user_criteria.include?('3')? tab[:criteria][:basement] = tertiary[2] : tab[:criteria][:basement] = "0"
+      user_criteria.include?('4')? tab[:criteria][:balcony] = tertiary[3] : tab[:criteria][:balcony] = "0"
+      user_criteria.include?('5')? tab[:criteria][:concierge] = tertiary[4] : tab[:criteria][:concierge] = "0"
+      user_criteria.include?('6')? tab[:criteria][:parking] = tertiary[5] : tab[:criteria][:parking] = "0"
+      user_criteria.include?('7')? tab[:criteria][:last_floor] = tertiary[6] : tab[:criteria][:last_floor] = "0"
+      user_criteria.include?('8')? tab[:criteria][:disabled_access] = tertiary[7] : tab[:criteria][:disabled_access] = "0"
+      user_criteria.include?('9')? tab[:criteria][:garden] = tertiary[8] : tab[:criteria][:garden] = "0"
+      user_criteria.include?('10')? tab[:criteria][:furnished] = tertiary[9] : tab[:criteria][:furnished] = "0"
+
+      tab[:query] += " #{tab[:criteria].values.select{ |element|  element != "0" }.join(' ')}"
 
     end
 
