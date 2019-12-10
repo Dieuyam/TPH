@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :welcome_send
+  after_create :welcome_send, :welcome_offer
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,6 +14,10 @@ class User < ApplicationRecord
   #validates :phone, presence: true, format: { with: /\A^((\+)33|0)[1-9](\d{2}){4}$*\z/i, message:  "Le format du numéro de téléphone est incorrect. Veuillez le vérifier." }
     def welcome_send
     UserMailer.welcome_email(self).deliver_now
-  end
+    end
+
+    def welcome_offer
+    User.update(offer_id => 0)
+    end
 
 end
