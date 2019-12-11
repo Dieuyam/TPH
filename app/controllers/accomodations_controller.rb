@@ -102,7 +102,12 @@ class AccomodationsController < ApplicationController
 
     tab = Hash.new
 
-    params[:rooms]? tab[:rooms] = params[:rooms] : tab[:rooms] = 0
+    if params[:rooms] && params[:rooms]!= ""
+      tab[:rooms] = params[:rooms]
+    else
+      tab[:rooms] = 0
+    end
+    
     params[:search]? tab[:query] = params[:search] : tab[:query] = ""
 
     if params[:city] && params[:city][:id] != ""
