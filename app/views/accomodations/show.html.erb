@@ -84,40 +84,30 @@
       <% end %>
       <br>
       <p class="card-text"><small class="text-muted">Mis à jour le <%= @accomodation.updated_at.to_formatted_s(:short) %></small></p>
-      <% if current_user!=nil  && current_user.id == @accomodation.owner_id %>
-      <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
-      <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
-      <% end %>
 
     </div>
     <% case %>
     <% when user_signed_in? && current_user.id == @accomodation.owner_id %>
+    <hr>
+    <p class="card-text">Mettre à jour votre bien</p>
     <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
     <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
     <br>
-    <hr>
-    <h5 class="card-title">Photos</h5>
+    <p class="card-text">Ajouter une image</p>
     <div class="row">
-      <%if @accomodation.photo.attached?%>
-        <% @accomodation.photo.each_with_index do |photo,index| %>
-          <%= image_tag @accomodation.photo[index], alt: 'photo', width:"150", height:"150" %>
-        <% end %>
-      <%else%>
-        <img src="/assets/outsite-co-R-LK3sqLiBw-unsplash.jpg" width="250" height="150">
-      <%end%>
-      <div class="col-md-12">
-        <div class="row">
-          <%= file_field_tag :photo %>
-          <%= submit_tag "Ajouter" %>
-        </div>
-      </div>
       <div class="">
         <%= form_tag accomodation_photo_index_path(@accomodation), multipart: true do %>
+          <%= file_field_tag :photo %>
+          <%= submit_tag "charger" %>
         <% end %>
       </div>
     </div>
+
+    <% end %>
+    <br>
+    <%= link_to "Retour à l'accueil", accomodations_path %>
   </div>
 
-  <% end %>
-  <%= link_to 'Retour', accomodations_path %>
+
+
 </div>
