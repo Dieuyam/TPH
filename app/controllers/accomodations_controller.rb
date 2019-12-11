@@ -4,6 +4,9 @@ class AccomodationsController < ApplicationController
   before_action :edit_user_restriction, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create]
 
+
+
+  
   # GET /accomodations
   # GET /accomodations.json
   def index
