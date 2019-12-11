@@ -40,8 +40,12 @@
         </div>
         <div class="">
           <h5 class="card-title">Propriétaire</h5>
-          <p class="card-text mb-0">nom : <%= @accomodation.owner.first_name %> <%= @accomodation.owner.last_name %></p>
-          <p class="card-text">email : <%= @accomodation.owner.phone %></p>
+          <% if user_signed_in?  %>
+            <p class="card-text mb-0">nom : <%= @accomodation.owner.first_name %> <%= @accomodation.owner.last_name %></p>
+            <p class="card-text">email : <%= @accomodation.owner.phone %></p>
+          <% else  %>
+          <%= link_to "me connecter pour consulter", new_user_session_path, class: "text-info" %>
+          <% end  %>
         </div>
       </div>
 
