@@ -6,7 +6,7 @@ class AccomodationsController < ApplicationController
 
 
 
-  
+
   # GET /accomodations
   # GET /accomodations.json
   def index
@@ -52,10 +52,10 @@ class AccomodationsController < ApplicationController
       #Création critère tertiaire grace aux cases cochées
       params["accomodation"].to_unsafe_h.each_with_index { |(key,value),index|
 
-        if index >= 14
+        if index >= 17
           if value == "1"
             puts key
-            JoinTableTertiary.create(accomodation: a, tertiary_criteria_id: index - 13)
+            JoinTableTertiary.create(accomodation: a, tertiary_criteria_id: index - 16)
           end
 
         end
@@ -78,7 +78,25 @@ class AccomodationsController < ApplicationController
   # PATCH/PUT /accomodations/1.json
   def update
     respond_to do |format|
-      if @accomodation.update(accomodation_params)
+      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i))
+
+        delete_secondary_criteria(@accomodation.id)
+
+        #Création critère tertiaire grace aux cases cochées
+        params["accomodation"].to_unsafe_h.each_with_index { |(key,value),index|
+
+          if index >= 17
+            if value == "1"
+              JoinTableTertiary.create(accomodation: @accomodation, tertiary_criteria_id: index - 16)
+            end
+
+          end
+        }
+
+        @accomodation.photo.attach(accomodation_params[:photo_first]) if accomodation_params[:photo_first]
+        @accomodation.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
+        @accomodation.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
+
         format.html { redirect_to @accomodation, notice: 'Accomodation was successfully updated.' }
         format.json { render :show, status: :ok, location: @accomodation }
       else
@@ -176,13 +194,21 @@ class AccomodationsController < ApplicationController
 
     def edit_user_restriction
 
-    case
+      case
 
-    when current_user.id != @accomodation.owner_id
-        redirect_to accomodations_path
-        flash.now[:notice] = "Vous n'avez pas accès à cette action"
+      when current_user.id != @accomodation.owner_id
+          redirect_to accomodations_path
+          flash.now[:notice] = "Vous n'avez pas accès à cette action"
+      end
+
+
     end
 
+    def delete_secondary_criteria(id)
+
+      JoinTableTertiary.where(accomodation_id: id).find_each do |criteria|
+        criteria.destroy
+      end
 
     end
 
