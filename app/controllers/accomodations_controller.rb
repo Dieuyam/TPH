@@ -1,6 +1,7 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
   before_action :offer_user_restriction, only: [:create]
+  before_action :edit_user_restriction, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create]
 
   # GET /accomodations
@@ -143,6 +144,7 @@ class AccomodationsController < ApplicationController
   end
 
     def offer_user_restriction
+
       case
 
       when current_user.accomodations.count == 1 && current_user.offer_id == 1
@@ -155,6 +157,18 @@ class AccomodationsController < ApplicationController
         redirect_to offers_path
 
       end
+
+    end
+
+    def edit_user_restriction
+
+    case
+
+    when current_user.id != @accomodation.owner_id 
+        redirect_to accomodations_path
+        flash.now[:notice] = "Vous n'avez pas accès à cette action"
+    end
+
 
     end
 

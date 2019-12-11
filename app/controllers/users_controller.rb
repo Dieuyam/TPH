@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:show, :edit, :update, :destroy]
+
 
   # GET /users
   # GET /users.json
@@ -75,4 +77,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :phone, :address, :is_admin, :is_pro, :stripe_customer_id, :stripe_session_id )
     end
 
+    def verify_user
+
+    end
 end
