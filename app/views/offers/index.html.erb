@@ -11,14 +11,14 @@
 
         </span>
         <br><br>
-        <p><%= offer.description %></p>
-        <p><%= offer.end_date %></p>
-        <p><%= offer.price %>€</p>
-        <td><%= link_to 'Pay', new_offer_path(@offers, :offer_id => offer.id ) %></td>
-
+        <div class="text-center">
+          <p><%= offer.description %></p>
+          <p><%= offer.end_date %></p>
+          <p><%= offer.price %>€</p>
+        </div>
 
         <div class="container-login100-form-btn text-center">
-          <button class="animatedButton" type="submit" style="vertical-align:middle"><span>S'abonner</span></button>
+          <%= link_to "S'abonner", new_offer_path(@offers, :offer_id => offer.id ), class:'btnStandard' %>
         </div>
         <br><br>
       </div>
@@ -26,7 +26,8 @@
   </div><br><br>
   <% end %>
   <div class="text-center">
-    <%= link_to 'Back', offers_path, class:'btn1' %>
-    <%= link_to'New Offer', new_offer_path %>
+    <div class="dme_link">
+      <%= link_to 'Retour', root_path, class:'btn1' %>
+    </div>
   </div>
 </div>
