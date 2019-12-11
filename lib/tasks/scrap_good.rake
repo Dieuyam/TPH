@@ -157,6 +157,8 @@ namespace :scrap_good do
     end
 
 
+
+
     (init_first_case).times do |i|
       unless all_desc.include? ws[i+1, 3]
         hash_of_accomodation = {:price => ws[i+1, 1], :living_space => ws[i+1, 2], :rooms => ws[i+1, 5], :title => ws[i+1, 14] }
@@ -167,6 +169,13 @@ namespace :scrap_good do
         end
       end
     end
-    end
-
   end
+  task :addimg => :environment do
+    require 'uri'
+    ac = Accomodation.last
+    url = 'http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg'
+    filename = File.basename(URI.parse(url).path)
+    file = URI.open('http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg')
+    ac.photo.attach(io: file, filename: filename)
+  end
+end
