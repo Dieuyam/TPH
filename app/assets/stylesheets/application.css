@@ -13,10 +13,11 @@
  *= require navbar
  *= require homepage
  *= require footer
- *= require favorite_button 
  *= require multiple_steps_form
+ *= require favorite_button 
  *= require signup
  *= require login
  *= require users
  *= require accomodations
+ 
  */
