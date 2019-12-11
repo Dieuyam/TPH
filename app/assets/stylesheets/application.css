@@ -13,6 +13,7 @@
  *= require navbar
  *= require homepage
  *= require footer
+ *= require favorite_button 
  *= require multiple_steps_form
  *= require signup
  *= require login
