@@ -1,35 +1,39 @@
-<br><br>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="backgroundprofile">
+  <br><br>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-<div class="jumbotron jumbotron-fluid-hero">
-  <img src="" alt="">
-</div>
-  <div class="profilePic">
-    <%if @user.profile_picture.attached?%>
-      <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
-    <%else%>
-      <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
-    <%end%>
-      <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
-      <div class="col-lg-2">
-        <%= file_field_tag :profile_picture %>
-        <%= submit_tag "mettre à jour" %>
-      </div>
-      <% end %>
+  <div class="jumbotron jumbotron-fluid-hero">
+    <img src="" alt="">
   </div>
+    <div class="profilePic">
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
+      <%else%>
+        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
+      <%end%>
+        <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
+        <div class="col-lg-2">
+          <%= file_field_tag :profile_picture, class:'btnStandard' %>
+          <%= submit_tag "Mettre à jour", class:'btnStandard' %>
+        </div>
+        <% end %>
+    </div>
 
-<div class="profileWrap">
-  <h6><%= @user.first_name %> <%= @user.last_name %><br></h6>
-  <div class="editBtn d-flex justify-content-center align-items-center" title="Edit">
-  <span> <%= link_to 'Edit', edit_user_registration_path %> <i class="fas fa-pen"></i></span></a>
-  </div><br>
-  <i class="fas fa-at"></i> <%= @user.email %><hr>
-  <i class="fas fa-mobile-alt"></i><%= @user.phone %><hr>
-  <%= @user.address %>
-  <i class="fas fa-shopping-cart"></i> <a href="">My Orders</a><hr/>
-  <i class="fas fa-info-circle"></i> <a href="">My Personal Informations</a><hr>
+  <div class="profileWrap">
+    <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>",<span><i class="fas fa-pen"></i></span></a></div><br>
+    <div class="text-center">
+      <h3>Mon Profil</h3>
+    </div><br>
+    <h5><i class="far fa-address-card"></i> <%= @user.first_name %> <%= @user.last_name %></h5><hr>
+    <i class="fas fa-at"></i>  <%= @user.email %><hr>
+    <i class="fas fa-mobile-alt"></i> <%= @user.phone %><hr>
+    <i class="fas fa-map-marker-alt"></i> <%= @user.address %><hr>
+    <i class="fas fa-shopping-cart"></i> Mon abonnement : <a style="color:#ffd369"> <%= @user.offer.name %></a><hr>
+    <i class="fas fa-info-circle"></i> Mes informations personnelles<hr><br>
 
-
-  <%= link_to 'Back', root_path %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Retour', root_path, class:'btnStandard' %>
+    </div><br>
+  </div><br><br><br><br><br>
 </div>
