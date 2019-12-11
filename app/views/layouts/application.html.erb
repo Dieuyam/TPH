@@ -86,8 +86,18 @@
     <div class="topBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="topBtn" title="Go to top"><a><span><i class="fas fa-chevron-up"></i></span></a></div>
 
     <%= yield %>
+
+    <% unless notice.nil? %>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <%= notice%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
     <%= render 'layouts/footer'%>
-    <p id="notice"><%= notice %></p>
+
 
   </body>
 
