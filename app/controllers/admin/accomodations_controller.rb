@@ -56,7 +56,7 @@ class Admin::AccomodationsController  < AdminController
   def destroy
     @accomodation.destroy
     respond_to do |format|
-      format.html { redirect_to accomodations_url, notice: 'Accomodation was successfully destroyed.' }
+      format.html { redirect_to admin_accomodations_path, notice: 'Accomodation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
