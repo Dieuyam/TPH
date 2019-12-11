@@ -21,13 +21,12 @@
 
           <%if @accomodation.photo.attached?%>
             <% @accomodation.photo.each_with_index do |photo,index| %>
-              <%= image_tag @accomodation.photo[index], alt: 'photo', width:"150", height:"150" %>
               <%if index == 0 %>
                 <div class="carousel-item active">
               <%else %>
                 <div class="carousel-item">
               <% end %>
-                <%= image_tag @accomodation.photo[index], class:"d-block img-fluid" %>
+                <%= image_tag @accomodation.photo[index], class:"d-block img-fluid", width:"100%" %>
               </div>
             <% end %>
           <%else%>
@@ -47,8 +46,9 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
     </div>
+
+
     <br>
 
     <div class="card-body">
