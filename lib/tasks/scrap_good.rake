@@ -58,6 +58,8 @@ def scrapmax(page_url)
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value 
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
+  img = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[1]")
+  puts img
   type_of_operation = page.xpath("//body/div[3]/div[4]/div/h1").text.strip
   accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month, :bedroom => bedroom}
   p "---- ONE ACCOMODATION ADD TO GOOGLE DRIVE ----"
@@ -80,6 +82,7 @@ namespace :scrap_good do
       all_url = scrap_all_href("https://www.seloger.com/list.htm?projects=2%2C5&types=1%2C2&natures=1%2C2%2C4&places=%5B%7Bdiv%3A2238%7D%5D&enterprise=0&qsVersion=1.0&LISTING-LISTpg=#{i+1}")
       all_url.each do |url|
         scrapmax(url)
+        puts "ohhhh calm down"
       end
     end
   end
@@ -168,10 +171,14 @@ namespace :scrap_good do
   end
   task :addimg => :environment do
     require 'uri'
-    ac = Accomodation.last
-    url = 'http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg'
+    ac = Accomodation.find(9)
+    puts ac.title
+    puts ac.city
+    url = 'https://images.ladepeche.fr/api/v1/images/view/5deccbe28fe56f0b1f4f47a7/large/image.jpg?v=1'
     filename = File.basename(URI.parse(url).path)
-    file = URI.open('http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg')
+    file = URI.open('https://images.ladepeche.fr/api/v1/images/view/5deccbe28fe56f0b1f4f47a7/large/image.jpg?v=1')
     ac.photo.attach(io: file, filename: filename)
   end
+
+
 end
