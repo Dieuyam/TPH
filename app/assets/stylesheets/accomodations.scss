@@ -11,3 +11,13 @@
   height: 40%;
   margin: auto;
 }
+
+.carousel-inner img {
+  height: 512px;
+}
+
+@media (max-width: 480px) {
+ .carousel-inner img {
+   height: 320px;
+ }
+}
