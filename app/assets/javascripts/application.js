@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require favorite_button
 //= require multiple_steps_form
 //= require script_btn_top
 //= require activestorage
