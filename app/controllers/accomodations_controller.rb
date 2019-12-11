@@ -61,9 +61,13 @@ class AccomodationsController < ApplicationController
       a.photo.attach(accomodation_params[:photo_first]) if accomodation_params[:photo_first]
       a.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
       a.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
+
+      redirect_to a
+    else
+      redirect_to accomodations_path
     end
 
-    redirect_to root_path
+
   end
 
 
