@@ -171,10 +171,14 @@ namespace :scrap_good do
   end
   task :addimg => :environment do
     require 'uri'
-    ac = Accomodation.last
-    url = 'http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg'
+    ac = Accomodation.find(9)
+    puts ac.title
+    puts ac.city
+    url = 'https://images.ladepeche.fr/api/v1/images/view/5deccbe28fe56f0b1f4f47a7/large/image.jpg?v=1'
     filename = File.basename(URI.parse(url).path)
-    file = URI.open('http://v.seloger.com/s/width/800/visuels/1/a/f/x/1afx83o20xo8grl6fefo4ge6wiw4iwxh3wykc3k00.jpg')
+    file = URI.open('https://images.ladepeche.fr/api/v1/images/view/5deccbe28fe56f0b1f4f47a7/large/image.jpg?v=1')
     ac.photo.attach(io: file, filename: filename)
   end
+
+
 end
