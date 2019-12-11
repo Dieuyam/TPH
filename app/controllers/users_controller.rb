@@ -78,6 +78,11 @@ class UsersController < ApplicationController
     end
 
     def verify_user
+      case
+
+      when current_user.id != params[:id].to_i
+          redirect_to user_path(:id => current_user.id)
+      end
 
     end
 end
