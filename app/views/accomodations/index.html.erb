@@ -10,7 +10,11 @@
 
         <%= link_to(accomodation) do %>
         <div class="card">
-          <img class="card-img-top" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
+          <%if accomodation.photo.attached?%>
+            <%= image_tag accomodation.photo[0], class:"card-img-top"%>
+          <%else %>
+            <img class="card-img-top" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
+          <%end %>
           <div class="card-body">
             <h5 class="card-title text-muted"><%= accomodation.title %> (<%= City.find(if_nil_sort_one(accomodation.city_id)).name%>)</h5>
             <p class="card-text text-muted"><%= accomodation.description %></p>
