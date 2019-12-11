@@ -21,33 +21,14 @@
 <div class="profileWrap">
   <h6><%= @user.first_name %> <%= @user.last_name %><br></h6>
   <div class="editBtn d-flex justify-content-center align-items-center" title="Edit">
-    <a href="#" data-method="get">  <span><i class="fas fa-pen"></i></span></a>
+  <span> <%= link_to 'Edit', edit_user_registration_path %> <i class="fas fa-pen"></i></span></a>
   </div><br>
-<i class="fas fa-at"></i> <%= current_user.email %><hr>
-<i class="fas fa-mobile-alt"></i><%= @user.phone %><hr>
-<%= @user.address %>
-<i class="fas fa-shopping-cart"></i> <a href="">My Orders</a><hr/>
-<i class="fas fa-info-circle"></i> <a href="">My Personal Informations</a><hr>
-<p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
-</p>
+  <i class="fas fa-at"></i> <%= @user.email %><hr>
+  <i class="fas fa-mobile-alt"></i><%= @user.phone %><hr>
+  <%= @user.address %>
+  <i class="fas fa-shopping-cart"></i> <a href="">My Orders</a><hr/>
+  <i class="fas fa-info-circle"></i> <a href="">My Personal Informations</a><hr>
 
-<p>
-  <strong>Is pro:</strong>
-  <%= @user.is_pro %>
-</p>
 
-<p>
-  <strong>Stripe customer:</strong>
-  <%= @user.stripe_customer_id %>
-</p>
-
-<p>
-  <strong>Stripe session:</strong>
-  <%= @user.stripe_session_id %>
-</p>
-
-<%= link_to 'Edit', edit_user_registration_path %> |
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path %>
 </div>

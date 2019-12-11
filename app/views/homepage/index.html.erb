@@ -3,7 +3,7 @@
     </div>
 </section>
 <div class="container bannerHomepage">
-  <h1>Bienvenue sur <br> The Perfect House.</h1><br>
+  <h1>Bienvenue sur The Perfect House.</h1><br>
   <h4>L'assistant intelligent pour dénicher vos biens immobiliers de vente et de location en France.</h4><br>
   <%= render 'form' %>
 </div>
@@ -14,26 +14,36 @@
 <div class="container">
   <div class="card-deck">
     <div class="card">
+      
       <img src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/jarek-ceborski-jn7uVeCdf6U-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+<<<<<<< HEAD
+       <h5 class="card-title"><%= link_to 'Appartement 5 pièces à Bry sur Marne', accomodation_path(:id => 1) %>
+       </h5>
+        <p class="card-text"><div align="justify">Appartement 5 pièces de 97,53 m², idéalement situé proche du centre ville, des écoles et du RER A de Bry sur Marne comprenant un double séjour avec balcon, une cuisine, trois chambres, deux salles d'eau, une cave et un emplacement de stationnement couvert.</div></p>
+=======
+        <h5 class="card-title"><%= link_to 'appartement', accomodation_path(:id => 1) %>
+        </h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+>>>>>>> users_restrictions
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
       <img src=" https://theperfecthouse.s3.eu-west-3.amazonaws.com/stephan-bechert-yFV39g6AZ5o-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title"><%= link_to 'Maison / Villa 8 pièces à Triel sur Seine', accomodation_path(:id => 2) %>
+        </h5>
+        <p class="card-text"><div align="justify">Construite en 2006 et située dans un secteur calme, cette belle maison familiale vous offre au rez-de-chaussée: entrée, vaste séjour d'environ 50 m² donnant directement sur le jardin et la terrasse, grande cuisine équipée, une chambre parentale; à l'étage, grand palier desservant trois chambres dont une parentale, dressings, salle de bains, le tout sur un terrain de 1500 m² avec double garage et dépendance.</div></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
       <img src=" https://theperfecthouse.s3.eu-west-3.amazonaws.com/ralph-kayden-JDBVXignFdA-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+         <h5 class="card-title"><%= link_to 'Appartement 3 pièces à Paris 18ème', accomodation_path(:id => 3) %>
+         </h5>
+        <p class="card-text"><div align="justify"> Situé au rez-de-cour d'un bel immeuble 1900 très bien entretenu, cet appartement 3 pièces de 70 m² habitable offre des prestations modernes et de qualités. Il se compose d'une vaste pièce de vie, une cuisine dînatoire entièrement équipée, moderne, avec verrière favorisant la lumière zénithale. Le bien dispose de deux chambres de belles tailles et d'une salle d'eau élégante comprenant une douche à l'italienne et un WC (miroir avec contrôle tactile illuminé).</div></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
@@ -43,66 +53,29 @@
     <div class="card">
       <img src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/jarek-ceborski-jn7uVeCdf6U-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title"><%= link_to 'Appartement 4 pièces à Boulogne', accomodation_path(:id => 4) %>
+        </h5>
+        <p class="card-text"><div align="justify">Boulogne CENTRE - EN EXCLUSIVITÉ. Rez-de-jardin - En duplex, Comme une Maison - A 90m des Passages, nous vous proposons cet appartement traversant plein de charme et très atypique de 4 Pièces en duplex de 68.46 m², situé dans petit immeuble de 2 étages année 60 Il offre un rez-de-jardin de 48.86m² comprenant une entrée, un séjour, une salle à manger ouverte sur une agréable véranda de 8.3m² (pondérée au tiers) accédant à un ravissant jardin à l'abris des regards, une cuisine US, une salle de bains et toilettes séparés.</div></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
       <img src=" https://theperfecthouse.s3.eu-west-3.amazonaws.com/stephan-bechert-yFV39g6AZ5o-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title"><%= link_to 'Appartement 4 pièces Argenteuil', accomodation_path(:id => 4) %>
+        </h5>
+        <p class="card-text"><div align="justify">Dans le quartier du Val Sud, à seulement 10 minutes à pied de la gare. Dans une résidence fermée et arborée, à proximité des commerces. Au deuxième étage sur 3, cet appartement comprend une entrée, un séjour ouvrant sur balcon, 3 chambres, une salle d'eau et un WC.. Cave. Vous pourrez louer ou acquérir une place de parking.. N'hésitez pas à effectuer la visite virtuelle et recontactez nous pour plus d'informations.. 175900 euros Honoraires à la charge du vendeur.</div></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
       <img src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/ralph-kayden-JDBVXignFdA-unsplash.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <h5 class="card-title"><%= link_to 'Maison / Villa 7 pièces à Pontoise', accomodation_path(:id => 5) %>
+        </h5>
+        <p class="card-text"><div align="justify">A seulement 15 min de Pontoise, découvrez cette bâtisse d'environ 278 m² sur terrain paysagé d'environ 2440 m², ancienne demeure du trésorier de Louis XVI. Au rez-de-chaussée: entrée, espace de réception d'environ 100 m² dont une partie cathédrale avec cheminée, une cuisine ouverte donnant sur espace repas, l'ensemble donnant directement de plain-pied sur les terrasses. Au 1er étage: mezzanine spacieuse surplombant le séjour pouvant servir d'espace bureau ou billard, une chambre avec sa salle de bain (baignoire, douche, WC séparé).</div></p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>
 </div><br><br>
-
-<div class="text-center">
-  <h1>Nos Offres</h1><br>
-</div>
-<div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      Basic
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btnStandard">Découvrir</a>
-    </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Medium</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btnStandard">Découvrir</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Premium</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btnStandard">Découvrir</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

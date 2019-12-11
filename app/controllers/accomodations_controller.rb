@@ -1,19 +1,20 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
   before_action :offer_user_restriction, only: [:create]
+  before_action :edit_user_restriction, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create]
 
   # GET /accomodations
   # GET /accomodations.json
   def index
 
-    if search_params == ""
-      @accomodations = Accomodation.all
+    if search_params[:query] == ""
+      @accomodations = Accomodation.all.where("rooms >= #{search_params[:rooms]}")
     else
-      if params[:city][:id] != ""
-        @accomodations = Accomodation.where(city_id: params[:city][:id].to_i).left_joins(:secondary_criteria, :tertiary_criteria, :city).all.global_search(search_params)
+      if params[:city] && params[:city][:id] != ""
+        @accomodations = Accomodation.where(city_id: params[:city][:id].to_i).left_joins(:secondary_criteria, :tertiary_criteria, :city).where("rooms >= #{search_params[:rooms]}").all.global_search(search_params[:query])
       else
-        @accomodations = Accomodation.left_joins(:secondary_criteria, :tertiary_criteria, :city).all.global_search(search_params)
+        @accomodations = Accomodation.left_joins(:secondary_criteria, :tertiary_criteria, :city).where("rooms > #{search_params[:rooms]}").all.global_search(search_params[:query])
       end
     end
 
@@ -102,12 +103,16 @@ class AccomodationsController < ApplicationController
 
     tab = Hash.new
 
-    params[:rooms]? tab[:rooms] = params[:rooms] : tab[:rooms] = 0
-    params[:search]? tab[:search] = params[:search] : tab[:search] = ""
-    query = tab[:search]
+    if params[:rooms] && params[:rooms]!= ""
+      tab[:rooms] = params[:rooms]
+    else
+      tab[:rooms] = 0
+    end
+    
+    params[:search]? tab[:query] = params[:search] : tab[:query] = ""
 
     if params[:city] && params[:city][:id] != ""
-      query += " #{City.find(params[:city][:id]).name}"
+      tab[:query] += " #{City.find(params[:city][:id]).name}"
     end
 
     tab[:criteria] = Hash.new
@@ -130,15 +135,16 @@ class AccomodationsController < ApplicationController
       user_criteria.include?('9')? tab[:criteria][:garden] = tertiary[8] : tab[:criteria][:garden] = "0"
       user_criteria.include?('10')? tab[:criteria][:furnished] = tertiary[9] : tab[:criteria][:furnished] = "0"
 
-      query += " #{tab[:criteria].values.select{ |element|  element != "0" }.join(' ')}"
+      tab[:query] += " #{tab[:criteria].values.select{ |element|  element != "0" }.join(' ')}"
 
     end
 
-    return query
+    return tab
 
   end
 
     def offer_user_restriction
+
       case
 
       when current_user.accomodations.count == 1 && current_user.offer_id == 1
@@ -151,6 +157,18 @@ class AccomodationsController < ApplicationController
         redirect_to offers_path
 
       end
+
+    end
+
+    def edit_user_restriction
+
+    case
+
+    when current_user.id != @accomodation.owner_id 
+        redirect_to accomodations_path
+        flash.now[:notice] = "Vous n'avez pas accès à cette action"
+    end
+
 
     end
 
