@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :accomodations do
     resources :photo, only: [:create]
   end
-  resources :charges, only: [:create]
+  resources :charges
   resources :search, only: [:index]
   resources :offers
   resources :companies
