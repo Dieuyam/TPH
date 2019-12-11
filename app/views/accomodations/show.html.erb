@@ -62,9 +62,9 @@
       <br>
       <p class="card-text"><small class="text-muted">Mis à jour le <%= @accomodation.updated_at.to_formatted_s(:short) %></small></p>
       <% case %>
-      <% when user_signed_in? && current_user.id == accomodation.owner_id %>
-      <td><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></td>
-      <td><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
+      <% when user_signed_in? && current_user.id == @accomodation.owner_id %>
+      <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
+      <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
       <% end %>
     </div>
 
