@@ -32,13 +32,19 @@
         <div class="container">
             <h6 class="brand" style="color: black"> <%= link_to "The Perfect House", root_path, class: "navbar-brand mb-0 h1" %></h6>
             <a class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse p-r-0" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto mr-2">
                 <li class="nav-item active">
                   <%= link_to "Recherche avancée", search_index_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
                   <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item active">
+                  <%= link_to "A propos", search_index_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item active">
+                  <%= link_to "Contact", new_accomodation_path, class: "nav-link" %>
                 </li>
               </ul>
             </div>
