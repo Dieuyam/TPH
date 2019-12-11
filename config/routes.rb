@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :search, only: [:index]
   resources :offers
   resources :companies
-  resources :users do
+  resources :users, only: [:show] do
     resources :profile_picture, only: [:create]
   end
 
