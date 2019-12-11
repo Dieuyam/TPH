@@ -1,7 +1,8 @@
+<link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css"><link rel="stylesheet" href="./style.css">
+
 <div class="container">
   <div class="container-accomodations">
     <div class="container-carousel">
-
       <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -30,6 +31,13 @@
       </div>
     </div>
     <br>
+    <div class="flexbox">
+
+    <div class="fav-btn">
+      <span href="" class="favme dashicons dashicons-heart"></span>
+    </div>
+    
+    </div>
 
     <div class="card-body">
       <div class="row d-flex justify-content-between">
@@ -49,6 +57,7 @@
         </div>
       </div>
 
+
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @accomodation.description %></p><br>
       <h5 class="card-title">Adresse</h5>
@@ -66,8 +75,6 @@
     <% when user_signed_in? && current_user.id == @accomodation.owner_id %>
     <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
     <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
-
-
     <br>
     <hr>
     <h5 class="card-title">Photos</h5>
@@ -91,6 +98,7 @@
       </div>
     </div>
   </div>
+
   <% end %>
   <%= link_to 'Retour', accomodations_path %>
 </div>
