@@ -18,7 +18,7 @@ class Accomodation < ApplicationRecord
   belongs_to :owner, class_name: "User", optional: true
 
   include PgSearch::Model
-  
+
   pg_search_scope :global_search,
     against: [:title, :description],
     associated_against: {secondary_criteria: :name, tertiary_criteria: :name, city: :name},
