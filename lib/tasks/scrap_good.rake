@@ -149,20 +149,16 @@ namespace :scrap_good do
     require "google_drive"
     session = GoogleDrive::Session.from_service_account_key("config.json")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
-    init_first_case = ws.rows.size 
+    init_first_case = ws.rows.size - 1
 
     all_desc = []
-    init_first_case.times do |i|
-      all_desc << Accomodation.find(i+1).title
+    Accomodation.all.each do |i|
+      all_desc << i.title
     end
 
-
-
-
     (init_first_case).times do |i|
-      unless all_desc.include? ws[i+1, 3]
-        hash_of_accomodation = {:price => ws[i+1, 1], :living_space => ws[i+1, 2], :rooms => ws[i+1, 5], :title => ws[i+1, 14] }
-        puts hash_of_accomodation
+      unless all_desc.include? ws[i+2, 14]
+        hash_of_accomodation = {:price => ws[i+2, 1], :living_space => ws[i+2, 2], :rooms => ws[i+2, 5], :title => ws[i+2, 14] }
         new_accomodation = Accomodation.new(hash_of_accomodation)
         if new_accomodation.save
           puts "Accomodation n°#{new_accomodation.id} add in database"
