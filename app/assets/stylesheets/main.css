@@ -59,11 +59,13 @@ a:hover {
 	padding:6px 12px;
 	text-decoration:none;
   border: none;
+  outline: none;
 }
 .btnStandard:hover {
 	background-color:#2f89fc;
   text-decoration: none;
   color: #000000;
+  outline: none;
 }
 
 .alert {
