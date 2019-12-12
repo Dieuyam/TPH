@@ -21,7 +21,7 @@
     </div>
 
   <div class="profileWrap">
-    <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>",<span><i class="fas fa-pen"></i></span></a></div><br>
+    <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>" ,<span><i class="fas fa-pen"></i></span></a></div><br>
     <div class="text-center">
       <h3>Mon Profil</h3>
     </div><br>
@@ -36,6 +36,33 @@
 
     <div class="card-columns">
     <% @user.accomodations.each do |accomodation| %>
+
+      <%= link_to(accomodation) do %>
+      <div class="card">
+        <%if accomodation.photo.attached?%>
+          <%= image_tag accomodation.photo[0], class:"card-img-top"%>
+        <%else %>
+          <img class="card-img-top" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
+        <%end %>
+        <div class="card-body">
+          <h6 class="card-title text-muted"><%= accomodation.title %> (<%= City.find(if_nil_sort_one(accomodation.city_id)).name%>)</h6>
+          <p class="card-text"><small class="text-muted">Mis à jour le <%= accomodation.updated_at.to_formatted_s(:short) %></small></p>
+          <% if user_signed_in? && current_user.id == accomodation.owner_id  %>
+          <div class="row d-flex align-items-center justify-content-around">
+            <small><%= link_to 'Modifier', edit_accomodation_path(accomodation) %></small>
+            <small><%= link_to 'Supprimer', accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDeletesm ' %></small>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+
+    <i class="fas fa-info-circle"></i> Mes favoris<hr><br>
+
+        <div class="card-columns">
+    <% user_favorites_accomodation.each do |accomodation| %>
 
       <%= link_to(accomodation) do %>
       <div class="card">
