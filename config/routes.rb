@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  # static pages controller
-  get '/static_pages/contact', to: 'static_pages#contact'
-  get '/static_pages/team', to: 'static_pages#team'
+  resources :team, only: [:index]
+  resources :contact
+
   root to: 'homepage#index'
 
   devise_for :users
