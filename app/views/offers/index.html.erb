@@ -1,32 +1,37 @@
 <div class="container-accomodations">
   <%= render 'layouts/notification'%>
-  <% @offers.each do |offer| %>
-  <div class="container-login100">
-    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-      <br>
-      <div class="login100-form validate-form">
-        <span class="login100-form-title p-b-37">
-          <%= offer.name %>
-
-        </span>
-        <br><br>
-        <div class="text-center">
-          <h3><%= offer.description %></h3>
-          <p><%= offer.end_date %></p>
-          <p><%= offer.price %>€</p>
-        </div>
-
-        <div class="container-login100-form-btn text-center">
-          <%= link_to "S'abonner", new_offer_path(@offers, :offer_id => offer.id ), class:'btnStandard' %>
-        </div>
-        <br><br>
-      </div>
-    </div>
-  </div><br><br>
-  <% end %>
   <div class="text-center">
-    <div class="dme_link">
-      <%= link_to 'Retour', root_path, class:'btn1' %>
-    </div>
+    <h1>Nos abonnements</h1>
   </div>
+    <div class="container-login100">
+      <div class="d-flex align-items">
+        <% @offers.each do |offer| %>
+      <div class="wrap-offer">
+        <br>
+        <div class="login100-form validate-form">
+          <span class="login100-form-title p-b-37">
+            <%= offer.name %>
+          </span>
+          <br><br>
+          <div class="text-center">
+            <h3><%= offer.description %></h3>
+            <p><%= offer.end_date %></p>
+            <p><%= offer.price %>€</p>
+          </div>
+
+          <div class="container-login100-form-btn text-center">
+            <%= link_to "S'abonner", new_offer_path(@offers, :offer_id => offer.id ), class:'btnStandard' %>
+          </div>
+          <br><br>
+        </div>
+      </div><br><br>
+      <% end %>
+    </div><br><br>
+    </div>
+    <div class="text-center">
+      <div class="dme_link">
+        <%= link_to 'Retour', root_path, class:'btn1' %>
+      </div>
+  </div>
+
 </div>
