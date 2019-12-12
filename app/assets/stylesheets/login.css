@@ -100,21 +100,22 @@ a .fab:hover {
  border-radius: 40px;
  background-color: #5AF;
  border: none;
- color: #000000;
+ color: #fff;
  text-align: center;
  font-family: 'Quicksand', sans-serif;
  font-size: 1.2em;
  padding: 20px;
  width: 30vh;
  transition: all 0.5s;
-
  margin: 5px;
+ outline: none;
 }
 
 .animatedButton span {
  display: inline-block;
  position: relative;
  transition: 0.5s;
+ outline: none;
 }
 
 .animatedButton span:after {
@@ -125,12 +126,14 @@ a .fab:hover {
  right: -20px;
  transition: 0.5s;
  text-decoration: none !important;
+ outline: none;
 }
 
 .animatedButton:hover span {
  padding-right: 25px;
  text-decoration: none !important;
  box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
+ outline: none;
 }
 
 .animatedButton:hover span:after {
@@ -138,12 +141,14 @@ a .fab:hover {
  right: 0;
  text-decoration: none !important;
  box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
+ outline: none;
 }
 
 .animatedButton:hover {
  padding-right: 25px;
  text-decoration: none !important;
  box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
+ outline: none;
 }
 
 .animatedButton:hover:after {
@@ -151,4 +156,5 @@ a .fab:hover {
  right: 0;
  text-decoration: none !important;
  box-shadow: 0 10px 30px 0px rgba(85,170,255, 0.8);
+ outline: none;
 }
