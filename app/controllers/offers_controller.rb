@@ -74,6 +74,7 @@ class OffersController < ApplicationController
     end
 
     def stripe
+    
       $stripe_customer = current_user
       @offer_selected = Offer.find(params[:offer_id])
       Stripe.api_key = 'sk_test_54BIYzJqmauUcCqsvpZunVyp'
@@ -90,10 +91,9 @@ class OffersController < ApplicationController
         payment_intent_data: {
           capture_method: 'manual',
         },
-        success_url: 'https://the-perfect-house.herokuapp.com/charges',
+        success_url: 'http://localhost:3000/charges',
         cancel_url: 'https://example.com/cancel',
       )
-      
       current_user.stripe_session_id = @offer_selected.id
       current_user.save
       return session

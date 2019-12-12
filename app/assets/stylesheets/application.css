@@ -20,5 +20,6 @@
  *= require users
  *= require accomodations
  *= require static_pages
+ *= require search
 
  */

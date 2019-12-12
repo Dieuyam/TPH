@@ -50,9 +50,17 @@
         </a>
     </div>
     <br>
+    <%= link_to accomodation_favorite_index_path(params[:id]), :controller => :accomodations, method: "post" do%>
+    <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
     <div class="fav-btn">
       <span href="" class="favme dashicons dashicons-heart"></span>
     </div>
+    <% else %>
+        <div class="fav-btn">
+      <span href="" class="favme dashicons dashicons-heart active"></span>
+    </div>
+    <%end %>
+<%end %>
 
     <div class="card-body">
       <div class="row d-flex justify-content-between">
