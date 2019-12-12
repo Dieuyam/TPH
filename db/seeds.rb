@@ -80,12 +80,16 @@ Accomodation.all.each do |a|
 	end
 end
 
+
+cities_array.each do |city|
+	city = city.downcase.tr(" -", "").tr("é", "e")
+end
 #require "google_drive"
 session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
-	if ws[i+1, 1] != nil
+	if ws[i+1, 1] != nil && cities_array.include? ws[i+1, 1]
 		City.create(:name => ws[i+1, 1], :zipcode => ws[i+1, 2])
 	end
 	puts i
