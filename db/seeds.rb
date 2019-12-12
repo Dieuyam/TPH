@@ -80,15 +80,19 @@ Accomodation.all.each do |a|
 	end
 end
 
+newcityarray = []
+cities_array.each do |city|
+	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
+end
 #require "google_drive"
 session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
-	if ws[i+1, 1] != nil
+	if ws[i+1, 1] != nil && newcityarray.include?(ws[i+1, 1].downcase.tr(" -", "").tr("é", "e"))
 		City.create(:name => ws[i+1, 1], :zipcode => ws[i+1, 2])
+		puts i
 	end
-	puts i
 
 end
 puts "The city table has been initialized"
