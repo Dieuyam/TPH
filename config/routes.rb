@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # static pages controller
-  get '/static_pages/contact', to: 'static_pages#contact'
-  get'/static_pages/contact', to: 'static_pages#contact'
-
   resources :team, only: [:index]
   resources :contact
 

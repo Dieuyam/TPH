@@ -6,40 +6,40 @@
     <div class="wrap-login100">
       <div class="login100-form validate-form">
 
-<!------ Include the above in your HEAD tag ---------->
-<br>
-<div class="container contact-form">
+        <!------ Include the above in your HEAD tag ---------->
+        <br>
+        <div class="container contact-form">
           <div class="text-center">
             <h3>Laissez nous un message</h3><br>
           </div><br>
-            <%= form_tag contact_index_path, method: "post", multipart: true do %>
-               <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Nom" aria-label="Name" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Email" aria-label="Nom" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="form-group">
-                        <textarea  name="message" class="form-control" placeholder="Laissez un message">
-                         </textarea> 
-                        </div>
-                    </div><br>
+          <%= form_tag contact_index_path, method: "post", multipart: true do %>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Nom" aria-label="Name" aria-describedby="basic-addon1">
+              </div>
+              <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Email" aria-label="Nom" aria-describedby="basic-addon1">
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input name="phone" class="form-control" placeholder="Votre numéro">
                 </div><br>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <input name="phone" class="form-control" placeholder="Votre numéro">
-                    </div><br>
-                </div>
-                <div class="text-center">
-                    <input type="submit" name="btnSubmit" class="btnStandard" value="Envoyer" />
-                </div><br>
-            <%end%>
-          </div>
+              </div>
+              <div class="form-group">
+                <textarea name="message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+              </div>
+            </div><br>
+          </div><br>
+
+          <div class="text-center">
+            <input type="submit" name="btnSubmit" class="btnStandard" value="Envoyer" />
+          </div><br>
+          <%end%>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
