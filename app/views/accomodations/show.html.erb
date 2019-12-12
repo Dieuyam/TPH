@@ -1,6 +1,7 @@
 <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css"><link rel="stylesheet" href="./style.css">
 
 <div class="container">
+  <%= render 'layouts/notification'%>
   <div class="container-accomodations">
     <div class="container-carousel">
       <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -49,9 +50,17 @@
         </a>
     </div>
     <br>
+    <%= link_to accomodation_favorite_index_path(params[:id]), :controller => :accomodations, method: "post" do%>
+    <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
     <div class="fav-btn">
       <span href="" class="favme dashicons dashicons-heart"></span>
     </div>
+    <% else %>
+        <div class="fav-btn">
+      <span href="" class="favme dashicons dashicons-heart active"></span>
+    </div>
+    <%end %>
+<%end %>
 
     <div class="card-body">
       <div class="row d-flex justify-content-between">
@@ -75,7 +84,7 @@
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @accomodation.description %></p><br>
       <h5 class="card-title">Adresse</h5>
-      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @accomodation.zipcode %> <%= @city.name %> </p><br>
+      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @city.zipcode %> <%= @city.name %> </p><br>
       <h5 class="card-title">Infos supplémentaires</h5>
       <% @tertiaries.each do |criteria| %>
         <ul class="">

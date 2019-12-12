@@ -179,6 +179,34 @@ namespace :scrap_good do
     file = URI.open('https://images.ladepeche.fr/api/v1/images/view/5deccbe28fe56f0b1f4f47a7/large/image.jpg?v=1')
     ac.photo.attach(io: file, filename: filename)
   end
+  task :city => :environment do
 
 
+    all_city = []
+    City.all.each do |city|
+      all_city << city.name.downcase.tr(" -", "").tr("é", "e")
+    end
+    require "google_drive"
+    session = GoogleDrive::Session.from_service_account_key("config.json")
+    ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
+    init_first_case = ws.rows.size - 1
+    init_first_case.times do |i|
+      unless all_city.include? ws[i+2, 4].downcase.tr(" -", "").tr("é", "e")
+        c = City.create(:name => ws[i+2, 4])
+        ws[i+2, 10] = c.id
+      else
+        City.all.each do |city|
+          if city.name.downcase.tr(" -", "").tr("é", "e") == ws[i+2, 4].downcase.tr(" -", "").tr("é", "e")
+            ws[i+2, 10] = city.id
+            if city.zipcode != nil
+              ws[i+2, 11] = city.zipcode
+            end
+          end
+      end
+      puts "City are now sinc"
+      ws.save
+      ws.reload
+    end
+  end
+end 
 end

@@ -20,13 +20,7 @@ tertiary_criteria_array = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concie
 
 #require 'Faker'
 Faker::Config.locale = 'fr'
-=begin
-cities_array.each do |city|
-	City.create(:name => city)
-	#print "#{city} add to city table"
-end
-puts "The city table has been initialized"
-=end
+
 type_of_property_array.each do |type_of_property|
 	TypeOfProperty.create(:name => type_of_property)
 	#puts "#{type_of_property} add to type of property table"
@@ -80,28 +74,32 @@ puts "The operation type table has been initialized"
 end
 puts "A user has been created"
 
-12.times do |k|
-
-	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name,road_type: RoadType.all.sample, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample, description: Faker::Lorem.paragraph(sentence_count: 8))
-end
-puts "accomodations created"
-
 Accomodation.all.each do |a|
 	rand(0..5).times do
 		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
 	end
 end
 
-require "google_drive"
+newcityarray = []
+cities_array.each do |city|
+	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
+end
+#require "google_drive"
 session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
-	if ws[i+1, 1] != nil
+	if ws[i+1, 1] != nil && newcityarray.include?(ws[i+1, 1].downcase.tr(" -", "").tr("é", "e"))
 		City.create(:name => ws[i+1, 1], :zipcode => ws[i+1, 2])
+		puts i
 	end
-	puts i
 
 end
+puts "The city table has been initialized"
 
-	puts "The city table has been initialized"
+12.times do |k|
+
+	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name,road_type: RoadType.all.sample, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample, description: Faker::Lorem.paragraph(sentence_count: 8))
+end
+
+puts "accomodations created"
