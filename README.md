@@ -18,7 +18,8 @@
 
 ### Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development
+. See deployment for notes on how to deploy the project on a live system.
 ```bash
   $ git clone git@github.com:Dieuyam/TPH.git
   $ bundle install
@@ -26,7 +27,7 @@ These instructions will get you a copy of the project up and running on your loc
   $ rails db:migrate
   $ rails db:seed
 ``
-In the gib we create a secondary branch 'dev' for the development and others branches for the functionnalities`
+In the gib we create a secondary branch 'dev' for the development and others branches for the functionnalities.`
 
 ### Prerequisites
 
