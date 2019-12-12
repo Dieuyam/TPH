@@ -1,8 +1,8 @@
 
 <div class="container-accomodations">
+  <%= render 'layouts/notification'%>
   <div class="text-center">
     <h1>Déposer une annonce</h1>
   </div>
 </div>
 <%= render 'form', accomodation: @accomodation, :url => { :action => "create" } %>
-

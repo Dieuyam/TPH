@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  # static pages controller
-  get '/static_pages/contact', to: 'static_pages#contact'
-  get '/static_pages/team', to: 'static_pages#team'
+  resources :team, only: [:index]
+  resources :contact
+
   root to: 'homepage#index'
 
   devise_for :users
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
     resources :users, :accomodations, :offers, :companies, :users, :cities, :countries, :heatings, :join_table_secondaries, :join_table_tertiaries, :operation_types, :road_types, :secondary_criteria, :tertiary_criteria, :type_of_properties
   end
-
+  resources :mon_profil, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
