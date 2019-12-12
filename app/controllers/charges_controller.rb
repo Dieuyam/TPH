@@ -5,7 +5,16 @@ class ChargesController < ApplicationController
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @charge = Charge.create
+    respond_to do |format|
+      if @charge.save
+        format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
+        format.json { render :show, status: :created, location: @charge }
+      else
+        format.html { render :new }
+        format.json { render json: @charge.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /charges/1

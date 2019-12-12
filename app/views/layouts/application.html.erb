@@ -21,7 +21,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_include_tag 'plugin', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -41,10 +40,10 @@
                   <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
-                  <%= link_to "A propos", search_index_path, class: "nav-link" %>
+                  <%= link_to "A propos", static_pages_team_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
-                  <%= link_to "Contact", new_accomodation_path, class: "nav-link" %>
+                  <%= link_to "Contact", static_pages_contact_path, class: "nav-link" %>
                 </li>
               </ul>
             </div>
@@ -87,13 +86,31 @@
     <div class="topBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="topBtn" title="Go to top"><a><span><i class="fas fa-chevron-up"></i></span></a></div>
 
     <%= yield %>
+
+    <% unless notice.nil? %>
+      <div class="alert alert-success alert-dismissible fade show notice" role="alert">
+        <%= notice%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+    <% unless alert.nil? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= alert%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+
+
     <%= render 'layouts/footer'%>
-    <p id="notice"><%= notice %></p>
+
 
   </body>
-
-
-
 
 
  <!-- Scripts JQuery -->
@@ -139,5 +156,6 @@
 
   <%= javascript_include_tag 'plugin', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'favorite_button', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 </html>
