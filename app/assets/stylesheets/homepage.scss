@@ -7,14 +7,15 @@
   height:100vh;
   min-height:400px;
   background-size:cover;
-  background-image:url('/assets/joss-woodhead-tfEoT92EYlo-unsplash.jpg');
+  background-image:url('https://theperfecthouse.s3.eu-west-3.amazonaws.com/architecture.jpg');
   background-position: top center;
 }
 
 .bannerHomepage {
   margin-top: -70vh;
   margin-left: auto;
-  margin-bottom: 35vh;
+  margin-bottom: 45vh;
+  padding-left: auto;
 }
 
 .bannerHomepage input{
@@ -22,12 +23,67 @@
 }
 
 .bannerHomepage h1 {
-  width: 35%;
   font-size: 48px;
   font-weight: bold;
 }
 
 .bannerHomepage h4 {
-  width: 55%;
   font-style: italic;
+}
+
+.animatedButton2 {
+   display: inline-block;
+   border-radius: 40px;
+   background-color: #EBB;
+   border: none;
+   color: #000000;
+   text-align: center;
+   font-size: 16px;
+   width: 25vh;
+   height: 7vh;
+   transition: all 0.5s;
+   outline: none;
+}
+
+.animatedButton2 span {
+   display: inline-block;
+   position: relative;
+   transition: 0.5s;
+   outline: none;
+}
+
+.animatedButton2 span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+   outline: none;
+}
+
+.animatedButton2:hover span {
+   padding-right: 20px;
+   box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+   outline: none;
+}
+
+.animatedButton2:hover span:after {
+   opacity: 1;
+   right: 0;
+   box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+   outline: none;
+}
+
+.animatedButton2:hover {
+   padding-right: 5px;
+   box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+   outline: none;
+}
+
+.animatedButton2:hover:after {
+   opacity: 1;
+   right: 0;
+   box-shadow: 0 10px 30px 0px rgba(238,187,187, 0.8);
+   outline: none;
 }

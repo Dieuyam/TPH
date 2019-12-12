@@ -41,7 +41,6 @@
 .login100-social-item {
 
  font-size: 25px;
-
  display: -webkit-box;
  display: -webkit-flex;
  display: -moz-box;
@@ -103,13 +102,17 @@ a .fab:hover {
  .wrap-login100 {
    padding-left: 15px;
    padding-right: 15px;
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 20px;
+   min-width: 75%;
  }
 }
 /*/////////////////////////////*/
 
 .wrap-login100 {
  width: 33%;
- background: #979797;
+ background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
  border-radius: 10px;
  overflow: hidden;
 }

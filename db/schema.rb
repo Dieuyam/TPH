@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_181338) do
+ActiveRecord::Schema.define(version: 2019_12_12_100944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_181338) do
   create_table "accomodations", force: :cascade do |t|
     t.string "road_number"
     t.string "road_name"
-    t.string "zipcode"
     t.float "living_space"
     t.float "price"
     t.integer "floor"
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_181338) do
     t.float "latitude"
     t.text "title"
     t.bigint "owner_id"
+    t.text "description"
     t.index ["city_id"], name: "index_accomodations_on_city_id"
     t.index ["country_id"], name: "index_accomodations_on_country_id"
     t.index ["heating_id"], name: "index_accomodations_on_heating_id"
@@ -68,10 +68,16 @@ ActiveRecord::Schema.define(version: 2019_12_04_181338) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "charges", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "zipcode"
   end
 
   create_table "companies", force: :cascade do |t|

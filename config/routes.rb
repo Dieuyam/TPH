@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  # static pages controller
+  get '/static_pages/contact', to: 'static_pages#contact'
+  get '/static_pages/team', to: 'static_pages#team'
   root to: 'homepage#index'
+
   devise_for :users
   resources :accomodations do
     resources :photo, only: [:create]
+    resources :favorite, only: [:create]
   end
+  resources :charges
   resources :search, only: [:index]
   resources :offers
   resources :companies

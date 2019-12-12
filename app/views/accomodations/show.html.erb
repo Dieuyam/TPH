@@ -1,26 +1,43 @@
+<link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css"><link rel="stylesheet" href="./style.css">
+
 <div class="container">
   <div class="container-accomodations">
     <div class="container-carousel">
-      <p>
-        <strong>Annonces</strong>
-        <%= @accomodation.road_number %>
-      </p>
       <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
         <ol class="carousel-indicators">
+          <%if @accomodation.photo.attached?%>
+            <% @accomodation.photo.each_with_index do |photo,index| %>
+              <%if index == 0 %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <%else %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>"></li>
+              <% end %>
+            <% end %>
+          <%else %>
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <% end %>
         </ol>
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
-            <img class="d-block img-fluid" src="/assets/jesse-roberts-561igiTyvSk-unsplash.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block img-fluid" src="/assets/outsite-co-R-LK3sqLiBw-unsplash.jpg" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block img-fluid" src="/assets/alberto-castillo-q-mx4mSkK9zeo-unsplash.jpg" alt="Third slide">
-          </div>
+
+          <%if @accomodation.photo.attached?%>
+            <% @accomodation.photo.each_with_index do |photo,index| %>
+              <%if index == 0 %>
+                <div class="carousel-item active">
+              <%else %>
+                <div class="carousel-item">
+              <% end %>
+                <%= image_tag @accomodation.photo[index], class:"d-block img-fluid", width:"100%" %>
+              </div>
+            <% end %>
+          <%else%>
+            <div class="carousel-item active">
+              <img class="d-block img-fluid" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/jesse-roberts-561igiTyvSk-unsplash.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block img-fluid" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/outsite-co-R-LK3sqLiBw-unsplash.jpg" alt="Second slide">
+            </div>
+          <%end%>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,27 +47,75 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
     </div>
     <br>
+    <%= link_to accomodation_favorite_index_path(params[:id]), :controller => :accomodations, method: "post" do%>
+    <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
+    <div class="fav-btn">
+      <span href="" class="favme dashicons dashicons-heart"></span>
+    </div>
+    <% else %>
+        <div class="fav-btn">
+      <span href="" class="favme dashicons dashicons-heart active"></span>
+    </div>
+    <%end %>
+<%end %>
+
+    <div class="card-body">
+      <div class="row d-flex justify-content-between">
+        <div class="">
+          <h5 class="card-title">Titre</h5>
+          <p class="card-text"><%= @accomodation.title %> (<%= @city.name %>)</p>
+          <p class="card-text">Nombre de chambres : <%= @accomodation.rooms %></p><br>
+        </div>
+        <div class="">
+          <h5 class="card-title">Propriétaire</h5>
+          <% if user_signed_in?  %>
+            <p class="card-text mb-0">nom : <%= @accomodation.owner.first_name %> <%= @accomodation.owner.last_name %></p>
+            <p class="card-text">email : <%= @accomodation.owner.phone %></p>
+          <% else  %>
+          <%= link_to "me connecter pour consulter", new_user_session_path, class: "text-info" %>
+          <% end  %>
+        </div>
+      </div>
+
+
+      <h5 class="card-title">Description</h5>
+      <p class="card-text"><%= @accomodation.description %></p><br>
+      <h5 class="card-title">Adresse</h5>
+      <p class="card-text"><%= @accomodation.road_number %>, <%= @road_type %>  <%= @accomodation.road_name %> , <%= @city.zipcode %> <%= @city.name %> </p><br>
+      <h5 class="card-title">Infos supplémentaires</h5>
+      <% @tertiaries.each do |criteria| %>
+        <ul class="">
+          <li><%= criteria.name %></li>
+        </ul>
+      <% end %>
+      <br>
+      <p class="card-text"><small class="text-muted">Mis à jour le <%= @accomodation.updated_at.to_formatted_s(:short) %></small></p>
+
+    </div>
+    <% case %>
+    <% when user_signed_in? && current_user.id == @accomodation.owner_id %>
+    <hr>
+    <p class="card-text">Mettre à jour votre bien</p>
+    <td><%= link_to 'Modifier', edit_accomodation_path(@accomodation) %></td>
+    <td><%= link_to 'Supprimer', @accomodation, method: :delete, data: { confirm: 'Are you sure?' }, class:'btnDelete' %>
+    <br>
+    <p class="card-text">Ajouter une image</p>
     <div class="row">
-      <%if @accomodation.photo.attached?%>
-        <% @accomodation.photo.each_with_index do |photo,index| %>
-          <%= image_tag @accomodation.photo[index], alt: 'photo', width:"150", height:"150" %>
-        <% end %>
-      <%else%>
-        <img src="/assets/outsite-co-R-LK3sqLiBw-unsplash.jpg" width="250" height="150">
-      <%end%>
       <div class="">
         <%= form_tag accomodation_photo_index_path(@accomodation), multipart: true do %>
-        <div class="col-lg-2">
           <%= file_field_tag :photo %>
-          <%= submit_tag "Ajouter" %>
-        </div>
+          <%= submit_tag "charger" %>
         <% end %>
       </div>
     </div>
+
+    <% end %>
+    <br>
+    <%= link_to "Retour à l'accueil", accomodations_path %>
   </div>
-  <%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
-  <%= link_to 'Back', accomodations_path %>
+
+
+
 </div>

@@ -7,19 +7,19 @@
 #msform {
     text-align: center;
     position: relative;
-    margin-top: 30px;
+    margin-top: 10vh;
 }
 
 #msform fieldset {
-    background: white;
+    background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
     border: 0 none;
-    border-radius: 0px;
+    border-radius: 10px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
-
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     /*stacking fieldsets above each other*/
     position: relative;
 }
@@ -33,11 +33,10 @@
 #msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 0px;
-    margin-bottom: 10px;
-    width: 100%;
+    width: 50%;
+    border-radius: 5px;
+    margin: 10px;
     box-sizing: border-box;
-    font-family: montserrat;
     color: #2C3E50;
     font-size: 13px;
 }
@@ -46,7 +45,7 @@
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #ee0979;
+    border: 1px solid #5AF;
     outline-width: 0;
     transition: All 0.5s ease-in;
     -webkit-transition: All 0.5s ease-in;
@@ -57,7 +56,7 @@
 /*buttons*/
 #msform .action-button {
     width: 100px;
-    background: #ee0979;
+    background: #5AF;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -68,12 +67,12 @@
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #5AF;
 }
 
 #msform .action-button-previous {
     width: 100px;
-    background: #C5C5F1;
+    background: #EBB;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -84,7 +83,7 @@
 }
 
 #msform .action-button-previous:hover, #msform .action-button-previous:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #EBB;
 }
 
 /*headings*/
@@ -114,7 +113,6 @@
 
 #progressbar li {
     list-style-type: none;
-    color: white;
     text-transform: uppercase;
     font-size: 9px;
     width: 33.33%;
@@ -157,7 +155,7 @@
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #ee0979;
+    background: #5AF;
     color: white;
 }
 
@@ -170,7 +168,7 @@
 .dme_link a {
     background: #FFF;
     font-weight: bold;
-    color: #ee0979;
+    color: #5AF;
     border: 0 none;
     border-radius: 25px;
     cursor: pointer;
@@ -179,6 +177,6 @@
 }
 
 .dme_link a:hover, .dme_link a:focus {
-    background: #C5C5F1;
+    background: #EBB;
     text-decoration: none;
 }

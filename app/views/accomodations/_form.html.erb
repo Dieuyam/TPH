@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Bootstrap MultiStep Form</title>
-      <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'><link rel="stylesheet" href="./app/assets/stylesheets/multiple_steps_form.css">
-
-</head>
-<body>
 <!-- partial:index.partial.html -->
 <!-- MultiStep Form -->
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
+<div class="">
+    <div class="col-md-12">
         <div id="msform">
-         <%= form_with(model: accomodation, local: true) do |form| %>
+         <%= form_with(model: accomodation, local: true, multipart: true) do |form| %>
             <% if accomodation.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
-          
+
                 <ul>
                 <% accomodation.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
                 </ul>
               </div>
-            <% end %> 
+            <% end %>
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active">Informations Primaires</li>
@@ -34,169 +23,196 @@
             </ul>
             <!-- fieldsets -->
             <fieldset>
-                <h2 class="fs-title">Informations Primaires</h2>
-                <h3 class="fs-subtitle">Dîtes-nous en plus sur votre bien</h3>
-                <div class="field">
-                <%= form.label :type_de_opération %>
-                <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, include_blank: true %>
+                <h2 class="title">Informations Primaires</h2>
+                <h3 class="fs-subtitle">Dîtes-nous en plus sur votre bien</h3><br>
+                <div class="text-center">
+                  <div class="field">
+                      <%= form.text_field :title, placeholder:'Titre de votre annonce' %>
+                  </div> <br>
                 </div>
-                
-                <div class="field">
-                    <%= form.label :type_de_bien %>
-                    <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name),:id,:name, include_blank: true %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :n° %>
-                    <%= form.text_field :road_number %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :type_de_voie %>
-                    <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, include_blank: true %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :code_postal %>
-                    <%= form.text_field :zipcode %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :ville %>
-                    <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true %>
-                
-                </div>
-                
-                <div class="field">
-                    <%= form.label :surface %>
-                    <%= form.text_field :living_space %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :étage %>
-                    <%= form.text_field :floor %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :nombre_d_étages %>
-                    <%= form.text_field :floors_inside %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :nombre_de_chambres %>
-                    <%= form.text_field :rooms %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :orientation %>
-                    <%= form.text_field :orientation %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :chauffage %>
-                    <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, include_blank: true %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :ges %>
-                    <%= form.text_field :ges %>
-                </div>
-                
-                <div class="field">
-                    <%= form.label :prix %>
-                    <%= form.text_field :price %>
-                </div>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                <fieldset>
-                    <h2 class="fs-title">Informations Secondaires</h2>
-                    <h3 class="fs-subtitle">En quoi votre bien est-il spécial</h3>
-                    <div class="field">
-                        
-                    <div class="field">
-                    <%= form.label "balcon" %> <br />
-                    <%= form.check_box :balcony %> <br />
-                    </div>
 
-                    <div class="field">
-                    <%= form.label "Terrasse" %> <br />
-                    <%= form.check_box :terrace %> <br />
-                    </div>
+                <div class="text-center">
+                  <div class="field">
+                      <%= form.text_area :description, placeholder:'Décrivez en quelques mots votre bien' %><br>
+                      <small><i>Petite astuce: Décrivez votre bien le plus possible, cela valorise votre annonce.</i></small>
+                  </div> <br>
+                </div>
+                <hr>
 
-                    <div class="field">
-                    <%= form.label "Sous-Sol/Garage" %> <br />
-                    <%= form.check_box :basement %> <br />
-                    </div>
+                  <div class="field">
+                  <%= form.label :type_de_opération %>
+                  <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, include_blank: true, placeholder:'Orientation' %>
+                  </div>
+                  <hr>
 
-                    <div class="field">
-                    <%= form.label "Ascenseur" %> <br />
-                    <%= form.check_box :elevator %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.label :type_de_bien %>
+                      <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name),:id,:name, include_blank: true %>
+                  </div>
+                <hr>
 
-                    <div class="field">
-                    <%= form.label "Piscine" %> <br />
-                    <%= form.check_box :pool %> <br />
-                    </div>
+                <div class="text-center">
+                  <h4>Adresse du bien</h4>
+                </div><br>
+                <div class="row">
+                  <div class="field">
+                      <%= form.text_field :road_number, placeholder:'N°' %>
+                  </div>
 
-                    <div class="field">
-                    <%= form.label "Concierge" %> <br />
-                    <%= form.check_box :concierge %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.label :type_de_voie %>
+                      <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, include_blank: true %>
+                  </div>
 
-                    <div class="field">
-                    <%= form.label "Parking" %> <br />
-                    <%= form.check_box :parking %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.text_field :road_name, placeholder:'nom de la voie' %>
+                  </div>
 
-                    <div class="field">
-                    <%= form.label "Dernier étage" %> <br />
-                    <%= form.check_box :last_floor %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.label :ville %>
+                      <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, include_blank: true %>
+                  </div>
+                </div>
+                <hr>
 
-                    <div class="field">
-                    <%= form.label "Jardin" %> <br />
-                    <%= form.check_box :garden %> <br />
-                    </div>
+                <div class="text-center">
+                  <h4>Caractéristiques</h4>
+                </div><br>
+                <div class="row">
+                  <div class="field">
+                      <%= form.text_field :living_space, placeholder:'Surface' %>
+                  </div>
 
-                    <div class="field">
-                    <%= form.label "Accès Handicapé" %> <br />
-                    <%= form.check_box :disabled_access %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.text_field :floor, placeholder:'Étages' %>
+                  </div>
 
-                    <div class="field">
-                    <%= form.label "Meublé" %> <br />
-                    <%= form.check_box :furnished %> <br />
-                    </div>
+                  <div class="field">
+                      <%= form.text_field :floors_inside, placeholder:"Nombre d'étages total" %>
+                  </div>
 
-                    </div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                <fieldset>
-                    <h2 class="fs-title">Photos</h2>
-                    <h3 class="fs-subtitle">Mettez votre bien en valeur</h3>
+                  <div class="field">
+                      <%= form.text_field :rooms, placeholder:'Nombre de Chambres' %>
+                  </div>
 
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <div class="actions">
-                <%= form.submit %>
-            </div>
-            <% end %>
-            </fieldset>
-        </form>
+                  <div class="field">
+                      <%= form.text_field :orientation, placeholder:'Orientation'%>
+                  </div>
+
+                  <div class="field">
+                      <%= form.label :Chauffage %>
+                      <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, include_blank: true %>
+                  </div>
+
+                  <div class="field">
+                      <%= form.text_field :ges, placeholder:'GES' %> <br>
+                      <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose à des sanctions.</i></small>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="text-center">
+                  <h4>Combien souhaitez-vous le vendre ?</h4>
+                </div><br>
+                <div class="text-center">
+                  <div class="field">
+                      <%= form.text_field :price, placeholder:'Prix de votre bien' %>
+                  </div>
+                </div>
+                    <input type="button" name="next" class="next action-button" value="Suivant"/>
+              </fieldset>
+
+              <fieldset>
+                  <h2 class="title">Informations Secondaires</h2>
+                  <h3 class="fs-subtitle">En quoi votre bien est-il spécial</h3>
+                  <div class="row">
+
+                  <div class="field">
+                  <%= form.label "Piscine |" %> <br />
+                  <%= form.check_box :pool %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Ascenseur |" %> <br />
+                  <%= form.check_box :elevator %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Sous-Sol/Garage |" %> <br />
+                  <%= form.check_box :basement %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Balcon / terrasse |" %> <br />
+                  <%= form.check_box :balcony %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Concierge |" %> <br />
+                  <%= form.check_box :concierge %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Parking |" %> <br />
+                  <%= form.check_box :parking %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Dernier étage |" %> <br />
+                  <%= form.check_box :last_floor %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Accès Handicapé |" %> <br />
+                  <%= form.check_box :disabled_access %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Jardin |" %> <br />
+                  <%= form.check_box :garden %> <br />
+                  </div>
+
+                  <div class="field">
+                  <%= form.label "Meublé" %> <br />
+                  <%= form.check_box :furnished %> <br />
+                  </div>
+
+                  </div>
+                  <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
+                  <input type="button" name="next" class="next action-button" value="Suivant"/>
+              </fieldset>
+              <fieldset>
+                <h2 class="title">Photos</h2>
+                <h3 class="fs-subtitle">Mettez votre bien en valeur</h3>
+                <div class="row">
+                  <%= form.file_field :photo_first %>
+                </div>
+                <div class="row">
+                  <%= form.file_field :photo_second %>
+                </div>
+                <div class="row">
+                  <%= form.file_field :photo_third %>
+                </div>
+
+
+                <div class="">
+                  <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
+                  <div class="actions">
+                  <input type="submit" name="next" class="next action-button" value="Valider"/>
+                  </div>
+                </div>
+                <% end %>
+              </fieldset>
         <!-- link to designify.me code snippets -->
         <div class="dme_link">
-            <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a></p>
+          <%= link_to 'Retour', accomodations_path %>
         </div>
         <!-- /.link to designify.me code snippets -->
     </div>
 </div>
 <!-- /.MultiStep Form -->
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>		
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
 <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-
-</body>
-</html>
