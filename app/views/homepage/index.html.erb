@@ -3,30 +3,25 @@
     </div>
 </section>
 <div class="container bannerHomepage">
+  <%= render 'layouts/notification'%>
   <h1>Bienvenue sur The Perfect House.</h1><br>
   <h4>L'assistant intelligent pour dénicher vos biens immobiliers de vente et de location en France.</h4><br>
   <%= render 'form' %>
 </div>
-
-
+<br>
 <div class="text-center">
-  <h1>Notre Selection</h1><br>
+  <h1>Notre Selection</h1>
 </div>
 <div class="container">
   <div class="container-accomodations">
-  
-
-
-
-
-    <div class="card-columns">   
-      <% six_last_accomodation.each do |accommodation| %>
+    <div class="card-columns">
+      <% @random_accommodation.each do |accommodation| %>
 
         <%= link_to(accommodation) do %>
         <div class="card">
-         
+
             <img class="card-img-top" src="https://theperfecthouse.s3.eu-west-3.amazonaws.com/gustavo-zambelli-nEvzSXBIhiU-unsplash.jpg" alt="Card image cap">
-      
+
           <div class="card-body">
             <h5 class="card-title text-muted"><%= accommodation.title %> (<%= City.find(if_nil_sort_one(accommodation.city_id)).name%>)</h5>
             <p class="card-text text-muted"><%= accommodation.description %></p>
@@ -37,4 +32,3 @@
     </div>
   </div>
 </div>
-

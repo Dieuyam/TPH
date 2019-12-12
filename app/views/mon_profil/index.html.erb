@@ -1,6 +1,8 @@
 <div class="backgroundprofile">
   <br><br>
-  <%= render 'layouts/notification'%>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
   <div class="jumbotron jumbotron-fluid-hero">
     <img src="" alt="">
   </div>
@@ -12,13 +14,14 @@
       <%end%>
         <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
         <div class="col-lg-2">
-          <%= file_field_tag :profile_picture, class:'btnStandard', value:'change' %>
+          <%= file_field_tag :profile_picture, class:'btnStandard' %>
           <%= submit_tag "Mettre à jour", class:'btnStandard' %>
         </div>
         <% end %>
     </div>
 
   <div class="profileWrap">
+    <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>" ,<span><i class="fas fa-pen"></i></span></a></div><br>
     <div class="text-center">
       <h3>Mon Profil</h3>
     </div><br>
@@ -27,8 +30,9 @@
     <i class="fas fa-mobile-alt"></i> <%= @user.phone %><hr>
     <i class="fas fa-map-marker-alt"></i> <%= @user.address %><hr>
     <i class="fas fa-shopping-cart"></i> Mon abonnement : <a style="color:#ffd369"> <%= @user.offer.name %></a><hr>
-    <i class="fas fa-info-circle"></i> Mes informations personnelles<hr>
-    <i class="far fa-calendar-alt"></i> Mes publications<hr>
+    <i class="fas fa-info-circle"></i> Mes informations personnelles<hr><br>
+    <i class="fas fa-info-circle"></i> Mes publications<hr><br>
+
 
     <div class="card-columns">
     <% @user.accomodations.each do |accomodation| %>
@@ -55,7 +59,7 @@
     <% end %>
     </div>
 
-    <i class="far fa-star"></i> Mes favoris<hr><br>
+    <i class="fas fa-info-circle"></i> Mes favoris<hr><br>
 
         <div class="card-columns">
     <% user_favorites_accomodation.each do |accomodation| %>
@@ -84,7 +88,6 @@
 
 
     <div class="d-flex justify-content-center">
-      <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>" ,<span><i class="fas fa-pen"></i></span></a></div><br>
       <%= link_to 'Retour', root_path, class:'btnStandard' %>
     </div><br>
   </div><br><br><br><br><br>
