@@ -34,6 +34,22 @@ a:hover {
   color: #000000;
 }
 
+.btnDeletesm {
+	background-color:#fc8d83;
+	border-radius:25px;
+	display:inline-block;
+	color:#fff;
+	font-size:10px;
+	padding:6px 10px;
+	text-decoration:none;
+  border: none;
+}
+.btnDeletesm:hover {
+	background-color:#ef4339;
+  text-decoration: none;
+  color: #000000;
+}
+
 .btnStandard {
 	background-color:#5AF;
 	border-radius:25px;
@@ -50,13 +66,13 @@ a:hover {
   color: #000000;
 }
 
-.alert {
-  text-align: center;
-  color: #ef4339;
-}
-
 .notice {
   text-align: center;
   color: #01d28e;
   margin-top: 20px;
+}
+
+.alert {
+  text-align: center;
+  color: #ef4339;
 }
