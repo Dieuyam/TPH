@@ -29,4 +29,16 @@ module ApplicationHelper
 			return render inline: '<i class="fas fa-times"></i>'
 		end
 	end
+
+	def six_last_accomodation
+		a = Accomodation.all.order("updated_at DESC").first(6)
+		return a
+	end
+	def user_favorites_accomodation
+		u= []
+		Favorite.where(:user_id => current_user.id).each do |f| 
+			u << Accomodation.find(f.accomodation_id)
+		end
+		return u
+	end
 end
