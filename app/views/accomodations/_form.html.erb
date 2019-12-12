@@ -70,7 +70,7 @@
 
                   <div class="field">
                       <%= form.label :ville %>
-                      <%= form.collection_select :city_id, City.order(:name),:id,:name, include_blank: true %>
+                      <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, include_blank: true %>
                   </div>
                 </div>
                 <hr>
