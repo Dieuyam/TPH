@@ -65,9 +65,9 @@ class AccomodationsController < ApplicationController
       a.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
       a.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
 
-      redirect_to a
+      redirect_to a, notice: 'votre bien a été créé'
     else
-      redirect_to accomodations_path
+      redirect_to accomodations_path, alert: "votre bien n'a pas été créé"
     end
 
 
@@ -180,13 +180,13 @@ class AccomodationsController < ApplicationController
       case
 
       when current_user.accomodations.count == 1 && current_user.offer_id == 1
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       when current_user.accomodations.count == 5 && current_user.offer_id == 2
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       when current_user.accomodations.count == 100 && current_user.offer_id == 3
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       end
 
@@ -197,8 +197,7 @@ class AccomodationsController < ApplicationController
       case
 
       when current_user.id != @accomodation.owner_id
-          redirect_to accomodations_path
-          flash.now[:notice] = "Vous n'avez pas accès à cette action"
+          redirect_to accomodations_path, alert: "Vous n'avez pas accès à cette action"
       end
 
 
