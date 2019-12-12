@@ -1,14 +1,15 @@
 class ChargesController < ApplicationController
   before_action :set_charge, only: [:show, :edit, :update, :destroy]
+  # before_action :check_payment_owner, only: [:index, :create]
   skip_before_action :verify_authenticity_token  
 
   # GET /charges
   # GET /charges.json
   def index
-    @charge = Charge.create
+    @charge = Charge.new
     respond_to do |format|
       if @charge.save
-        format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
+        format.html { redirect_to user_path(:id => $stripe_customer.id), notice: 'Payment was succesfull.' }
         format.json { render :show, status: :created, location: @charge }
       else
         format.html { render :new }
@@ -80,4 +81,12 @@ class ChargesController < ApplicationController
     def charge_params
       params.fetch(:charge, {})
     end
+
+    # def check_payment_owner
+    #   case 
+    #   when current_user.stripe_customer_id != params[:id]
+    #     redirect_to user_path(:id => current_user.id), alert: "Vous n'avez pas accès à cette action veuillez passer par le processus de paiment Stripe"
+    #   end
+    #  end
+    
 end
