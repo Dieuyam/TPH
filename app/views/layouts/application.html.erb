@@ -88,13 +88,24 @@
     <%= yield %>
 
     <% unless notice.nil? %>
-      <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <div class="alert alert-success alert-dismissible fade show notice" role="alert">
         <%= notice%>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <% end %>
+
+    <% unless alert.nil? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= alert%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+
 
     <%= render 'layouts/footer'%>
 
