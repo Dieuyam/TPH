@@ -1,3 +1,11 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card img {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: 45px;
+  border-radius: 50%;
+}
