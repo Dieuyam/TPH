@@ -1,11 +1,13 @@
 class ChargesController < ApplicationController
   before_action :set_charge, only: [:show, :edit, :update, :destroy]
+  before_action :check_payment_owner, only: [:index, :create]
   skip_before_action :verify_authenticity_token  
 
   # GET /charges
   # GET /charges.json
   def index
     @charge = Charge.create
+    redirect_to user_path
     respond_to do |format|
       if @charge.save
         format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
@@ -80,4 +82,8 @@ class ChargesController < ApplicationController
     def charge_params
       params.fetch(:charge, {})
     end
+
+    def check_payment_owner
+        
+     end
 end
