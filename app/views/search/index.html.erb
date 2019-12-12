@@ -11,8 +11,8 @@
             <div id="">
               <%= text_field_tag :search, "", class:"form-control",placeholder:"Quels sont vos critères ?" %>
             </div><br>
-            <div>
-              <%= select("city", "id", City.all.collect {|city| [ city.name, city.id ] },:prompt => 'Selectionner une ville') %>
+            <div class="w-50 pr-10">
+              <%= select("city", "id", City.all.collect {|city| [ city.name + ' - ' + city.zipcode.to_s, city.id ] },:prompt => 'Selectionner une ville') %>
             </div><br><br>
             <div>
               <%= select_tag "rooms", options_for_select((1..6).step(1)), :prompt => 'Nombre de chambres' %>

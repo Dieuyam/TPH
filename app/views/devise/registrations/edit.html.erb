@@ -39,7 +39,7 @@
 
           <div class="field">
             <%= f.label :Mot_de_passe %><br><i>(Laisser cette espace vide si rien ne change)</i><br />
-            <%= f.password_field :Mot_de_passe, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
             <% if @minimum_password_length %>
               <br />
               <em><%= @minimum_password_length %> caractères minimum</em>
@@ -53,7 +53,7 @@
 
           <div class="field">
             <%= f.label :Mot_de_passe_actuel %><br><i>(Rentrez votre mot de passe pour valider vos changements)</i><br />
-            <%= f.password_field :Mot_de_passe_actuel, autocomplete: "current-password", class: "form-control" %>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
           </div><br>
 
           <div class="actions">
