@@ -66,13 +66,13 @@ a:hover {
   color: #000000;
 }
 
+.alert {
+  text-align: center;
+  color: #ef4339;
+}
+
 .notice {
   text-align: center;
   color: #01d28e;
   margin-top: 20px;
-}
-
-.alert {
-  text-align: center;
-  color: #ef4339;
 }
