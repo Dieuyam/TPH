@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :accomodations do
     resources :photo, only: [:create]
+    resources :favorite, only: [:create]
   end
   resources :charges
   resources :search, only: [:index]

@@ -71,8 +71,8 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col">
-											<h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-											<span class="h2 font-weight-bold mb-0">350,897</span>
+											<h5 class="card-title text-uppercase text-muted mb-0">Villes</h5>
+											<span class="h2 font-weight-bold mb-0"><%=City.all.size %></span>
 										</div>
 										<div class="col-auto">
 											<div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -175,6 +175,7 @@
 									<tr>
 										<th scope="col">ID</th>
 										<th scope="col">Nom</th>
+										<th scope="col">zipcode</th>
 										<th scope="col" class="text-right text-dark">Editer</th>
 									</tr>
 								</thead>
@@ -186,6 +187,9 @@
 										</th>
 										<td>
 											<%=if_nil_sort_icon(city.name)%>
+										</td>
+										<td>
+											<%=if_nil_sort_icon(city.zipcode)%>
 										</td>
 										<td class="text text-right">
 											<i class="far fa-trash-alt mr-2"></i>

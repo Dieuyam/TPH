@@ -14,10 +14,12 @@
  *= require homepage
  *= require footer
  *= require multiple_steps_form
- *= require favorite_button 
+ *= require favorite_button
  *= require signup
  *= require login
  *= require users
  *= require accomodations
- 
+ *= require static_pages
+ *= require search
+
  */

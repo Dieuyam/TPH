@@ -43,7 +43,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
 
-    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
+    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
 
 
 
@@ -65,9 +65,9 @@ class AccomodationsController < ApplicationController
       a.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
       a.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
 
-      redirect_to a
+      redirect_to a, notice: 'votre bien a été créé'
     else
-      redirect_to accomodations_path
+      redirect_to accomodations_path, alert: "votre bien n'a pas été créé"
     end
 
 
@@ -78,7 +78,7 @@ class AccomodationsController < ApplicationController
   # PATCH/PUT /accomodations/1.json
   def update
     respond_to do |format|
-      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], zipcode: accomodation_params[:zipcode], living_space: accomodation_params[:zipcode].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i))
+      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i))
 
         delete_secondary_criteria(@accomodation.id)
 
@@ -180,13 +180,13 @@ class AccomodationsController < ApplicationController
       case
 
       when current_user.accomodations.count == 1 && current_user.offer_id == 1
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       when current_user.accomodations.count == 5 && current_user.offer_id == 2
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       when current_user.accomodations.count == 100 && current_user.offer_id == 3
-        redirect_to offers_path
+        redirect_to offers_path, alert: "Vous n'avez pas accès à cette action"
 
       end
 
@@ -197,8 +197,7 @@ class AccomodationsController < ApplicationController
       case
 
       when current_user.id != @accomodation.owner_id
-          redirect_to accomodations_path
-          flash.now[:notice] = "Vous n'avez pas accès à cette action"
+          redirect_to accomodations_path, alert: "Vous n'avez pas accès à cette action"
       end
 
 
