@@ -1,1 +1,2 @@
 $('.alert').alert()
+$('.notice').alert()
