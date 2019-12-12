@@ -1,8 +1,6 @@
 <div class="backgroundprofile">
   <br><br>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
+  <%= render 'layouts/notification'%>
   <div class="jumbotron jumbotron-fluid-hero">
     <img src="" alt="">
   </div>
@@ -58,7 +56,6 @@
       <% end %>
     <% end %>
     </div>
-
 
     <div class="d-flex justify-content-center">
       <%= link_to 'Retour', root_path, class:'btnStandard' %>
