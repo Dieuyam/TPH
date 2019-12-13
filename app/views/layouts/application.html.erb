@@ -1,158 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>The Perfect House</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://theperfecthouse.s3.eu-west-3.amazonaws.com/favicon-16x16.png">
-    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand&display=swap" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+<head>
+  <title>The Project House</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://theperfecthouse.s3.eu-west-3.amazonaws.com/favicon-16x16.png">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand&display=swap" rel="stylesheet">
 
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  </head>
 
-  <body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <nav id="nav" class="navbar fixed-top navbar-expand-sm" data-spy="affix">
-        <div class="container">
-            <h6 class="brand" style="color: black"> <%= link_to "The Perfect House", root_path, class: "navbar-brand mb-0 h1" %></h6>
-            <a class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</a>
-            <div class="collapse navbar-collapse p-r-0" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto mr-2">
-                <li class="nav-item active">
-                  <%= link_to "Recherche avancée", search_index_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item active">
-                  <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item active">
-                  <%= link_to "A propos", team_index_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item active">
-                  <%= link_to "Contact", contact_index_path, class: "nav-link" %>
-                </li>
-              </ul>
-            </div>
 
-            <% if user_signed_in?  %>
+</head>
 
-            <div class="navbar-collapse collapse">
-                <ul class="ml-auto navbar-nav">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
-                    </a>
-                    <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
-                      <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
-                    </div>
-                  </li>
-                </ul>
-            </div>
+<body>
 
-            <% else  %>
-            <div class="navbar-collapse collapse">
-                <ul class="ml-auto navbar-nav">
-                  <li class="nav-item dropdown">
-                    <button type="button" class="btn btn-outline dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Menu
-                    </button>
-                    <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="<%= new_user_session_path %>">Connexion</a>
-                      <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
-                    </div>
-                  </li>
-                </ul>
-            </div>
-            <% end  %>
-
-        </div>
-    </nav>
-    <!-- /.navbar -->
-    <div class="topBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="topBtn" title="Go to top"><a><span><i class="fas fa-chevron-up"></i></span></a></div>
-
-    <%= yield %>
-
-    <% unless notice.nil? %>
-      <div class="alert alert-success alert-dismissible fade show notice" role="alert">
-        <%= notice%>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <nav id="nav" class="navbar fixed-top navbar-expand-sm" data-spy="affix">
+    <div class="container">
+      <h6 class="brand" style="color: black"> <%= link_to "The Perfect House", root_path, class: "navbar-brand mb-0 h1" %></h6>
+      <a class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</a>
+      <div class="collapse navbar-collapse p-r-0" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mr-2">
+          <li class="nav-item active">
+            <%= link_to "Recherche avancée", search_index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Publier un bien", new_accomodation_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "A propos", team_index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Contact", contact_index_path, class: "nav-link" %>
+          </li>
+        </ul>
       </div>
-    <% end %>
 
-    <% unless alert.nil? %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <%= alert%>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <% if user_signed_in?  %>
+
+      <div class="navbar-collapse collapse">
+        <ul class="ml-auto navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
+            </a>
+            <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
+              <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
+            </div>
+          </li>
+        </ul>
       </div>
-    <% end %>
-    
-    <!-- Scripts JS -->
-    <script type="text/javascript">
-      var isInViewport = function (elem) {
-        var bounding = elem.getBoundingClientRect();
-        return (
-          bounding.top >= 0 &&
-          bounding.left >= 0 &&
-          bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-          );
-      };
-      var IsJumbotronPass = false
-      $(window).scroll(function(){
-        var home = document.querySelector('.text-center');
-        if (document.querySelector('.text-center').getBoundingClientRect().top < 35) {
-          if (IsJumbotronPass == false) {
-          IsJumbotronPass = true
-          $('nav').addClass('affix')
-        }
-        } else {
-          if (IsJumbotronPass == true) {
-          IsJumbotronPass = false
-          $('nav').removeClass('affix')
-        }
-      }
-      });
-    
-    </script>
 
+      <% else  %>
+      <div class="navbar-collapse collapse">
+        <ul class="ml-auto navbar-nav">
+          <li class="nav-item dropdown">
+            <button type="button" class="btn btn-outline dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </button>
+            <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<%= new_user_session_path %>">Connexion</a>
+              <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <% end  %>
 
-    <%= render 'layouts/footer'%>
+    </div>
+  </nav>
+  <!-- /.navbar -->
+  <div class="topBtn d-flex justify-content-center align-items-center" id="return-to-top" title="Go to top"><a><span><i class="fas fa-chevron-up"></i></span></a></div>
 
-  </body>
- 
+  <%= yield %>
 
- <!-- Scripts JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <%= render 'layouts/footer'%>
 
-  <!-- Scripts Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'>
 
 
 
-  <%= javascript_include_tag 'plugin', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'favorite_button', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<%= javascript_include_tag 'application' %>  
+<%= javascript_include_tag 'favorite_button', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 </html>
-
