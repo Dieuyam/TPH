@@ -10,8 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+//= require rails-ujs
 //= require activestorage
 //= require multiple_steps_form
+//= require favorite_button
+
 
 
 $(window).scroll(function() {
