@@ -51,11 +51,11 @@ def scrapmax(page_url)
   price = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/a[1]").text.strip
   price_per_month = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").text.strip
   living_space = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[3]").text.strip
-  description = page.xpath("//div/form/input[23]/@value").first.value 
+  description = page.xpath("//div/form/input[23]/@value").first.value
   city = page.xpath("//div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/p").text
   rooms = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[1]").text.strip
   bedroom = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/ul/li[2]").text.strip
-  phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value 
+  phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
   img = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[1]")
@@ -71,7 +71,7 @@ end
 
 def includ(elem)
 end
-#-------------------------------------------TASK--------------------------------------------  
+#-------------------------------------------TASK--------------------------------------------
 namespace :scrap_good do
   task :scrap_proxies => :environment do
     myip
@@ -93,7 +93,7 @@ namespace :scrap_good do
 
   task :google => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size + 1
     all_desc = []
@@ -138,7 +138,7 @@ namespace :scrap_good do
           end
           ws[init_first_case, 14] = accomodation[:type_of_operation]
           ws[init_first_case, 15] = accomodation[:bedroom]
-          init_first_case += 1 
+          init_first_case += 1
           ws.save
           ws.reload
 
@@ -150,7 +150,7 @@ namespace :scrap_good do
 
   task :create => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
 
@@ -187,7 +187,7 @@ namespace :scrap_good do
       all_city << city.name.downcase.tr(" -", "").tr("é", "e")
     end
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
     init_first_case.times do |i|
@@ -208,5 +208,5 @@ namespace :scrap_good do
       ws.reload
     end
   end
-end 
+end
 end
