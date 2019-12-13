@@ -1,5 +1,4 @@
 <link href="//s.w.org/wp-includes/css/dashicons.css?20150710" rel="stylesheet" type="text/css"><link rel="stylesheet" href="./style.css">
-
 <div class="container">
   <%= render 'layouts/notification'%>
   <div class="container-accomodations">
@@ -60,7 +59,7 @@
       <span href="" class="favme dashicons dashicons-heart active"></span>
     </div>
     <%end %>
-<%end %>
+  <%end %>
 
     <div class="card-body">
       <div class="row d-flex justify-content-between">
@@ -118,5 +117,6 @@
   </div>
 
 
+  <%= javascript_include_tag 'multiple_steps_form', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 </div>
