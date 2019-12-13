@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+<<<<<<< HEAD
 
 .btnGreen {
 	background-color:#4DD599;
@@ -20,3 +21,26 @@
   color: #000000;
   outline: none;
 }
+=======
+/*//////////////////////////////////////////////////////////////////
+[ Responsive ]*/
+
+@media (max-width: 480px) {
+ .wrap-offer {
+   padding-left: 15px;
+   padding-right: 15px;
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 20px;
+   min-width: 75%;
+ }
+}
+/*/////////////////////////////*/
+
+.wrap-offer {
+ width: 33%;
+ background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
+ border-radius: 10px;
+ margin: 20px;
+}
+>>>>>>> dev
