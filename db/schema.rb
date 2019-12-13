@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_130718) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "zipcode"
+    t.string "zipcode"
   end
 
   create_table "companies", force: :cascade do |t|
