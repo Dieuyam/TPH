@@ -10,6 +10,7 @@
   width: 100%;
   height: 35vh;
   margin-top: -110px;
+  background-color: #fff8a6;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -73,16 +74,16 @@
 
 @media (max-width: 480px) {
  .editBtn {
-   bottom: 33vh !important;
-   right: 9vh !important;
+   bottom: 47vh !important;
+   right: 6vh !important;
  }
 }
 /*/////////////////////////////*/
 
 .editBtn {
-   position: absolute;
-   bottom: 39vh; /* Place the button at the bottom of the page */
-   right: 55vh; /* Place the button 30px from the right */
+   position: sticky;
+   bottom: 9vh; /* Place the button at the bottom of the page */
+   right: 5vh; /* Place the button 30px from the right */
    z-index: 3; /* Make sure it does not overlap */
    border: none; /* Remove borders */
    outline: none;
