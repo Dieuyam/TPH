@@ -40,8 +40,7 @@
 
         <div class="text-center">
           <div class="field">
-            <%= form.label :type_de_opération %> <br>
-            <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, include_blank: true, placeholder:'Orientation' %>
+            <%= form.collection_select :operation_type_id, OperationType.order(:name),:id,:name, {}, {:class=>'form-control'} %>
           </div>
         </div>
 
@@ -49,10 +48,12 @@
 
         <div class="text-center"> 
           <div class="field">
-            <%= form.label :type_de_bien %> <br>
-            <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name),:id,:name, include_blank: true %>
+            <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name), :id, :name, {}, {:class=>'form-control'} %>
+
           </div>
         </div>
+
+
 
         <br>
 
@@ -69,7 +70,7 @@
 
         <div class="field">
           <%= form.label :type_de_voie %>
-          <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, include_blank: true %>
+          <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, {}, {:class=>'form-control'} %>
         </div>
 
         <div class="field">
@@ -78,7 +79,7 @@
 
         <div class="field">
           <%= form.label :ville %>
-          <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, include_blank: true %>
+          <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, {}, {:class=>'form-control'} %>
         </div>
 
         <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
@@ -112,7 +113,7 @@
 
         <div class="field">
           <%= form.label :Chauffage %>
-          <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, include_blank: true %>
+          <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, {}, {:class=>'form-control'} %>
         </div>
 
         <div class="field">
@@ -237,6 +238,8 @@
       <!-- /.link to designify.me code snippets -->
     </div>
   </div>
+</div>
+
   <div class="dme_link">
     <%= link_to 'Retour', accomodations_path %>
   </div>
