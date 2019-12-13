@@ -26,3 +26,4 @@ Rails.application.config.assets.precompile += %w( signup.css )
 Rails.application.config.assets.precompile += %w( main.js )
 Rails.application.config.assets.precompile += %w( plugin.js )
 Rails.application.config.assets.precompile += %w( favorite_button.js ) 
+Rails.application.config.assets.precompile += ['directory/*']
