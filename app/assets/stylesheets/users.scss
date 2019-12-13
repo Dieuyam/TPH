@@ -100,3 +100,33 @@
 .editBtn:hover {
   background-color: #EBB; /* Add a dark-grey background on hover */
 }
+
+.upload-field-customized{
+  width: 50px;
+  background: none;
+  position: relative;
+  margin-left: 101vh;
+  margin-top: -25vh;
+  margin-bottom: 15vh;
+
+  input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    opacity: 0;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+  }
+
+  span{
+    text-align: center;
+    width: 100%;
+    display: block;
+    height: 50px;
+    line-height: 20px;
+
+    img{
+    }
+  }
+}

@@ -8,7 +8,6 @@
 
     <div class="card-columns">
       <% @accomodations.each do |accomodation| %>
-
         <%= link_to(accomodation) do %>
         <div class="card">
           <%if accomodation.photo.attached?%>
