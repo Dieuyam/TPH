@@ -215,7 +215,3 @@ select {
     font-size: 13px!important;
 }
 
-.field {
-    display: flex;
-    justify-content: center;
-}
