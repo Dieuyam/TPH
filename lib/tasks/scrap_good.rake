@@ -93,7 +93,7 @@ namespace :scrap_good do
 
   task :google => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
+    session = GoogleDrive::Session.from_service_account_key("config.json")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size + 1
     all_desc = []
@@ -150,7 +150,7 @@ namespace :scrap_good do
 
   task :create => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
+    session = GoogleDrive::Session.from_service_account_key("config.json")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
 
@@ -187,7 +187,7 @@ namespace :scrap_good do
       all_city << city.name.downcase.tr(" -", "").tr("é", "e")
     end
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json.erb")
+    session = GoogleDrive::Session.from_service_account_key("config.json")
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
     init_first_case.times do |i|

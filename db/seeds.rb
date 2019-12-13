@@ -79,7 +79,7 @@ cities_array.each do |city|
 	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
 end
 #require "google_drive"
-session = GoogleDrive::Session.from_service_account_key("config.json.erb")
+session = GoogleDrive::Session.from_service_account_key("config.json")
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
