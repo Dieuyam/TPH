@@ -43,11 +43,11 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
 
-    a = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i), city: City.find(accomodation_params[:city_id].to_i), country: Country.all.sample,owner: current_user)
+    @accomodation = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i, city_id: accomodation_params[:city_id].to_i, country: Country.all.sample,owner: current_user)
 
 
 
-    if a.save
+    if @accomodation.save
 
       #Création critère tertiaire grace aux cases cochées
       params["accomodation"].to_unsafe_h.each_with_index { |(key,value),index|
@@ -61,15 +61,14 @@ class AccomodationsController < ApplicationController
         end
       }
 
-      a.photo.attach(accomodation_params[:photo_first]) if accomodation_params[:photo_first]
-      a.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
-      a.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
+      @accomodation.photo.attach(accomodation_params[:photo_first]) if accomodation_params[:photo_first]
+      @accomodation.photo.attach(accomodation_params[:photo_second]) if accomodation_params[:photo_second]
+      @accomodation.photo.attach(accomodation_params[:photo_third]) if accomodation_params[:photo_third]
 
-      redirect_to a, notice: 'votre bien a été créé'
-    else
-      redirect_to accomodations_path, alert: "votre bien n'a pas été créé"
-    end
-
+      redirect_to @accomodation, notice: 'votre bien a été créé'
+  else
+    render 'new'
+  end
 
   end
 
@@ -78,7 +77,7 @@ class AccomodationsController < ApplicationController
   # PATCH/PUT /accomodations/1.json
   def update
     respond_to do |format|
-      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property: TypeOfProperty.find(accomodation_params[:type_of_property_id].to_i), operation_type: OperationType.find(accomodation_params[:operation_type_id].to_i))
+      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i, city_id: accomodation_params[:city_id].to_i)
 
         delete_secondary_criteria(@accomodation.id)
 
@@ -127,7 +126,7 @@ class AccomodationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def accomodation_params
-    params.require(:accomodation).permit(:title, :description, :road_number, :operation_type_id, :type_of_property_id, :road_name, :road_type_id, :zipcode, :city_id, :living_space, :floor, :floors_inside, :rooms, :orientation, :heating_id, :ges, :price,:balcony, :terrace, :basement, :elevator, :pool, :concierge, :parking, :last_floor, :garden, :disabled_access, :furnished,:photo_first, :photo_second, :photo_third)
+    params.require(:accomodation).permit(:title, :description, :road_number, :operation_type_id, :type_of_property_id, :road_name, :road_type_id, :city_id, :living_space, :floor, :floors_inside, :rooms, :orientation, :heating_id, :ges, :price,:balcony, :terrace, :basement, :elevator, :pool, :concierge, :parking, :last_floor, :garden, :disabled_access, :furnished,:photo_first, :photo_second, :photo_third)
   end
 
   def search_params
