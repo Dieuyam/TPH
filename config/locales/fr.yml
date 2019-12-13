@@ -31,3 +31,23 @@
 
 fr:
   hello: "Bonjour monde"
+  activerecord:
+    attributes:
+      accomodation:
+        email: "E-mail address"
+    errors:
+      models:
+        accomodation:
+          attributes:
+            road_type:
+              required: "Type de rue requis"
+            heating:
+              required: "Type de chauffage requis"
+            type_of_property:
+              required: "Type de propriété requis"
+            operation_type:
+              required: "Type d'opération requis"
+            city:
+              required: "Nom de la ville requis"
+            price:
+              greater_than: "prix pas assez élevé"

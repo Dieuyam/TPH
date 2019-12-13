@@ -9,16 +9,16 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *= require main
- *= require navbar
+ *= require navbar  
+ *= require multiple_steps_form
  *= require homepage
  *= require footer
- *= require multiple_steps_form
  *= require favorite_button
  *= require signup
  *= require login
  *= require users
- *= require accomodations
+ *= require main 
+ *= require accomodations    
  *= require static_pages
  *= require search
  *= require offers

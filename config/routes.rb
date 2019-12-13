@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :team, only: [:index]
   resources :contact
-
+get '/sign_out' => 'users/sessions#destroy'
   root to: 'homepage#index'
 
   devise_for :users
