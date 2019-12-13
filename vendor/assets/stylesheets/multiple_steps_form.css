@@ -4,25 +4,34 @@
     padding: 0;
 }
 /*form styles*/
+
+body {
+    font-family: montserrat, arial, verdana;
+    background: transparent;
+}
+
 #msform {
     text-align: center;
     position: relative;
-    margin-top: 10vh;
+    margin-top: 30px;
 }
 
+
 #msform fieldset {
-    background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
+     background-image: linear-gradient(to right top, #eebbbb, #edadc5, #dba5db, #aea5f2, #55aaff);
     border: 0 none;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
+    margin: 0 10%;
+
     /*stacking fieldsets above each other*/
     position: relative;
 }
+
+
 
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
@@ -115,7 +124,7 @@
     list-style-type: none;
     text-transform: uppercase;
     font-size: 9px;
-    width: 33.33%;
+    width: 10%;
     float: left;
     position: relative;
     letter-spacing: 1px;
@@ -179,4 +188,18 @@
 .dme_link a:hover, .dme_link a:focus {
     background: #EBB;
     text-decoration: none;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+#progressbar {
+    display: flex;
+    justify-content: center;
 }
