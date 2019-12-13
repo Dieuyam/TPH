@@ -43,7 +43,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations.json
   def create
 
-    @accomodation = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i, city_id: accomodation_params[:city_id].to_i, country: Country.all.sample,owner: current_user)
+    @accomodation = Accomodation.new(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i,heating_id: accomodation_params[:heating_id], city_id: accomodation_params[:city_id].to_i, country: Country.all.sample,owner: current_user)
 
 
 
@@ -77,7 +77,7 @@ class AccomodationsController < ApplicationController
   # PATCH/PUT /accomodations/1.json
   def update
     respond_to do |format|
-      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i, city_id: accomodation_params[:city_id].to_i)
+      if @accomodation.update(title: accomodation_params[:title], description: accomodation_params[:description], road_number: accomodation_params[:road_number].to_i, road_type_id: accomodation_params[:road_type_id].to_i, road_name: accomodation_params[:road_name], living_space: accomodation_params[:living_space].to_f, price: accomodation_params[:price].to_f, floors_inside: accomodation_params[:floors_inside].to_i, rooms: accomodation_params[:rooms].to_i, orientation: accomodation_params[:orientation], ges:accomodation_params[:ges], type_of_property_id: accomodation_params[:type_of_property_id].to_i, operation_type_id: accomodation_params[:operation_type_id].to_i, city_id: accomodation_params[:city_id].to_i,heating_id: accomodation_params[:heating_id])
 
         delete_secondary_criteria(@accomodation.id)
 
