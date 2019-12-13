@@ -26,8 +26,6 @@
         <li>Les +</li>
         <li>Photos</li>
         <li>Descriptif</li>
-
-
       </ul>
       <!-- fieldsets -->
       <fieldset>
@@ -49,17 +47,13 @@
 
         <br>
 
-        <div class="text-center"> 
+        <div class="text-center">
           <div class="field">
             <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name), :id, :name, {}, {:class=>'form-control'} %>
 
           </div>
         </div>
-
-
-
         <br>
-
         <input type="button" name="next" class="next action-button" value="Suivant"/>
       </fieldset>
 
@@ -72,16 +66,14 @@
         </div>
 
         <div class="field">
-          <%= form.label :type_de_voie %>
           <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, {}, {:class=>'form-control'} %>
         </div>
 
         <div class="field">
-          <%= form.text_field :road_name, placeholder:'nom de la voie' %>
+          <%= form.text_field :road_name, placeholder:'Nom de la voie' %>
         </div>
 
         <div class="field">
-          <%= form.label :ville %>
           <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, {}, {:class=>'form-control'} %>
         </div>
 
@@ -91,7 +83,7 @@
 
 
       <fieldset>
-        <h2 class="title">Informations Terciaires</h2>
+        <h2 class="title">Informations Tertiaires</h2>
         <h3 class="fs-subtitle"></h3>
 
         <div class="field">
@@ -115,14 +107,16 @@
         </div>
 
         <div class="field">
-          <%= form.label :Chauffage %>
           <%= form.collection_select :heating_id, Heating.order(:name),:id,:name, {}, {:class=>'form-control'} %>
         </div>
 
         <div class="field">
-          <%= form.text_field :ges, placeholder:'GES' %> <br>
-          <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose à des sanctions.</i></small>
+          <%= form.text_field :ges, placeholder:'GES' %>
         </div>
+        <div class="text-center">
+          <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose à des sanctions.</i></small>
+        </div><br>
+
 
         <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
         <input type="button" name="next" class="next action-button" value="Suivant"/>
@@ -130,9 +124,9 @@
       </fieldset>
 
       <fieldset>
-        <h2 class="title">Informations Terciaires</h2>
+        <h2 class="title">Informations Tertiaires</h2>
         <h3 class="fs-subtitle"></h3>
-        <div class="row"> 
+        <div class="row">
           <div class="col-5">
             <div class="field">
               <%= form.label "Piscine " %> <br />
@@ -218,20 +212,17 @@
         <h2 class="title">Prix</h2>
         <h3 class="fs-subtitle"></h3>
 
-        <div class="text-center">
           <div class="field">
             <%= form.text_field :price, placeholder:'Prix de votre bien' %>
           </div>
-        </div>
 
-
-        <div class="text-center">
           <div class="field">
             <%= form.text_area :description, placeholder:'Décrivez en quelques mots votre bien' %><br>
-            <small><i>Petite astuce: Décrivez votre bien le plus possible, cela valorise votre annonce.</i></small>
-          </div> <br>
-        </div>
+          </div>
 
+          <div class="text-center">
+            <small><i>Petite astuce: Décrivez votre bien le plus possible, cela valorise votre annonce.</i></small>
+          </div>
 
         <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
         <input type="submit" name="next" class="next action-button" value="Valider"/>
