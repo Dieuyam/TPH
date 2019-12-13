@@ -1,3 +1,22 @@
 // Place all the styles related to the Offers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.btnGreen {
+	background-color:#4DD599;
+	border-radius:25px;
+	display:inline-block;
+	color:#fff;
+	font-size:16px;
+	padding:6px 12px;
+	text-decoration:none;
+  border: none;
+  outline: none;
+}
+.btnGreen:hover {
+	background-color:#42B883;
+  text-decoration: none;
+  color: #000000;
+  outline: none;
+}
