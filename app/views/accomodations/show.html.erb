@@ -49,18 +49,24 @@
         </a>
     </div>
     <br>
-    <%= link_to accomodation_favorite_index_path(params[:id]), :controller => :accomodations, method: "post" do%>
-    <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
-    <div class="fav-btn">
-      <span href="" class="favme dashicons dashicons-heart"></span>
-    </div>
-    <% else %>
+    <%= link_to accomodation_favorite_index_path(params[:id]), :controller => :accomodations, method: "post", remote: true do%>
+    <% if user_signed_in? %>
+      <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
         <div class="fav-btn">
-      <span href="" class="favme dashicons dashicons-heart active"></span>
-    </div><br><br>
+          <span href="" class="favme dashicons dashicons-heart"></span>
+        </div><br><br>
+      <% else %>
+        <div class="fav-btn">
+          <span href="" class="favme dashicons dashicons-heart active"></span>
+        </div><br><br>
+      <% end %>
+    <% else %>
+      <div class="fav-btn">
+        <span href="" class="favme dashicons dashicons-heart"></span>
+      </div><br><br>
     <% end %>
   <% end %>
-
+  <br><br>
   <div class="d-flex align-items">
     <div class="accomodationWrap">
       <div class="">
