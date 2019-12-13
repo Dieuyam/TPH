@@ -10,9 +10,5 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require favorite_button
-//= require multiple_steps_form
 //= require activestorage
-//= require turbolinks
-//- require main
+//= require multiple_steps_form
