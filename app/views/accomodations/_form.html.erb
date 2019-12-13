@@ -34,7 +34,6 @@
         <h2 class="title">Votre annonce</h2>
         <h3 class="fs-subtitle"></h3><br>
 
-
         <div class="text-center">
           <div class="field">
             <%= form.text_field :title, placeholder:'Titre de votre annonce' %>
@@ -52,7 +51,6 @@
         <div class="text-center">
           <div class="field">
             <%= form.collection_select :type_of_property_id, TypeOfProperty.order(:name), :id, :name, {include_blank: "Type de bien"}, {:class=>'form-control'} %>
-
           </div>
         </div>
         <br>
@@ -68,9 +66,7 @@
         </div>
 
         <div class="field">
-
           <%= form.collection_select :road_type_id, RoadType.order(:name),:id,:name, {include_blank: "Type de voie"}, {:class=>'form-control'} %>
-
         </div>
 
         <div class="field">
@@ -78,15 +74,12 @@
         </div>
 
         <div class="field">
-
           <%= form.collection_select :city_id, City.order(:name),:id,:city_name_with_zipcode, {include_blank: "Ville"}, {:class=>'form-control'} %>
-
         </div>
 
         <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
         <input type="button" name="next" class="next action-button" value="Suivant"/>
       </fieldset>
-
 
       <fieldset>
         <h2 class="title">Caractéristiques de votre bien</h2>
@@ -119,13 +112,12 @@
 
         <div class="field row">
           <%= form.text_field :ges, placeholder:'GES' %> <br>
-          <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose <br> à des sanctions.</i></small> 
+          <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose <br> à des sanctions.</i></small>
 
         </div>
         <div class="text-center">
           <small><i>Le DPE est obligatoire pour toute transaction immobilière. Ne pas renseigner ces champs (classe énergie, GES) vous expose à des sanctions.</i></small>
         </div><br>
-
 
         <input type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
         <input type="button" name="next" class="next action-button" value="Suivant"/>
@@ -196,7 +188,6 @@
 
       </fieldset>
 
-
       <fieldset>
         <h2 class="title">Photos</h2>
         <h3 class="fs-subtitle"></h3>
@@ -225,14 +216,12 @@
             <%= form.text_field :price, placeholder:'Prix de votre bien' %>
           </div>
 
-
         <div class="text-center">
           <div class="field w-100">
             <%= form.text_area :description, placeholder:'Décrivez en quelques mots votre bien' %><br>
           </div> <br>
           <small><i>Petite astuce: Décrivez votre bien le plus possible, cela valorise votre annonce.</i></small>
         </div>
-
 
           <div class="text-center">
             <small><i>Petite astuce: Décrivez votre bien le plus possible, cela valorise votre annonce.</i></small>
@@ -254,4 +243,3 @@
   <div class="dme_link">
     <%= link_to 'Retour', accomodations_path %>
   </div>
-

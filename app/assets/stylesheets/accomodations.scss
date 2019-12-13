@@ -14,11 +14,13 @@
 
 .carousel-inner img {
   height: 512px;
+  width: 100%;
 }
 
 @media (max-width: 480px) {
  .carousel-inner img {
    height: 320px;
+   width: 100%;
  }
 }
 
