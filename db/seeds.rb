@@ -74,12 +74,6 @@ puts "The operation type table has been initialized"
 end
 puts "A user has been created"
 
-Accomodation.all.each do |a|
-	rand(0..5).times do
-		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
-	end
-end
-
 newcityarray = []
 cities_array.each do |city|
 	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
@@ -103,3 +97,11 @@ puts "The city table has been initialized"
 end
 
 puts "accomodations created"
+
+Accomodation.all.each do |a|
+	rand(0..5).times do
+		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
+	end
+end
+
+puts "criteria created"
