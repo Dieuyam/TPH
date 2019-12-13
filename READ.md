@@ -1,10 +1,5 @@
 # THP - Projet Final - The Perfect House (THP)
 
-A big Thanks to our Wonderful Dream Team, our mentor Alex Perisic and the The_Hacking_Project Community.
-After 2 weeks of webdevelopment we finally build the MVP of TPH.
-The Challenge was hard but we succeed to create the prototype.
-The second version will be implemented soon ;-) ...
-
 ## Our team :
 
 > Yannick Yamdjeu
@@ -17,7 +12,7 @@ The second version will be implemented soon ;-) ...
 
 > Trello => [Trello](https://trello.com/b/MpgjMyDQ/projet-theperfecthouse-thp)
 > Heroku => [THP](https://the-perfect-house.herokuapp.com/)
-> GitHub => [github](https://github.com/Dieuyam/TPH): we use Github for versionning.
+> GitHub => [github](https://github.com/Dieuyam/TPH)
 
 # How to use 
 
@@ -25,34 +20,49 @@ The second version will be implemented soon ;-) ...
 
 These instructions will get you a copy of the project up and running on your local machine for development
 . See deployment for notes on how to deploy the project on a live system.
-```bash
+`bash
   $ git clone git@github.com:Dieuyam/TPH.git
   $ bundle install
   $ rails db:create
   $ rails db:migrate
   $ rails db:seed
-``
-In the gib we create a secondary branch 'dev' for the development and others branches for the functionnalities.`
+  $ rails server
+
+
+In the github we create a secondary branch 'dev' for the development and others branches for the functionnalities.`
+
+
+Only for contributors: if you want to update the app on heroku
+git pull origin master or ( git pull heroku master)
+git push heroku master 
+heroku run rails db:create
+heroku run rails db:migrate
+heroku run rails db:seed
+
 
 ### Prerequisites
 
-To run this app you will need ruby v '2.5.1' and  Rails 5.2.4
+To run this app you will need ruby v '2.5.1' and rails '2.5.4'
 
 
 ### Built With
 
 Rails - The web framework used
-HTML, CSS and Javascript.
+HTML, CSS, JavaScript
+
+### Versioning
+We use GitHub for versioning. For the versions available, see the tags [on this repository] (https://github.com/Dieuyam/TPH).
 
 
-### Authors
 
 
+### Contributors
 Yannick Yamdjeu
 James Elangue
 Nathan Teboul
 Romain Poddevin
 Bruno Vongxay
 
+A big Thanks to our Dream Team,  our mentor for the project  Alex Perisic and all The_Hacking_Project Community
 
 
