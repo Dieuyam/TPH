@@ -79,7 +79,21 @@ cities_array.each do |city|
 	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
 end
 #require "google_drive"
-session = GoogleDrive::Session.from_service_account_key("config.json")
+require "google_drive"
+u = '{
+  "type": "service_account",
+  "project_id": "tphouse",
+  "private_key_id": "f43cb15e249b09a57261fe2f1f7a7f7667cc1b81",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQUeZM+oTC1b4O\nEHez2ltaAy01Z/X1wJjvn2XUd2u4N7T6og7SC6wdxbHsAHxWfNL4Gx8bSQ0F9YEz\nmmWaXBVwxhjun4NK/WvaN3emo0S31H20K/Exh8fkYZnkNZ1dC626YrprJO+V9mtz\nll1Oo6m9mlzO2TMu1QZFTDBkqNTnC8AJ2kQOaPjUrsqL1mI1ICTO3Dm5CPG7FwXO\niSgemli65CYDaKgHEhcAoawBjoF2ckijYmR5Dy9wDfVS5KSnQbuOkI7k1EzHzFGt\nKbPbxpJbascZfEjAvO5tqwlu4PpNxgvBlhKHhLvePbmYUhLnfLGkNQFJYDgvzBaC\nK1RyMXHbAgMBAAECggEAZ78p+VNYU+n7/WghHT6VeTYUyUCto0bYQ5o4LgCNcpC3\nvox/4gazIJ6o1daGFdKThMGJE98lL78NKeRuTlomyWO23fwt+GZOVL6EBcbQ/dZD\nBjxOIfMzz172M8upw8GBs03g9mRON3qiF84eSQBEFCuwpclQ7rVjqpZfkXntkeSH\npAGi0qcwbF09KKmtQG2zB6sbCoCsI8yUOlzE6aha10mjoxyYTcbUPs0sovjZY5Dj\nD7Rcz/byacpVOrjvfT1sXyzMnqjGESNBFY3vwrTy3sYE915/uOKLrGM7nThWnlFF\nVam4z3G+vIP3Z0GSwFGtAegBYHPyUSMnS5tNWXaUtQKBgQDqJTeoip53yESr7GaB\n9/Hy3Oi6ypm0CW/pNiwGtY8nWziBChK9AYVZzH+VHMAPH4KTzANtrcCmdIxkzndw\nKlQIoETw21aBp7QioCxvQCzdirNyJzNE9C36IIX3Us4XQQCwQF3VHCQ06efCfvH+\nA5GX+qoBhITf4+RwezV3HeRyrQKBgQDjw5igwoTxhRjkZbnRN8XSbpVROvtCESJG\nJYTyJF4tVUwwjQvlTQTHm2W5cfhK9EJSK1wW2hX3/1j1ZWB2LAgHWIC6Lgv9iUXz\n6YpcubbBDKYwH0CUFMN4UNb/HfPiAWcT0NKptJl/OwANV27p4Z7r8B5gTpwQvFZ1\nRRyMjgyPpwKBgCsUcesmpgVv6YKgWjPrhK6kioVjpWgEnHySJQOPACnDlN/ZFJ2F\n3B0rjQXIZmXh7Ep5LOBPKbT2mKYrfro6b3+uzUBrer0cN/5u7f4CFr8kN+P25m33\nZ0YwGbXpnFWW9iN3lEwTg23g421bofaUfYMy8XiaA0CWU3+Gi83AyDl5AoGAYGji\nCWJtXcKGF9/LePkPvpRalijORFf2VxT4onqsdqn9dyutFmG0nT11ILtSa3/bNubt\nsyqbU/99S1qfK0ZWG63lx2lIYAikWKvJiph9+Fd/XS1Na6EiYKJvb0vheRA47pVd\nJsKwmr+BtSQGae+8EojwgrmjrB3cxwT7Ia/bN08CgYEAgalS9XiWGx0bFqinhBSg\neGlTGTbyQLmUBypq2j+PPMryP9Ogk6X6r5Hm1Lwe0q1hYGASJYFiU+Lye79I1Nsa\nEMe37ZGn1RWc6Zkq3dvuFATFT11Ee6+AwrSlQGkZXezL0rphJWYwJ7TzlW9lTuzg\nO2YWdPW4zvJeK2epqGqJhQ0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tphgood@tphouse.iam.gserviceaccount.com",
+  "client_id": "101442455839737086477",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tphgood%40tphouse.iam.gserviceaccount.com"
+}'
+io = StringIO.new(u)
+session = GoogleDrive::Session.from_service_account_key(io)
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
