@@ -37,4 +37,12 @@ class Accomodation < ApplicationRecord
   def validation_on_zero
 
   end
+
+    def smart_description
+      if description.size > 100
+        return description[0...100] + "..."
+    else 
+      return description
+  end
+end
 end
