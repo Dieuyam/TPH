@@ -27,7 +27,7 @@
 
           <div class="card-body">
             <h5 class="card-title text-muted"><%= accommodation.title %> (<%= City.find(if_nil_sort_one(accommodation.city_id)).name%>)</h5>
-            <p class="card-text text-muted"><%= accommodation.description %></p>
+            <p class="card-text text-muted"><%= accommodation.smart_description %></p>
           </div>
         </div>
         <% end %>
