@@ -160,6 +160,7 @@ namespace :scrap_good do
   end
 
   task :create => :environment do
+    puts "ok"
     require "google_drive"
     u = ENV['GOOGLE_KEY']
     io = StringIO.new(u)
@@ -174,10 +175,18 @@ namespace :scrap_good do
 
     (init_first_case).times do |i|
       unless all_desc.include? ws[i+2, 14]
-        hash_of_accomodation = {:price => ws[i+2, 1], :living_space => ws[i+2, 2], :rooms => ws[i+2, 5], :title => ws[i+2, 14] }
+        hash_of_accomodation = {:road_number => rand(1..99),:heating => Heating.all.sample, :longitude=> 2.300, :latitude => 45.800, :orientation => 'est', :ges =>'A',:road_type => RoadType.all.sample, :type_of_property => TypeOfProperty.all.sample, :owner=> User.all.sample, :operation_type=> OperationType.all.sample, :floors_inside=> rand(1..3), :floor => rand(1..5), :country_id => 1, :road_name => Faker::Address.street_name, :price => ws[i+2, 1].to_i, :living_space => ws[i+2, 2].to_i, :rooms => ws[i+2, 5].to_i, :city_id => ws[i+2, 10].to_i, :title => ws[i+2, 14], :description => ws[i+2, 3] }
         new_accomodation = Accomodation.new(hash_of_accomodation)
         if new_accomodation.save
           puts "Accomodation n°#{new_accomodation.id} add in database"
+          url = 'https:'+ws[i+2, 16]
+          filename = File.basename(URI.parse(url).path)
+          file = URI.open(url)
+          new_accomodation.photo.attach(io: file, filename: filename)
+          url = 'https:'+ws[i+2, 17]
+          filename = File.basename(URI.parse(url).path)
+          file = URI.open(url)
+          new_accomodation.photo.attach(io: file, filename: filename)
         end
       end
     end
