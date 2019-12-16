@@ -16,6 +16,8 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @session_id = stripe.id
+    puts 'looooooooooooooooooooooooooooooooooook up'
+    puts @session_id
     @offer = Offer.new
   end
 
