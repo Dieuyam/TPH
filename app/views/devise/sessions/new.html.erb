@@ -37,12 +37,12 @@
           <br>
           <div class="flex-c p-b-112">
             <div class="btnSocialLog">
-              <a href="https://www.facebook.com/" class="login100-social-item">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://www.gmail.com" class="login100-social-item">
-                <i class="fab fa-google"></i>
-              </a>
+              <%= link_to "https://www.facebook.com", class:'login100-social-item', target:'_blank' do %>
+              <i class="fab fa-facebook-f"></i>
+              <% end %>
+              <%= link_to "https://www.gmail.com", class:'login100-social-item', target:'_blank' do %>
+              <i class="fab fa-google"></i>
+              <% end %>
             </div>
           </div>
           <div class="container-login100">

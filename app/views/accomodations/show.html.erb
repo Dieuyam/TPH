@@ -53,16 +53,16 @@
         <% if user_signed_in? %>
         <% if Favorite.where(:user_id => current_user.id, :accomodation_id => params[:id]).size == 0 %>
         <div class="fav-btn">
-          <span href="" class="favme dashicons dashicons-heart"></span>
+          <span class="favme dashicons dashicons-heart"></span>
         </div><br><br>
         <% else %>
         <div class="fav-btn">
-          <span href="" class="favme dashicons dashicons-heart active"></span>
+          <span class="favme dashicons dashicons-heart active"></span>
         </div><br><br>
         <% end %>
         <% else %>
         <div class="fav-btn">
-          <span href="" class="favme dashicons dashicons-heart"></span>
+          <span class="favme dashicons dashicons-heart"></span>
         </div><br><br>
         <% end %>
         <% end %>
