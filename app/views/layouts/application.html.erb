@@ -47,7 +47,7 @@
               <%if current_user.profile_picture.attached?%>
               <%= image_tag current_user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"30", height:"30" %>
               <%else%>
-              <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="30" height="30">
+              <%= image_tag "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png", class:"rounded-circle", width:"30", height:"30" %>
               <%end%>
             </a>
             <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
