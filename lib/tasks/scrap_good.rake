@@ -58,11 +58,15 @@ def scrapmax(page_url)
   phone = page.xpath("/html/body/div[3]/div[12]/div/div/div[1]/a/@href").first.value
   type = page.xpath("//body/div[3]/div[5]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/h2").text.strip
   ges = page.at_css('[class="info-detail"]')
-  img = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]/div[1]")
-  puts img
+  image = []
+  img = page.xpath("/html/body/div[3]/div[5]/div/div[1]/div[1]").search("img").each do |img|
+    image << img.attr('src')
+  end
+  
   type_of_operation = page.xpath("//body/div[3]/div[4]/div/h1").text.strip
-  accomodation = {:city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month, :bedroom => bedroom}
+  accomodation = {:image => image, :city => city, :living_space => living_space.tr("^0-9", '').to_i, :description => description, :rooms => rooms.tr("^0-9", '').to_i, :price => price.tr("^0-9", '').to_i, :phone => phone.tr("^0-9", ''), :type => type.to_s, :type_of_operation => type_of_operation, :price_per_month => price_per_month, :bedroom => bedroom}
   p "---- ONE ACCOMODATION ADD TO GOOGLE DRIVE ----"
+  p accomodation
   return accomodation
 rescue Exception => ex
   puts "An error of type #{ex.class} happened, message is #{ex.message}"
@@ -93,7 +97,9 @@ namespace :scrap_good do
 
   task :google => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    u = ENV['GOOGLE_KEY']
+    io = StringIO.new(u)
+    session = GoogleDrive::Session.from_service_account_key(io)
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size + 1
     all_desc = []
@@ -138,6 +144,11 @@ namespace :scrap_good do
           end
           ws[init_first_case, 14] = accomodation[:type_of_operation]
           ws[init_first_case, 15] = accomodation[:bedroom]
+          puts accomodation[:image]
+          accomodation[:image].each_with_index do |img, index|
+            puts "here img => #{img}"
+            ws[init_first_case, 16 +index] = img.to_s
+          end
           init_first_case += 1
           ws.save
           ws.reload
@@ -150,7 +161,9 @@ namespace :scrap_good do
 
   task :create => :environment do
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    u = ENV['GOOGLE_KEY']
+    io = StringIO.new(u)
+    session = GoogleDrive::Session.from_service_account_key(io)
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
 
@@ -187,7 +200,9 @@ namespace :scrap_good do
       all_city << city.name.downcase.tr(" -", "").tr("é", "e")
     end
     require "google_drive"
-    session = GoogleDrive::Session.from_service_account_key("config.json")
+    u = ENV['GOOGLE_KEY']
+    io = StringIO.new(u)
+    session = GoogleDrive::Session.from_service_account_key(io)
     ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[0]
     init_first_case = ws.rows.size - 1
     init_first_case.times do |i|
@@ -202,11 +217,11 @@ namespace :scrap_good do
               ws[i+2, 11] = city.zipcode
             end
           end
+        end
+        puts "City are now sinc"
+        ws.save
+        ws.reload
       end
-      puts "City are now sinc"
-      ws.save
-      ws.reload
     end
   end
-end
 end
