@@ -94,8 +94,8 @@ class OffersController < ApplicationController
         payment_intent_data: {
           capture_method: 'manual',
         },
-        success_url: 'http://localhost:3000/charges',
-        cancel_url: 'https://example.com/cancel',
+        success_url: 'https://the-perfect-house.herokuapp.com/charges',
+        cancel_url: 'https://the-perfect-house.herokuapp.com',
       )
       current_user.stripe_session_id = @offer_selected.id
       current_user.save
