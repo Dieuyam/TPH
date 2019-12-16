@@ -59,9 +59,20 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 if (
   (
     document.documentElement.textContent || document.documentElement.innerText
-  ).indexOf('Notre Selection') > -1
+  ).indexOf('Notre Selection') > -1 
 ) {
 
 } else {
 	 $('nav').addClass('affix')
+};
+
+
+if (
+  (
+    document.documentElement.textContent || document.documentElement.innerText
+  ).indexOf('Mon Profil') > -1 
+) {
+
+} else {
+   $('nav').addClass('affix')
 }

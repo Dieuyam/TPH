@@ -9,28 +9,32 @@
       <%else%>
         <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
       <%end%>
-      <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
-      <div class="col-lg-2">
-        <%= file_field_tag :profile_picture, class:'btnStandard', value:'change' %>
-        <%= submit_tag "Mettre à jour", class:'btnStandard' %>
-      </div>
-      <% end %>
+
     </div><br><br>
 
   <div class="profileWrap">
     <div class="d-flex justify-content-center">
       <div class="text-center">
-        <h3>Mon Profil &nbsp;&nbsp;</h3>
+        <h3 class=" mb-3">Mon Profil &nbsp;&nbsp;</h3>
+            <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
+        <div class="col-lg-12 mb-3 d-flex justify-content-center row">
+          <br><i class="mb-1">Modifier ma photo de profil.</i><br />
+          <%= file_field_tag :profile_picture, class:'btnStandard', value:'change' %>
+        </div>
+          <% end %>
       </div>
-      <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>"<span><i class="fas fa-pen"></i></span></a></div><br>
+
+
+      <div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= edit_user_registration_path %>"><span><i class="fas fa-pen"></i></span></a></div><br>
     </div>
+
     <br><br>
     <h5><i class="far fa-address-card"></i> <%= @user.first_name %> <%= @user.last_name %></h5><hr>
     <i class="fas fa-at"></i> <%= @user.email %><hr>
     <i class="fas fa-mobile-alt"></i> <%= @user.phone %><hr>
     <i class="fas fa-map-marker-alt"></i> <%= @user.address %><hr>
     <div class="row d-flex align-items-center">
-      &nbsp;&nbsp;&nbsp;<i class="fas fa-file-signature"></i>&nbsp; Mon abonnement :&nbsp; <a style="color:#ffd369"> <%= @user.offer.name %></a>&nbsp;&nbsp;<div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= offers_path %>"<span><i class="far fa-eye"></i></span></a></div>
+      &nbsp;&nbsp;&nbsp;<i class="fas fa-file-signature"></i>&nbsp; Mon abonnement :&nbsp; <a style="color:#ffd369"> <%= @user.offer.name %></a>&nbsp;&nbsp;<div class="editBtn d-flex justify-content-center align-items-center" title="Edit"><a href="<%= offers_path %>"><span><i class="far fa-eye"></i></span></a></div>
     </div><hr>
     <i class="fas fa-info-circle"></i> Mes informations personnelles<hr>
     <i class="far fa-calendar-alt"></i> Mes publications<br><br>
