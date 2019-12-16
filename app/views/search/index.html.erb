@@ -4,30 +4,30 @@
     <h1>Que recherchez-vous ?</h1>
   </div>
   <div class="container-login100">
-      <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <br>
-        <div class="login100-form validate-form">
-          <%= form_tag accomodations_path, method: 'get' do %>
-          <div class="text-center">
-            <div id="">
-              <%= text_field_tag :search, "", class:"form-control",placeholder:"Quels sont vos critères ?" %>
-            </div><br>
-            <div class="w-50 pr-10">
-              <%= select("city", "id", City.all.collect {|city| [ city.name + ' - ' + city.zipcode.to_s, city.id ] },:prompt => 'Selectionner une ville') %>
-            </div><br><br>
-            <div>
-              <%= select_tag "rooms", options_for_select((1..6).step(1)), :prompt => 'Nombre de chambres' %>
-            </div><br><br>
-            <div>
-              <%  @tertiaries.each do |criteria| %>
-              <%= check_box_tag 'criteria_ids[]', criteria.id -%>
-                <%= h criteria.name -%>
-              <% end %>
-            </div><br><br>
-            <%= button_to "Rechercher", accomodations_path, class:"btnStandard" %>
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+      <br>
+      <div class="login100-form validate-form">
+        <%= form_tag accomodations_path, method: 'get' do %>
+        <div class="text-center">
+          <div id="">
+            <%= text_field_tag :search, "", class:"form-control",placeholder:"Quels sont vos critères ?" %>
           </div><br>
-          <% end %>
-        </div>
+          <div class="w-50 pr-10">
+            <%= select("city", "id", City.all.collect {|city| [ city.name + ' - ' + city.zipcode.to_s, city.id ] },:prompt => 'Selectionner une ville') %>
+          </div><br><br>
+          <div>
+            <%= select_tag "rooms", options_for_select((1..6).step(1)), :prompt => 'Nombre de chambres' %>
+          </div><br><br>
+          <div>
+            <%  @tertiaries.each do |criteria| %>
+            <%= check_box_tag 'criteria_ids[]', criteria.id -%>
+            <%= h criteria.name -%>
+            <% end %>
+          </div><br><br>
+          <%= button_to "Rechercher", accomodations_path, class:"btnStandard" %>
+        </div><br>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>
