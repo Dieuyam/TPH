@@ -75,7 +75,8 @@ end
 
 def includ(elem)
 end
-#-------------------------------------------TASK--------------------------------------------
+
+
 namespace :scrap_good do
   task :scrap_proxies => :environment do
     myip
@@ -93,7 +94,6 @@ namespace :scrap_good do
   task :scrapmax2 => :environment do
     scrapmax("https://www.seloger.com/annonces/achat/maison/villecresnes-94/la-gare/147187365.htm?projects=2,5&types=1,2&natures=1,2,4&places=[{div:2238}]&enterprise=0&qsVersion=1.0&bd=ListToDetail")
   end
-
 
   task :google => :environment do
     require "google_drive"
@@ -152,7 +152,6 @@ namespace :scrap_good do
           init_first_case += 1
           ws.save
           ws.reload
-
         end
       end
     end
