@@ -3,25 +3,20 @@
   <%= render 'layouts/notification'%>
   <div class="jumbotron jumbotron-fluid-hero">
   </div>
-  <div class="profilePic">
-    <%if @user.profile_picture.attached?%>
-    <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
-    <%else%>
-    <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
-    <%end%>
-    <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
-    <div class="col-lg-2">
-      <%= file_field_tag :profile_picture, class:'btnStandard', value:'change' %>
-      <%= submit_tag "Mettre à jour", class:'btnStandard' %>
-    </div>
-    <% end %>
-  </div><br><br>
-  <div class='upload-field-customized'>
-    <input type="file" multiple="multiple" name="file" id="file_upload">
-    <span>
-      <img src="/assets/plus copie.png" alt="" width="50" height="40" />
-    </span>
-  </div>
+    <div class="profilePic">
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"150", height:"150" %>
+      <%else%>
+        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" width="150" height="150">
+      <%end%>
+      <%= form_tag user_profile_picture_index_path(@user), multipart: true do %>
+      <div class="col-lg-2">
+        <%= file_field_tag :profile_picture, class:'btnStandard', value:'change' %>
+        <%= submit_tag "Mettre à jour", class:'btnStandard' %>
+      </div>
+      <% end %>
+    </div><br><br>
+
 
   <div class="profileWrap">
     <div class="d-flex justify-content-center">
