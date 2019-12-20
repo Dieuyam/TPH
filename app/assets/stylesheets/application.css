@@ -24,3 +24,12 @@
  *= require offers
 
  */
+
+.card {
+  height-min : 500px;
+
+}
+
+.card-img-top {
+  height : 189px;
+}	

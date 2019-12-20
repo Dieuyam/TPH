@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand&display=swap" rel="stylesheet">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<script src="https://js.stripe.com/v3/"></script>
 
 </head>
 
@@ -38,37 +39,41 @@
           </li>
         </ul>
       </div>
-            <% if user_signed_in?  %>
-            <div class="navbar-collapse collapse">
-                <ul class="ml-auto navbar-nav">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
-                    </a>
-                    <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="<%= mon_profil_index_path %>">Mon compte</a>
-                      <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
-                    </div>
-                  </li>
-                </ul>
+      <% if user_signed_in?  %>
+      <div class="navbar-collapse collapse">
+        <ul class="ml-auto navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%if current_user.profile_picture.attached?%>
+              <%= image_tag current_user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"30", height:"30" %>
+              <%else%>
+              <%= image_tag "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png", class:"rounded-circle", width:"30", height:"30" %>
+              <%end%>
+            </a>
+            <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<%= mon_profil_index_path %>">Mon compte</a>
+              <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
             </div>
-
-            <% else  %>
-            <div class="navbar-collapse collapse">
-                <ul class="ml-auto navbar-nav">
-                  <li class="nav-item dropdown">
-                    <button type="button" class="btn btn-outline dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Menu
-                    </button>
-                    <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="<%= new_user_session_path %>">Connexion</a>
-                      <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
-                    </div>
-                  </li>
-                </ul>
-            </div>
+          </li>
+        </ul>
       </div>
-      <% end  %>
+
+      <% else  %>
+      <div class="navbar-collapse collapse">
+        <ul class="ml-auto navbar-nav">
+          <li class="nav-item dropdown">
+            <button type="button" class="btn btn-outline dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </button>
+            <div class="dropdown-menu pr-3 dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<%= new_user_session_path %>">Connexion</a>
+              <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <% end  %>
   </nav>
   <!-- /.navbar -->
   <div class="topBtn d-flex justify-content-center align-items-center" id="return-to-top" title="Go to top"><a><span><i class="fas fa-chevron-up"></i></span></a></div>
@@ -88,6 +93,6 @@
 
 
 
-<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application' %>
 
 </html>

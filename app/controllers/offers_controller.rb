@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
 
   # GET /offers
   # GET /offers.json
@@ -16,6 +16,8 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @session_id = stripe.id
+    puts 'looooooooooooooooooooooooooooooooooook up'
+    puts @session_id
     @offer = Offer.new
   end
 
@@ -75,10 +77,10 @@ class OffersController < ApplicationController
     end
 
     def stripe
-    
+
       $stripe_customer = current_user
       @offer_selected = Offer.find(params[:offer_id])
-      Stripe.api_key = 'sk_test_54BIYzJqmauUcCqsvpZunVyp'
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -92,8 +94,8 @@ class OffersController < ApplicationController
         payment_intent_data: {
           capture_method: 'manual',
         },
-        success_url: 'http://localhost:3000/charges',
-        cancel_url: 'https://example.com/cancel',
+        success_url: 'https://the-perfect-house.herokuapp.com/charges',
+        cancel_url: 'https://the-perfect-house.herokuapp.com',
       )
       current_user.stripe_session_id = @offer_selected.id
       current_user.save
