@@ -17,6 +17,7 @@ operation_type_array = ["Vente", "Location"]
 heatings_array = ["Chauffage à bois", "Électrique", "Gaz", "Fioul", "Plancher chauffant"]
 secondary_criteria_array = ["Ensoleillement", "Pollution", "Calme", "Connectivité", "Sécurité", "Fiscalité", "Commerces", "Services"]
 tertiary_criteria_array = ["Piscine", "Ascenseur", "Sous-sol", "Balcon", "Concierge", "Parking", "Dernier étage", "Acces handicapé", "Jardin", "Meublé"]
+cities = [{name: "Paris", zipcode:"75000"},{name: "Marseille", zipcode:"13000"},{name: "Bordeaux", zipcode:"33000"},{name: "Lyon", zipcode:"69000"}, {name: "Toulouse", zipcode:"31000"},{name: "Lille", zipcode:"59000"},{name: "Nantes", zipcode:"44000"},{name: "Nice", zipcode:"06000"}]
 
 #require 'Faker'
 Faker::Config.locale = 'fr'
@@ -74,18 +75,16 @@ puts "The operation type table has been initialized"
 end
 puts "A user has been created"
 
-Accomodation.all.each do |a|
-	rand(0..5).times do
-		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
-	end
-end
-
-newcityarray = []
-cities_array.each do |city|
-	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
-end
+ newcityarray = []
+ cities_array.each do |city|
+ 	newcityarray << city.downcase.tr(" -", "").tr("é", "e")
+ end
 #require "google_drive"
-session = GoogleDrive::Session.from_service_account_key("config.json")
+
+require "google_drive"
+u = ENV['GOOGLE_KEY']
+io = StringIO.new(u)
+session = GoogleDrive::Session.from_service_account_key(io)
 ws = session.spreadsheet_by_key("1NxO5lRZIhqkrq2cG3N3pRaGXUHKOT8VjQO-dHMNM82E").worksheets[1]
 init_first_case = ws.rows.size + 1
 init_first_case.times do |i|
@@ -93,13 +92,25 @@ init_first_case.times do |i|
 		City.create(:name => ws[i+1, 1], :zipcode => ws[i+1, 2])
 		puts i
 	end
-
 end
+
+cities.each do |city|
+	City.create(name: city[:name], zipcode: city[:zipcode])
+end
+
 puts "The city table has been initialized"
 
 12.times do |k|
 
-	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name,road_type: RoadType.all.sample, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample, description: Faker::Lorem.paragraph(sentence_count: 8))
+	a = Accomodation.create(road_number: rand(1..99), road_name: Faker::Address.street_name,road_type: RoadType.all.sample, living_space: rand(25..75), price: rand(30..100)*10, floor: rand(1..5), floors_inside: rand(1..3), rooms: rand(1..5), orientation:'est', ges:'A', longitude: 2.300, latitude: 45.800, title: 'appartement à louer', type_of_property: TypeOfProperty.all.sample, operation_type: OperationType.all.sample, city: City.all.sample, country: Country.all.sample, owner: User.all.sample, description: Faker::Lorem.paragraph(sentence_count: 8), heating: Heating.all.sample)
 end
 
 puts "accomodations created"
+
+Accomodation.all.each do |a|
+	rand(0..5).times do
+		JoinTableTertiary.create(accomodation: a, tertiary_criteria: TertiaryCriteria.all.sample)
+	end
+end
+
+puts "criteria created"

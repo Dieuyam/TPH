@@ -55,7 +55,7 @@ class AccomodationsController < ApplicationController
         if index >= 17
           if value == "1"
             puts key
-            JoinTableTertiary.create(accomodation: a, tertiary_criteria_id: index - 16)
+            JoinTableTertiary.create(accomodation: @accomodation, tertiary_criteria_id: index - 16)
           end
 
         end

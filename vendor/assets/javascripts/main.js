@@ -822,5 +822,7 @@
 
 
 /*-------------------------------------
-          Carousel show
+          Button upload
  -------------------------------------*/
+
+ document.getElementById('file_upload').addEventListener('change', console.log("salut"))
