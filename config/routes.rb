@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'service/index'
+  resources :service, only: [:index]
   resources :team, only: [:index]
   resources :contact
   root to: 'homepage#index'
